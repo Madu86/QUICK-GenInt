@@ -126,10 +126,6 @@ class DDint(OEint):
         for i in range(0,10):
             for j in range(0,6):
                 self.fhga.write("    LOC2(store, %d, %d, STOREDIM, STOREDIM) = fd.x_%d_%d;\n" % (i+10, j+4, i+10, j+4))
-        self.fhga.write("#else \n")
-        for i in range(0,10):
-            for j in range(0,6):
-                self.fhga.write("    LOC2(store, %d, %d, STOREDIM, STOREDIM) = LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d);\n" % (i+10, j+4, i+10, j+4, 0))        
         self.fhga.write("#endif \n")
 
         for i in range(0,10):
