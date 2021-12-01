@@ -192,7 +192,7 @@ def write_oei(outdir, func_qualifier='__device__ __inline__'):
     # Write the driver to save computed primitive integrals required for gradient calculation. The parameters are the same that we reported above. 
     OEint.fhga.write("%s void oei_grad_vertical(int I, int J, int II, int JJ,QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,\n\
         QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz, QUICKDouble Zeta,\n\
-        QUICKDouble* store2, QUICKDouble* YVerticalTemp){ \n" % (func_qualifier))
+        QUICKDouble* store, QUICKDouble* YVerticalTemp){ \n" % (func_qualifier))
 
     ss.save_int_grad()
     sp.save_int_grad()
