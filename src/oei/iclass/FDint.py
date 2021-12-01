@@ -94,11 +94,6 @@ class FDint(OEint):
             # save all computed values into store array in global memory
             self.fhd.write("  QUICKDouble val; \n")
 
-            # set compund assignement operator as default for storing integrals in store array, change it to assignemnt for m != 0
-            aop="+="
-            if m != 0:
-                aop="="
-
             for i in range(0,10):
                 for j in range(0,6):
                     tmp_mcal1=[params.Mcal[i+10][0], params.Mcal[i+10][1], params.Mcal[i+10][2]]
@@ -125,7 +120,7 @@ class FDint(OEint):
                                 self.fhd.write("  val += 0.5/Zeta * %f * (%s_%d.x_%d_%d - %s_%d.x_%d_%d); \n" % (params.Mcal[i+10][k], iclass_obj, m, tmp_i-1, tmp_j-1,\
                                 iclass_obj, m+1, tmp_i-1, tmp_j-1))
 
-                            self.fhd.write("  LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d) %s val; \n" % (i+10, j+4, m, aop))
+                            self.fhd.write("  LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d) = val; \n" % (i+10, j+4, m))
                             break
                                   
             self.fhd.write("#endif \n")   
@@ -135,12 +130,12 @@ class FDint(OEint):
     def save_int(self):
         self.fha.write("\n  /* FD integral, m=%d */ \n" % (0))
         self.fha.write("  if(I == 3 && J == 2){ \n")
-        self.fha.write("    FDint_0 fd(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, Zeta, YVerticalTemp); \n")
+        self.fha.write("    FDint_0 fd(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, Zeta, store, YVerticalTemp); \n")
 
         self.fha.write("#ifdef REG_FD \n")
         for i in range(0,10):
             for j in range(0,6):
-                self.fha.write("    LOC2(store, %d, %d, STOREDIM, STOREDIM) = fd.x_%d_%d;\n" % (i+10, j+4, i+10, j+4))
+                self.fha.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = fd.x_%d_%d;\n" % (i+10, j+4, i+10, j+4))
         self.fha.write("#endif \n") 
 
         # include print statements if debug option is on    
@@ -148,7 +143,7 @@ class FDint(OEint):
             self.fha.write("\n#ifdef DEBUG_OEI \n")
             for i in range(0,10):
                 for j in range(0,6):
-                    self.fha.write("    printf(\"II %%d JJ %%d %s store[%d,%d] = %%f \\n\", II, JJ, LOC2(store, %d, %d, STOREDIM, STOREDIM)); \n" % ( "FD", i+10, j+4, i+10, j+4))
+                    self.fha.write("    printf(\"II %%d JJ %%d %s store[%d,%d] = %%f \\n\", II, JJ, LOCSTORE(store, %d, %d, STOREDIM, STOREDIM)); \n" % ( "FD", i+10, j+4, i+10, j+4))
             self.fha.write("#endif \n\n")
 
         self.fha.write("  } \n")

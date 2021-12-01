@@ -29,12 +29,12 @@ class SSint(OEint):
     def save_int(self):
         self.fha.write("\n  /* SS integral, m=%d */ \n" % (0))
         self.fha.write("  if(I == 0 && J == 0){ \n")
-        self.fha.write("    LOC2(store, 0, 0, STOREDIM, STOREDIM) += VY(0, 0, 0);\n")
+        self.fha.write("    LOCSTORE(store, 0, 0, STOREDIM, STOREDIM) += VY(0, 0, 0);\n")
 
         # include print statements if debug option is on 
         if OEint.debug == 1:
             self.fha.write("\n#ifdef DEBUG_OEI \n")
-            self.fha.write("    printf(\"II %%d JJ %%d %s store[%d,%d] = %%f \\n\", II, JJ, LOC2(store, 0, 0, STOREDIM, STOREDIM)); \n" % ( "SS", 0, 0))
+            self.fha.write("    printf(\"II %%d JJ %%d %s store[%d,%d] = %%f \\n\", II, JJ, LOCSTORE(store, 0, 0, STOREDIM, STOREDIM)); \n" % ( "SS", 0, 0))
             self.fha.write("#endif \n\n")
 
         self.fha.write("  } \n")
@@ -47,17 +47,17 @@ class SSint(OEint):
         self.fhga.write("    PSint_0 ps(PAx, PAy, PAz, PCx, PCy, PCz, YVerticalTemp); \n\n")
 
         for i in range(0,3):                
-            self.fhga.write("    LOC2(store, %d, %d, STOREDIM, STOREDIM) = sp.x_%d_%d;\n" % (0, i+1, 0, i+1))
+            self.fhga.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = sp.x_%d_%d;\n" % (0, i+1, 0, i+1))
 
         for i in range(0,3):                
-            self.fhga.write("    LOC2(store, %d, %d, STOREDIM, STOREDIM) = ps.x_%d_%d;\n" % (i+1, 0, i+1, 0))
+            self.fhga.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = ps.x_%d_%d;\n" % (i+1, 0, i+1, 0))
 
         if OEint.debug == 1:
             self.fhga.write("\n#ifdef DEBUG_OEI \n")
             for i in range(0,3):
-                self.fhga.write("    printf(\"II %%d JJ %%d %s store[%d,%d] = %%f \\n\", II, JJ, LOC2(store, %d, %d, STOREDIM, STOREDIM)); \n" % ( "SP", 0, i+1, 0, i+1))
+                self.fhga.write("    printf(\"II %%d JJ %%d %s store[%d,%d] = %%f \\n\", II, JJ, LOCSTORE(store, %d, %d, STOREDIM, STOREDIM)); \n" % ( "SP", 0, i+1, 0, i+1))
             for i in range(0,3):
-                self.fhga.write("    printf(\"II %%d JJ %%d %s store[%d,%d] = %%f \\n\", II, JJ, LOC2(store, %d, %d, STOREDIM, STOREDIM)); \n" % ( "PS", i+1, 0, i+1, 0))            
+                self.fhga.write("    printf(\"II %%d JJ %%d %s store[%d,%d] = %%f \\n\", II, JJ, LOCSTORE(store, %d, %d, STOREDIM, STOREDIM)); \n" % ( "PS", i+1, 0, i+1, 0))            
             self.fhga.write("#endif \n\n")
 
         self.fhga.write("  } \n")
