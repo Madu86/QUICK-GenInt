@@ -167,7 +167,7 @@ def write_oei(outdir, func_qualifier='__device__ __inline__'):
 
     # Yvertical - a 1D array holding boys function values,the size is Max_I+ Max_J+2.
 
-    OEint.fha.write("%s void oei_vertical(int I, int J, int II, int JJ,QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,\n\
+    OEint.fha.write("%s void OEint_vertical(int I, int J, int II, int JJ,QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,\n\
         QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz, QUICKDouble Zeta,\n\
         QUICKDouble* store, QUICKDouble* YVerticalTemp){ \n" % (func_qualifier))
     ss.save_int()
