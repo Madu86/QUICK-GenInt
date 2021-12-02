@@ -59,7 +59,7 @@ class PSint(OEint):
         self.fha.write("  if(I == 1 && J == 0){ \n")
         self.fha.write("    PSint_0 ps(PAx, PAy, PAz, PCx, PCy, PCz, YVerticalTemp); \n")
         for i in range(0,3):                
-            self.fha.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) += ps.x_%d_%d;\n" % (i+1, 0, i+1, 0))
+            self.fha.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = ps.x_%d_%d;\n" % (i+1, 0, i+1, 0))
 
         # include print statements if debug option is on 
         if OEint.debug == 1:

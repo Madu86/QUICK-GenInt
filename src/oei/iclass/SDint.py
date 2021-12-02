@@ -73,7 +73,7 @@ class SDint(OEint):
         self.fha.write("  if(I == 0 && J == 2){ \n")
         self.fha.write("    SDint_0 sd(PBx, PBy, PBz, PCx, PCy, PCz, Zeta, YVerticalTemp); \n")
         for i in range(0,6):
-            self.fha.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) += sd.x_%d_%d;\n" % (0, i+4, 0, i+4))
+            self.fha.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = sd.x_%d_%d;\n" % (0, i+4, 0, i+4))
 
         # include print statements if debug option is on    
         if OEint.debug == 1:

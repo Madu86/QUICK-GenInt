@@ -93,7 +93,7 @@ class PDint(OEint):
         self.fha.write("    PDint_0 pd(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, Zeta, YVerticalTemp); \n")
         for i in range(0,6):
             for j in range(0,3):
-                self.fha.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) += pd.x_%d_%d;\n" % (j+1, i+4, j+1, i+4))
+                self.fha.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = pd.x_%d_%d;\n" % (j+1, i+4, j+1, i+4))
 
         # include print statements if debug option is on    
         if OEint.debug == 1:

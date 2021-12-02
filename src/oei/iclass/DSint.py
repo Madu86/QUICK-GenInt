@@ -74,7 +74,7 @@ class DSint(OEint):
         self.fha.write("  if(I == 2 && J == 0){ \n")
         self.fha.write("    DSint_0 ds(PAx, PAy, PAz, PCx, PCy, PCz, Zeta, YVerticalTemp); \n")
         for i in range(0,6):
-            self.fha.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) += ds.x_%d_%d;\n" % (i+4, 0, i+4, 0))
+            self.fha.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = ds.x_%d_%d;\n" % (i+4, 0, i+4, 0))
 
         # include print statements if debug option is on    
         if OEint.debug == 1:

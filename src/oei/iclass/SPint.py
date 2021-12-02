@@ -60,7 +60,7 @@ class SPint(OEint):
         self.fha.write("  if(I == 0 && J == 1){ \n")
         self.fha.write("    SPint_0 sp(PBx, PBy, PBz, PCx, PCy, PCz, YVerticalTemp); \n")
         for i in range(0,3):                
-            self.fha.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) += sp.x_%d_%d;\n" % (0, i+1, 0, i+1))
+            self.fha.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = sp.x_%d_%d;\n" % (0, i+1, 0, i+1))
 
         # include print statements if debug option is on    
         if OEint.debug == 1:

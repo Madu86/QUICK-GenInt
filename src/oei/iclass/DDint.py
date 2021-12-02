@@ -132,7 +132,7 @@ class DDint(OEint):
         self.fha.write("#ifdef REG_DD \n")
         for i in range(0,6):
             for j in range(0,6):
-                self.fha.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) += dd.x_%d_%d;\n" % (i+4, j+4, i+4, j+4))
+                self.fha.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = dd.x_%d_%d;\n" % (i+4, j+4, i+4, j+4))
         self.fha.write("#endif \n") 
 
         # include print statements if debug option is on    

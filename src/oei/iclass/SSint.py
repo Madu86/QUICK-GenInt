@@ -29,7 +29,7 @@ class SSint(OEint):
     def save_int(self):
         self.fha.write("\n  /* SS integral, m=%d */ \n" % (0))
         self.fha.write("  if(I == 0 && J == 0){ \n")
-        self.fha.write("    LOCSTORE(store, 0, 0, STOREDIM, STOREDIM) += VY(0, 0, 0);\n")
+        self.fha.write("    LOCSTORE(store, 0, 0, STOREDIM, STOREDIM) = VY(0, 0, 0);\n")
 
         # include print statements if debug option is on 
         if OEint.debug == 1:

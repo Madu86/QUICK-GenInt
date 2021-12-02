@@ -82,7 +82,7 @@ class DPint(OEint):
         self.fha.write("    DPint_0 dp(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, Zeta, YVerticalTemp); \n")
         for i in range(0,6):
             for j in range(0,3):
-                self.fha.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) += dp.x_%d_%d;\n" % (i+4, j+1, i+4, j+1))
+                self.fha.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = dp.x_%d_%d;\n" % (i+4, j+1, i+4, j+1))
 
         # include print statements if debug option is on    
         if OEint.debug == 1:
