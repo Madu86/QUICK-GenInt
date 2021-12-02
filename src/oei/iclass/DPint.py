@@ -110,9 +110,11 @@ class DPint(OEint):
             for j in range(0,3):
                 self.fhga.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = pp.x_%d_%d;\n" % (i+1, j+1, i+1, j+1))
 
+        self.fhga.write("#ifdef REG_DD \n")
         for i in range(0,6):
             for j in range(0,6):
                 self.fhga.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = dd.x_%d_%d;\n" % (i+4, j+4, i+4, j+4))
+        self.fhga.write("#endif \n")
 
         self.fhga.write("#ifdef REG_FP \n")
         for i in range(0,10):
