@@ -112,7 +112,7 @@ class PDint(OEint):
         self.fhga.write("    SDint_0 sd(PBx, PBy, PBz, PCx, PCy, PCz, Zeta, YVerticalTemp); \n")
         self.fhga.write("    PPint_0 pp(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, Zeta, YVerticalTemp); \n")
         self.fhga.write("    DDint_0 dd(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, Zeta, store, YVerticalTemp); \n")
-        self.fhga.write("    PFint_0 pf(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, Zeta, YVerticalTemp); \n\n")
+        self.fhga.write("    PFint_0 pf(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, Zeta, store, YVerticalTemp); \n\n")
 
         for i in range(0,6):
             self.fhga.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = sd.x_%d_%d;\n" % (0, i+4, 0, i+4))
@@ -125,9 +125,11 @@ class PDint(OEint):
             for j in range(0,6):
                 self.fhga.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = dd.x_%d_%d;\n" % (i+4, j+4, i+4, j+4))
 
+        self.fhga.write("#ifdef REG_PF \n")
         for i in range(0,10):
             for j in range(0,3):
                 self.fhga.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = pf.x_%d_%d;\n" % (j+1, i+10, j+1, i+10)) 
+        self.fhga.write("#endif \n") 
 
         if OEint.debug == 1:
             self.fhga.write("\n#ifdef DEBUG_OEI \n")

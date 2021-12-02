@@ -38,26 +38,30 @@ class PFint(OEint):
             self.fhc.write("public: \n")
 
             # write class variables; convention being used is s=0, p=1-3, d=4-9, f=10-19, g=20-34
+            self.fhc.write("#ifdef REG_PF \n")
             for i in range(0,10):
                 for j in range(0,3):
                     self.fhc.write("  QUICKDouble x_%d_%d; // %s, %s \n" % (j+1, i+10, self.p_lbl[j], self.f_lbl[i]))
+            self.fhc.write("#endif \n") 
 
             # write class functions
             self.fhc.write("  %s PFint_%d(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,\n\
                 QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,\n\
-                QUICKDouble Zeta, QUICKDouble* YVerticalTemp); \n" % (self.func_qualifier, m))          
+                QUICKDouble Zeta, QUICKDouble* store, QUICKDouble* YVerticalTemp); \n" % (self.func_qualifier, m))          
             self.fhc.write("}; \n")
 
             # write function definitions
             self.fhd.write("%s PFint_%d::PFint_%d(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,\n\
                 QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,\n\
-                QUICKDouble Zeta, QUICKDouble* YVerticalTemp){ \n\n" % (self.func_qualifier, m, m))
+                QUICKDouble Zeta, QUICKDouble* store, QUICKDouble* YVerticalTemp){ \n\n" % (self.func_qualifier, m, m))
 
             self.fhd.write("  SDint_%d sd_%d(PBx, PBy, PBz, PCx, PCy, PCz, Zeta, YVerticalTemp); // construct [s|d] for m=%d \n" % (m, m, m))
             self.fhd.write("  SDint_%d sd_%d(PBx, PBy, PBz, PCx, PCy, PCz, Zeta, YVerticalTemp); // construct [s|d] for m=%d \n" % (m+1, m+1, m+1))
             self.fhd.write("  SFint_%d sf_%d(PBx, PBy, PBz, PCx, PCy, PCz, Zeta, YVerticalTemp); // construct [s|f] for m=%d \n" % (m, m, m))
             self.fhd.write("  SFint_%d sf_%d(PBx, PBy, PBz, PCx, PCy, PCz, Zeta, YVerticalTemp); // construct [s|f] for m=%d \n\n" % (m+1, m+1, m+1))
 
+            # save all computed values into class variables that will reside in register/lmem space
+            self.fhd.write("#ifdef REG_PF \n")
             for i in range(0,10):
                 for j in range(0,3):
                     tmp_mcal=[params.Mcal[i+10][0], params.Mcal[i+10][1], params.Mcal[i+10][2]]
@@ -85,16 +89,41 @@ class PFint(OEint):
                             #    % ( j+1, i+10, self.PA[k], m, 0, i+10, self.PC[k], m+1, 0, i+10, self.PA[k], m, 0, i+10, self.PC[k], m+1, 0, i+10))                                
 
                             break
+            self.fhd.write("#else \n")
+
+            # save all computed values into store array in global memory
+            self.fhd.write("  QUICKDouble val; \n")
+
+            for i in range(0,10):
+                for j in range(0,3):
+                    tmp_mcal=[params.Mcal[i+10][0], params.Mcal[i+10][1], params.Mcal[i+10][2]]
+
+                    for k in range(0,3):
+                        if params.Mcal[j+1][k] != 0:
+                            self.fhd.write("  val = %s * sf_%d.x_%d_%d - %s * sf_%d.x_%d_%d; \n" % (self.PA[k], m, 0, i+10,\
+                            self.PC[k], m+1, 0, i+10))
+
+                            if tmp_mcal[k] != 0:
+                                tmp_mcal[k] -= 1
+                                tmp_i=params.trans[tmp_mcal[0]][tmp_mcal[1]][tmp_mcal[2]]
+                                self.fhd.write("  val += 0.5/Zeta * %f * (sd_%d.x_%d_%d - sd_%d.x_%d_%d); \n" % (params.Mcal[i+10][k], m, 0, tmp_i-1, m+1, 0, tmp_i-1))
+
+                            self.fhd.write("  LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d) = val; \n" % (j+1, i+10, m))
+                            break
+            self.fhd.write("#endif \n") 
             self.fhd.write("\n } \n")
 
     # generate code to save computed [p|f] integral
     def save_int(self):
         self.fha.write("\n  /* PF integral, m=%d */ \n" % (0))
         self.fha.write("  if(I == 1 && J == 3){ \n")
-        self.fha.write("    PFint_0 pf(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, Zeta, YVerticalTemp); \n")
+        self.fha.write("    PFint_0 pf(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, Zeta, store, YVerticalTemp); \n")
+
+        self.fha.write("#ifdef REG_PF \n")
         for i in range(0,10):
             for j in range(0,3):
                 self.fha.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = pf.x_%d_%d;\n" % (j+1, i+10, j+1, i+10))
+        self.fha.write("#endif \n")
 
         # include print statements if debug option is on    
         if OEint.debug == 1:

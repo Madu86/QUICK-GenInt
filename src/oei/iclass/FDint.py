@@ -56,10 +56,10 @@ class FDint(OEint):
                 QUICKDouble Zeta, QUICKDouble* store, QUICKDouble* YVerticalTemp){ \n\n" % (self.func_qualifier, m, m))
             self.fhd.write("  DPint_%d dp_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, Zeta, YVerticalTemp); // construct [d|p] for m=%d \n" % (m, m, m))
             self.fhd.write("  FSint_%d fs_%d(PAx, PAy, PAz, PCx, PCy, PCz, Zeta, YVerticalTemp); // construct [f|s] for m=%d \n" % (m, m, m))
-            self.fhd.write("  FPint_%d fp_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, Zeta, YVerticalTemp); // construct [f|p] for m=%d \n" % (m, m, m))            
+            self.fhd.write("  FPint_%d fp_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, Zeta, store, YVerticalTemp); // construct [f|p] for m=%d \n" % (m, m, m))            
             self.fhd.write("  DPint_%d dp_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, Zeta, YVerticalTemp); // construct [d|p] for m=%d \n" % (m+1, m+1, m+1))
             self.fhd.write("  FSint_%d fs_%d(PAx, PAy, PAz, PCx, PCy, PCz, Zeta, YVerticalTemp); // construct [f|s] for m=%d \n" % (m+1, m+1, m+1))
-            self.fhd.write("  FPint_%d fp_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, Zeta, YVerticalTemp); // construct [f|p] for m=%d \n\n" % (m+1, m+1, m+1))             
+            self.fhd.write("  FPint_%d fp_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, Zeta, store, YVerticalTemp); // construct [f|p] for m=%d \n\n" % (m+1, m+1, m+1))             
 
             # save all computed values into class variables that will reside in register/lmem space
             self.fhd.write("#ifdef REG_FD \n")
@@ -103,10 +103,9 @@ class FDint(OEint):
                         if params.Mcal[j+4][k] != 0:
                             tmp_mcal2[k] -= 1
                             tmp_j=params.trans[tmp_mcal2[0]][tmp_mcal2[1]][tmp_mcal2[2]]
-                            iclass_obj="fp"
-                            
-                            self.fhd.write("  val = %s * %s_%d.x_%d_%d - %s * %s_%d.x_%d_%d; \n" % (self.PB[k], iclass_obj, m, i+10, tmp_j-1,\
-                            self.PC[k], iclass_obj, m+1, i+10, tmp_j-1))
+
+                            self.fhd.write("  val = %s * LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d) - %s * LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d); \n" % (self.PB[k], i+10, tmp_j-1, m,\
+                            self.PC[k], i+10, tmp_j-1, m+1))
 
                             if params.Mcal[j+4][k] > 1:
                                 iclass_obj="fs"
