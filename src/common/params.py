@@ -84,3 +84,9 @@ def print_mcal():
 
 #print_trans()
 #print_mcal()
+
+# constants 
+OEI_STORE_DIM_X=20
+OEI_STORE_DIM_Y=20
+OEI_STORE_DIM_Z=8
+
