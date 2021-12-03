@@ -55,10 +55,10 @@ class PFint(OEint):
                 QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,\n\
                 QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ \n\n" % (self.func_qualifier, m, m))
 
-            self.fhd.write("  SDint_%d sd_%d(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, YVerticalTemp); // construct [s|d] for m=%d \n" % (m, m, m))
-            self.fhd.write("  SDint_%d sd_%d(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, YVerticalTemp); // construct [s|d] for m=%d \n" % (m+1, m+1, m+1))
-            self.fhd.write("  SFint_%d sf_%d(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, YVerticalTemp); // construct [s|f] for m=%d \n" % (m, m, m))
-            self.fhd.write("  SFint_%d sf_%d(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, YVerticalTemp); // construct [s|f] for m=%d \n\n" % (m+1, m+1, m+1))
+            self.fhd.write("  SDint_%d sd_%d(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=%d \n" % (m, m, m))
+            self.fhd.write("  SDint_%d sd_%d(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=%d \n" % (m+1, m+1, m+1))
+            self.fhd.write("  SFint_%d sf_%d(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=%d \n" % (m, m, m))
+            self.fhd.write("  SFint_%d sf_%d(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=%d \n\n" % (m+1, m+1, m+1))
 
             # save all computed values into class variables that will reside in register/lmem space
             self.fhd.write("#ifdef REG_PF \n")
@@ -69,8 +69,14 @@ class PFint(OEint):
                     for k in range(0,3):
                         #self.fhd.write("a(i,j) %d %d %d %d %d\n" % (tmp_mcal[0], tmp_mcal[1], tmp_mcal[2], params.Mcal[j+1][k], tmp_mcal[k]))
                         if params.Mcal[j+1][k] != 0:
+
+                            self.fhd.write("#ifdef REG_SF \n")
                             self.fhd.write("  x_%d_%d = %s * sf_%d.x_%d_%d - %s * sf_%d.x_%d_%d; \n" % (j+1, i+10, self.PA[k], m, 0, i+10,\
                             self.PC[k], m+1, 0, i+10))
+                            self.fhd.write("#else \n")
+                            self.fhd.write("  x_%d_%d = %s * LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d)- %s * LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d); \n" % (j+1, i+10, self.PA[k], 0, i+10, m,\
+                            self.PC[k], 0, i+10, m+1))
+                            self.fhd.write("#endif \n")
 
                             #self.fhd.write("  printf(\" x_%d_%d: %s= %%f, sd_%d.x_%d_%d= %%f, %s= %%f, sd_%d.x_%d_%d= %%f \\n\", %s, sd_%d.x_%d_%d, %s, sd_%d.x_%d_%d); \n" \
                             #% ( j+1, i+10, self.PA[k], m, 0, i+10, self.PC[k], m+1, 0, i+10, self.PA[k], m, 0, i+10, self.PC[k], m+1, 0, i+10))
@@ -100,8 +106,14 @@ class PFint(OEint):
 
                     for k in range(0,3):
                         if params.Mcal[j+1][k] != 0:
+
+                            self.fhd.write("#ifdef REG_SF \n")
                             self.fhd.write("  val = %s * sf_%d.x_%d_%d - %s * sf_%d.x_%d_%d; \n" % (self.PA[k], m, 0, i+10,\
                             self.PC[k], m+1, 0, i+10))
+                            self.fhd.write("#else \n")
+                            self.fhd.write("  val = %s * LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d) - %s * LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d); \n" % (self.PA[k], 0, i+10, m,\
+                            self.PC[k], 0, i+10, m+1))
+                            self.fhd.write("#endif \n")
 
                             if tmp_mcal[k] != 0:
                                 tmp_mcal[k] -= 1

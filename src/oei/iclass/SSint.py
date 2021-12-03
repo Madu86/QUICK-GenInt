@@ -43,8 +43,8 @@ class SSint(OEint):
     def save_int_grad(self):
         self.fhga.write("\n  /* SS integral gradient, m=%d */ \n" % (0))
         self.fhga.write("  if(I == 0 && J == 0){ \n")
-        self.fhga.write("    SPint_0 sp(PBx, PBy, PBz, PCx, PCy, PCz, YVerticalTemp); \n")
-        self.fhga.write("    PSint_0 ps(PAx, PAy, PAz, PCx, PCy, PCz, YVerticalTemp); \n\n")
+        self.fhga.write("    SPint_0 sp(PBx, PBy, PBz, PCx, PCy, PCz, store, YVerticalTemp); \n")
+        self.fhga.write("    PSint_0 ps(PAx, PAy, PAz, PCx, PCy, PCz, store, YVerticalTemp); \n\n")
 
         for i in range(0,3):                
             self.fhga.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = sp.x_%d_%d;\n" % (0, i+1, 0, i+1))

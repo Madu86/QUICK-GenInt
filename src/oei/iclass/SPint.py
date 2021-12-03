@@ -43,11 +43,11 @@ class SPint(OEint):
 
             # write class functions
             self.fhc.write("  %s SPint_%d(QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz,\n\
-                QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz, QUICKDouble* YVerticalTemp); \n" % (self.func_qualifier, m))
+                QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz, QUICKDouble* store, QUICKDouble* YVerticalTemp); \n" % (self.func_qualifier, m))
             self.fhc.write("}; \n")
 
             self.fhd.write("%s SPint_%d::SPint_%d(QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz,\n\
-                QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz, QUICKDouble* YVerticalTemp){ \n\n" % (self.func_qualifier, m, m))
+                QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz, QUICKDouble* store, QUICKDouble* YVerticalTemp){ \n\n" % (self.func_qualifier, m, m))
 
             for i in range(0,3):
                 self.fhd.write("  x_%d_%d = %s * VY(0, 0, %d) - %s * VY(0, 0, %d);\n" % (0, i+1, self.PB[i], m, self.PC[i], m+1))
@@ -58,7 +58,7 @@ class SPint(OEint):
     def save_int(self):
         self.fha.write("\n  /* SP integral, m=%d */ \n" % (0))
         self.fha.write("  if(I == 0 && J == 1){ \n")
-        self.fha.write("    SPint_0 sp(PBx, PBy, PBz, PCx, PCy, PCz, YVerticalTemp); \n")
+        self.fha.write("    SPint_0 sp(PBx, PBy, PBz, PCx, PCy, PCz, store, YVerticalTemp); \n")
         for i in range(0,3):                
             self.fha.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = sp.x_%d_%d;\n" % (0, i+1, 0, i+1))
 
@@ -75,8 +75,8 @@ class SPint(OEint):
     def save_int_grad(self):
         self.fhga.write("\n  /* SP integral gradient, m=%d */ \n" % (0))
         self.fhga.write("  if(I == 0 && J == 1){ \n")
-        self.fhga.write("    PPint_0 pp(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, YVerticalTemp); \n")
-        self.fhga.write("    SDint_0 sd(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, YVerticalTemp); \n\n")
+        self.fhga.write("    PPint_0 pp(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); \n")
+        self.fhga.write("    SDint_0 sd(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); \n\n")
 
         self.fhga.write("    LOCSTORE(store, 0, 0, STOREDIM, STOREDIM) = VY(0, 0, 0);\n")
 

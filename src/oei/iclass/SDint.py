@@ -43,14 +43,14 @@ class SDint(OEint):
 
             # write class functions
             self.fhc.write("  %s SDint_%d(QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz,\n\
-                QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz, QUICKDouble TwoZetaInv, QUICKDouble* YVerticalTemp); \n" % (self.func_qualifier, m))          
+                QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz, QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); \n" % (self.func_qualifier, m))          
             self.fhc.write("}; \n")
 
             # write function definitions
             self.fhd.write("%s SDint_%d::SDint_%d(QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz,\n\
-                QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz, QUICKDouble TwoZetaInv, QUICKDouble* YVerticalTemp){ \n\n" % (self.func_qualifier, m, m))
-            self.fhd.write("  SPint_%d sp_%d(PBx, PBy, PBz, PCx, PCy, PCz, YVerticalTemp); // construct [s|p] for m=%d \n" % (m, m, m))
-            self.fhd.write("  SPint_%d sp_%d(PBx, PBy, PBz, PCx, PCy, PCz, YVerticalTemp); // construct [s|p] for m=%d \n\n" % (m+1, m+1, m+1))
+                QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz, QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ \n\n" % (self.func_qualifier, m, m))
+            self.fhd.write("  SPint_%d sp_%d(PBx, PBy, PBz, PCx, PCy, PCz, store, YVerticalTemp); // construct [s|p] for m=%d \n" % (m, m, m))
+            self.fhd.write("  SPint_%d sp_%d(PBx, PBy, PBz, PCx, PCy, PCz, store, YVerticalTemp); // construct [s|p] for m=%d \n\n" % (m+1, m+1, m+1))
 
             for i in range(0,6):
                 tmp_mcal=[params.Mcal[i+4][0], params.Mcal[i+4][1], params.Mcal[i+4][2]]
@@ -71,7 +71,7 @@ class SDint(OEint):
     def save_int(self):
         self.fha.write("\n  /* SD integral, m=%d */ \n" % (0))
         self.fha.write("  if(I == 0 && J == 2){ \n")
-        self.fha.write("    SDint_0 sd(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, YVerticalTemp); \n")
+        self.fha.write("    SDint_0 sd(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); \n")
         for i in range(0,6):
             self.fha.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = sd.x_%d_%d;\n" % (0, i+4, 0, i+4))
 
@@ -88,9 +88,9 @@ class SDint(OEint):
     def save_int_grad(self):
         self.fhga.write("\n  /* SD integral gradient, m=%d */ \n" % (0))
         self.fhga.write("  if(I == 0 && J == 2){ \n")
-        self.fhga.write("    SPint_0 sp(PBx, PBy, PBz, PCx, PCy, PCz, YVerticalTemp); \n")
-        self.fhga.write("    PDint_0 pd(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, YVerticalTemp); \n")
-        self.fhga.write("    SFint_0 sf(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, YVerticalTemp); \n\n")
+        self.fhga.write("    SPint_0 sp(PBx, PBy, PBz, PCx, PCy, PCz, store, YVerticalTemp); \n")
+        self.fhga.write("    PDint_0 pd(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); \n")
+        self.fhga.write("    SFint_0 sf(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); \n\n")
 
         for i in range(0,3):                
             self.fhga.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = sp.x_%d_%d;\n" % (0, i+1, 0, i+1))
@@ -99,8 +99,10 @@ class SDint(OEint):
             for j in range(0,3):
                 self.fhga.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = pd.x_%d_%d;\n" % (j+1, i+4, j+1, i+4)) 
 
+        self.fhga.write("#ifdef REG_SF \n")
         for i in range(0,10):
             self.fhga.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = sf.x_%d_%d;\n" % (0, i+10, 0, i+10))   
+        self.fhga.write("#endif \n")
 
         if OEint.debug == 1:
             self.fhga.write("\n#ifdef DEBUG_OEI \n")

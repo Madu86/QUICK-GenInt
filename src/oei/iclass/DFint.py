@@ -54,11 +54,11 @@ class DFint(OEint):
             self.fhd.write("%s DFint_%d::DFint_%d(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,\n\
                 QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,\n\
                 QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ \n\n" % (self.func_qualifier, m, m))
-            self.fhd.write("  PDint_%d pd_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, YVerticalTemp); // construct [p|d] for m=%d \n" % (m, m, m))
-            self.fhd.write("  SFint_%d sf_%d(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, YVerticalTemp); // construct [s|f] for m=%d \n" % (m, m, m))
+            self.fhd.write("  PDint_%d pd_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|d] for m=%d \n" % (m, m, m))
+            self.fhd.write("  SFint_%d sf_%d(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=%d \n" % (m, m, m))
             self.fhd.write("  PFint_%d pf_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=%d \n" % (m, m, m))            
-            self.fhd.write("  PDint_%d pd_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, YVerticalTemp); // construct [p|d] for m=%d \n" % (m+1, m+1, m+1))
-            self.fhd.write("  SFint_%d sf_%d(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, YVerticalTemp); // construct [s|f] for m=%d \n" % (m+1, m+1, m+1))
+            self.fhd.write("  PDint_%d pd_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|d] for m=%d \n" % (m+1, m+1, m+1))
+            self.fhd.write("  SFint_%d sf_%d(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=%d \n" % (m+1, m+1, m+1))
             self.fhd.write("  PFint_%d pf_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=%d \n\n" % (m+1, m+1, m+1))             
 
             # save all computed values into class variables that will reside in register/lmem space
@@ -112,8 +112,14 @@ class DFint(OEint):
 
                             if params.Mcal[j+4][k] > 1:
                                 iclass_obj="sf"
+
+                                self.fhd.write("#ifdef REG_SF \n")
                                 self.fhd.write("  val += TwoZetaInv * (%s_%d.x_%d_%d - %s_%d.x_%d_%d); \n" % (iclass_obj, m, 0, i+10,\
                                 iclass_obj, m+1, 0, i+10))
+                                self.fhd.write("#else \n")
+                                self.fhd.write("  val += TwoZetaInv * (LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d) - LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d)); \n" % (0, i+10, m,\
+                                0, i+10, m+1))
+                                self.fhd.write("#endif \n")
 
                             if tmp_mcal1[k] > 0:
                                 tmp_mcal1[k] -= 1
