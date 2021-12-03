@@ -43,12 +43,12 @@ class DSint(OEint):
 
             # write class functions
             self.fhc.write("  %s DSint_%d(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,\n\
-                QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz, QUICKDouble Zeta, QUICKDouble* YVerticalTemp); \n" % (self.func_qualifier, m))          
+                QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz, QUICKDouble TwoZetaInv, QUICKDouble* YVerticalTemp); \n" % (self.func_qualifier, m))          
             self.fhc.write("}; \n")
 
             # write function definitions
             self.fhd.write("%s DSint_%d::DSint_%d(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,\n\
-                QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz, QUICKDouble Zeta, QUICKDouble* YVerticalTemp){ \n\n" % (self.func_qualifier, m, m))
+                QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz, QUICKDouble TwoZetaInv, QUICKDouble* YVerticalTemp){ \n\n" % (self.func_qualifier, m, m))
             self.fhd.write("  PSint_%d ps_%d(PAx, PAy, PAz, PCx, PCy, PCz, YVerticalTemp); // construct [p|s] for m=%d \n" % (m, m, m))
             self.fhd.write("  PSint_%d ps_%d(PAx, PAy, PAz, PCx, PCy, PCz, YVerticalTemp); // construct [p|s] for m=%d \n\n" % (m+1, m+1, m+1))
 
@@ -63,7 +63,7 @@ class DSint(OEint):
                         self.PC[j], m+1, tmp_i-1, 0))
 
                         if params.Mcal[i+4][j] == 2:
-                            self.fhd.write("  x_%d_%d += 0.5/Zeta * (VY(0, 0, %d) - VY(0, 0, %d)); \n" % (i+4, 0, m, m+1))
+                            self.fhd.write("  x_%d_%d += TwoZetaInv * (VY(0, 0, %d) - VY(0, 0, %d)); \n" % (i+4, 0, m, m+1))
 
                         break
             self.fhd.write("\n } \n")
@@ -72,7 +72,7 @@ class DSint(OEint):
     def save_int(self):
         self.fha.write("\n  /* DS integral, m=%d */ \n" % (0))
         self.fha.write("  if(I == 2 && J == 0){ \n")
-        self.fha.write("    DSint_0 ds(PAx, PAy, PAz, PCx, PCy, PCz, Zeta, YVerticalTemp); \n")
+        self.fha.write("    DSint_0 ds(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, YVerticalTemp); \n")
         for i in range(0,6):
             self.fha.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = ds.x_%d_%d;\n" % (i+4, 0, i+4, 0))
 
@@ -90,8 +90,8 @@ class DSint(OEint):
         self.fhga.write("\n  /* DS integral gradient, m=%d */ \n" % (0))
         self.fhga.write("  if(I == 2 && J == 0){ \n")
         self.fhga.write("    PSint_0 ps(PAx, PAy, PAz, PCx, PCy, PCz, YVerticalTemp); \n")
-        self.fhga.write("    DPint_0 dp(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, Zeta, YVerticalTemp); \n")
-        self.fhga.write("    FSint_0 fs(PAx, PAy, PAz, PCx, PCy, PCz, Zeta, YVerticalTemp); \n\n")
+        self.fhga.write("    DPint_0 dp(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, YVerticalTemp); \n")
+        self.fhga.write("    FSint_0 fs(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, YVerticalTemp); \n\n")
 
         for i in range(0,3):                
             self.fhga.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = ps.x_%d_%d;\n" % (i+1, 0, i+1, 0))

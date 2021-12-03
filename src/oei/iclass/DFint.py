@@ -47,19 +47,19 @@ class DFint(OEint):
             # write class functions
             self.fhc.write("  %s DFint_%d(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,\n\
                 QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,\n\
-                QUICKDouble Zeta, QUICKDouble* store, QUICKDouble* YVerticalTemp); \n" % (self.func_qualifier, m))          
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); \n" % (self.func_qualifier, m))          
             self.fhc.write("}; \n")
 
             # write function definitions
             self.fhd.write("%s DFint_%d::DFint_%d(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,\n\
                 QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,\n\
-                QUICKDouble Zeta, QUICKDouble* store, QUICKDouble* YVerticalTemp){ \n\n" % (self.func_qualifier, m, m))
-            self.fhd.write("  PDint_%d pd_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, Zeta, YVerticalTemp); // construct [p|d] for m=%d \n" % (m, m, m))
-            self.fhd.write("  SFint_%d sf_%d(PBx, PBy, PBz, PCx, PCy, PCz, Zeta, YVerticalTemp); // construct [s|f] for m=%d \n" % (m, m, m))
-            self.fhd.write("  PFint_%d pf_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, Zeta, store, YVerticalTemp); // construct [p|f] for m=%d \n" % (m, m, m))            
-            self.fhd.write("  PDint_%d pd_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, Zeta, YVerticalTemp); // construct [p|d] for m=%d \n" % (m+1, m+1, m+1))
-            self.fhd.write("  SFint_%d sf_%d(PBx, PBy, PBz, PCx, PCy, PCz, Zeta, YVerticalTemp); // construct [s|f] for m=%d \n" % (m+1, m+1, m+1))
-            self.fhd.write("  PFint_%d pf_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, Zeta, store, YVerticalTemp); // construct [p|f] for m=%d \n\n" % (m+1, m+1, m+1))             
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ \n\n" % (self.func_qualifier, m, m))
+            self.fhd.write("  PDint_%d pd_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, YVerticalTemp); // construct [p|d] for m=%d \n" % (m, m, m))
+            self.fhd.write("  SFint_%d sf_%d(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, YVerticalTemp); // construct [s|f] for m=%d \n" % (m, m, m))
+            self.fhd.write("  PFint_%d pf_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=%d \n" % (m, m, m))            
+            self.fhd.write("  PDint_%d pd_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, YVerticalTemp); // construct [p|d] for m=%d \n" % (m+1, m+1, m+1))
+            self.fhd.write("  SFint_%d sf_%d(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, YVerticalTemp); // construct [s|f] for m=%d \n" % (m+1, m+1, m+1))
+            self.fhd.write("  PFint_%d pf_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=%d \n\n" % (m+1, m+1, m+1))             
 
             # save all computed values into class variables that will reside in register/lmem space
             self.fhd.write("#ifdef REG_DF \n")
@@ -78,14 +78,14 @@ class DFint(OEint):
 
                             if params.Mcal[j+4][k] > 1:
                                 iclass_obj="sf"
-                                self.fhd.write("  x_%d_%d += 0.5/Zeta * (%s_%d.x_%d_%d - %s_%d.x_%d_%d); \n" % (j+4, i+10, iclass_obj, m, 0, i+10,\
+                                self.fhd.write("  x_%d_%d += TwoZetaInv * (%s_%d.x_%d_%d - %s_%d.x_%d_%d); \n" % (j+4, i+10, iclass_obj, m, 0, i+10,\
                                 iclass_obj, m+1, 0, i+10))
 
                             if tmp_mcal1[k] > 0:
                                 tmp_mcal1[k] -= 1
                                 tmp_i=params.trans[tmp_mcal1[0]][tmp_mcal1[1]][tmp_mcal1[2]]
                                 iclass_obj="pd"
-                                self.fhd.write("  x_%d_%d += 0.5/Zeta * %f * (%s_%d.x_%d_%d - %s_%d.x_%d_%d); \n" % (j+4, i+10, params.Mcal[i+10][k], iclass_obj, m, tmp_j-1, tmp_i-1,\
+                                self.fhd.write("  x_%d_%d += TwoZetaInv * %f * (%s_%d.x_%d_%d - %s_%d.x_%d_%d); \n" % (j+4, i+10, params.Mcal[i+10][k], iclass_obj, m, tmp_j-1, tmp_i-1,\
                                 iclass_obj, m+1, tmp_j-1, tmp_i-1))
                             break
             self.fhd.write("#else \n")
@@ -106,14 +106,14 @@ class DFint(OEint):
 
                             if params.Mcal[j+4][k] > 1:
                                 iclass_obj="sf"
-                                self.fhd.write("  val += 0.5/Zeta * (%s_%d.x_%d_%d - %s_%d.x_%d_%d); \n" % (iclass_obj, m, 0, i+10,\
+                                self.fhd.write("  val += TwoZetaInv * (%s_%d.x_%d_%d - %s_%d.x_%d_%d); \n" % (iclass_obj, m, 0, i+10,\
                                 iclass_obj, m+1, 0, i+10))
 
                             if tmp_mcal1[k] > 0:
                                 tmp_mcal1[k] -= 1
                                 tmp_i=params.trans[tmp_mcal1[0]][tmp_mcal1[1]][tmp_mcal1[2]]
                                 iclass_obj="pd"
-                                self.fhd.write("  val += 0.5/Zeta * %f * (%s_%d.x_%d_%d - %s_%d.x_%d_%d); \n" % (params.Mcal[i+10][k], iclass_obj, m, tmp_j-1, tmp_i-1,\
+                                self.fhd.write("  val += TwoZetaInv * %f * (%s_%d.x_%d_%d - %s_%d.x_%d_%d); \n" % (params.Mcal[i+10][k], iclass_obj, m, tmp_j-1, tmp_i-1,\
                                 iclass_obj, m+1, tmp_j-1, tmp_i-1))
 
                             self.fhd.write("  LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d) = val; \n" % (j+4, i+10, m))
@@ -125,7 +125,7 @@ class DFint(OEint):
     def save_int(self):
         self.fha.write("\n  /* DF integral, m=%d */ \n" % (0))
         self.fha.write("  if(I == 2 && J == 3){ \n")
-        self.fha.write("    DFint_0 df(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, Zeta, store, YVerticalTemp); \n")
+        self.fha.write("    DFint_0 df(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); \n")
 
         self.fha.write("#ifdef REG_DF \n")
         for i in range(0,10):

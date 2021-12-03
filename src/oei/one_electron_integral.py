@@ -125,7 +125,8 @@ def write_oei(outdir, func_qualifier='__device__ __inline__'):
     # PAx, PAy, PAz - Difference between the first center (i.e. A) and weighted center (P) along x, y and z coordinates (i.e. Px-Ax, Py-Ay and Pz-Az)
     # PBx, PBy, PBz - Difference between the second center (i.e. B) and weighted center (P) along x, y and z coordinates (i.e. Px-Bx, Py-By and Pz-Bz)
     # PCx, PCy, PCz - Difference between the nuclei/point charge (i.e. C) and weighted center (P) along x, y and z coordinates (i.e. Px-Cx, Py-Cy and Pz-Cz)
-    # Zeta - sum of the gaussian exponents on first and second centers
+
+    # TwoZetaInv - 1/(2*Zeta); where Zeta is the sum of the gaussian exponents on first and second centers
 
     # store is a 35x35 array where we would store primitive integral values. The anatomy is as follows: 
 #      0     1       2       3       4        5         6        7        8        9        10        11        12        13        14        15        16        17        18        19        20         21         22         23         24          25         26        27         28         29         30         31         32         33         34  
@@ -168,7 +169,7 @@ def write_oei(outdir, func_qualifier='__device__ __inline__'):
     # Yvertical - a 1D array holding boys function values,the size is Max_I+ Max_J+2.
 
     OEint.fha.write("%s void OEint_vertical(int I, int J, int II, int JJ,QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,\n\
-        QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz, QUICKDouble Zeta,\n\
+        QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz, QUICKDouble TwoZetaInv,\n\
         QUICKDouble* store, QUICKDouble* YVerticalTemp){ \n" % (func_qualifier))
     ss.save_int()
     ps.save_int()
@@ -191,7 +192,7 @@ def write_oei(outdir, func_qualifier='__device__ __inline__'):
 
     # Write the driver to save computed primitive integrals required for gradient calculation. The parameters are the same that we reported above. 
     OEint.fhga.write("%s void oei_grad_vertical(int I, int J, int II, int JJ,QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,\n\
-        QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz, QUICKDouble Zeta,\n\
+        QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz, QUICKDouble TwoZetaInv,\n\
         QUICKDouble* store, QUICKDouble* YVerticalTemp){ \n" % (func_qualifier))
 
     ss.save_int_grad()

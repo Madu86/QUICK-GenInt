@@ -43,16 +43,16 @@ class SFint(OEint):
 
             # write class functions
             self.fhc.write("  %s SFint_%d(QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz,\n\
-                QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz, QUICKDouble Zeta, QUICKDouble* YVerticalTemp); \n" % (self.func_qualifier, m))          
+                QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz, QUICKDouble TwoZetaInv, QUICKDouble* YVerticalTemp); \n" % (self.func_qualifier, m))          
             self.fhc.write("}; \n")
 
             # write function definitions
             self.fhd.write("%s SFint_%d::SFint_%d(QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz,\n\
-                QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz, QUICKDouble Zeta, QUICKDouble* YVerticalTemp){ \n\n" % (self.func_qualifier, m, m))
+                QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz, QUICKDouble TwoZetaInv, QUICKDouble* YVerticalTemp){ \n\n" % (self.func_qualifier, m, m))
             self.fhd.write("  SPint_%d sp_%d(PBx, PBy, PBz, PCx, PCy, PCz, YVerticalTemp); // construct [s|p] for m=%d \n" % (m, m, m))
             self.fhd.write("  SPint_%d sp_%d(PBx, PBy, PBz, PCx, PCy, PCz, YVerticalTemp); // construct [s|p] for m=%d \n" % (m+1, m+1, m+1))
-            self.fhd.write("  SDint_%d sd_%d(PBx, PBy, PBz, PCx, PCy, PCz, Zeta, YVerticalTemp); // construct [s|d] for m=%d \n" % (m, m, m))
-            self.fhd.write("  SDint_%d sd_%d(PBx, PBy, PBz, PCx, PCy, PCz, Zeta, YVerticalTemp); // construct [s|d] for m=%d \n\n" % (m+1, m+1, m+1))
+            self.fhd.write("  SDint_%d sd_%d(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, YVerticalTemp); // construct [s|d] for m=%d \n" % (m, m, m))
+            self.fhd.write("  SDint_%d sd_%d(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, YVerticalTemp); // construct [s|d] for m=%d \n\n" % (m+1, m+1, m+1))
 
             for i in range(0,10):
                 tmp_mcal=[params.Mcal[i+10][0], params.Mcal[i+10][1], params.Mcal[i+10][2]]
@@ -66,7 +66,7 @@ class SFint(OEint):
                         if params.Mcal[i+10][j] > 1:
                             tmp_mcal[j] = params.Mcal[i+10][j] - 2
                             tmp_i=params.trans[tmp_mcal[0]][tmp_mcal[1]][tmp_mcal[2]]
-                            self.fhd.write("  x_%d_%d += 0.5/Zeta * %f * (sp_%d.x_%d_%d - sp_%d.x_%d_%d); \n" % (0, i+10, params.Mcal[i+10][j] - 1,\
+                            self.fhd.write("  x_%d_%d += TwoZetaInv * %f * (sp_%d.x_%d_%d - sp_%d.x_%d_%d); \n" % (0, i+10, params.Mcal[i+10][j] - 1,\
                                 m, 0, tmp_i-1, m+1, 0, tmp_i-1))
 
                         break
@@ -76,7 +76,7 @@ class SFint(OEint):
     def save_int(self):
         self.fha.write("\n  /* SF integral, m=%d */ \n" % (0))
         self.fha.write("  if(I == 0 && J == 3){ \n")
-        self.fha.write("    SFint_0 sf(PBx, PBy, PBz, PCx, PCy, PCz, Zeta, YVerticalTemp); \n")
+        self.fha.write("    SFint_0 sf(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, YVerticalTemp); \n")
         for i in range(0,10):
             self.fha.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = sf.x_%d_%d;\n" % (0, i+10, 0, i+10))
 

@@ -43,16 +43,16 @@ class FSint(OEint):
 
             # write class functions
             self.fhc.write("  %s FSint_%d(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,\n\
-                QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz, QUICKDouble Zeta, QUICKDouble* YVerticalTemp); \n" % (self.func_qualifier, m))          
+                QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz, QUICKDouble TwoZetaInv, QUICKDouble* YVerticalTemp); \n" % (self.func_qualifier, m))          
             self.fhc.write("}; \n")
 
             # write function definitions
             self.fhd.write("%s FSint_%d::FSint_%d(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,\n\
-                QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz, QUICKDouble Zeta, QUICKDouble* YVerticalTemp){ \n\n" % (self.func_qualifier, m, m))
+                QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz, QUICKDouble TwoZetaInv, QUICKDouble* YVerticalTemp){ \n\n" % (self.func_qualifier, m, m))
             self.fhd.write("  PSint_%d ps_%d(PAx, PAy, PAz, PCx, PCy, PCz, YVerticalTemp); // construct [p|s] for m=%d \n" % (m, m, m))
             self.fhd.write("  PSint_%d ps_%d(PAx, PAy, PAz, PCx, PCy, PCz, YVerticalTemp); // construct [p|s] for m=%d \n" % (m+1, m+1, m+1))
-            self.fhd.write("  DSint_%d ds_%d(PAx, PAy, PAz, PCx, PCy, PCz, Zeta, YVerticalTemp); // construct [d|s] for m=%d \n" % (m, m, m))
-            self.fhd.write("  DSint_%d ds_%d(PAx, PAy, PAz, PCx, PCy, PCz, Zeta, YVerticalTemp); // construct [d|s] for m=%d \n\n" % (m+1, m+1, m+1))
+            self.fhd.write("  DSint_%d ds_%d(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, YVerticalTemp); // construct [d|s] for m=%d \n" % (m, m, m))
+            self.fhd.write("  DSint_%d ds_%d(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, YVerticalTemp); // construct [d|s] for m=%d \n\n" % (m+1, m+1, m+1))
 
 
             for i in range(0,10):
@@ -67,7 +67,7 @@ class FSint(OEint):
                         if params.Mcal[i+10][j] > 1:
                             tmp_mcal[j] = params.Mcal[i+10][j] - 2
                             tmp_i=params.trans[tmp_mcal[0]][tmp_mcal[1]][tmp_mcal[2]]
-                            self.fhd.write("  x_%d_%d += 0.5/Zeta * %f * (ps_%d.x_%d_%d - ps_%d.x_%d_%d); \n" % (i+10, 0, params.Mcal[i+10][j] - 1,\
+                            self.fhd.write("  x_%d_%d += TwoZetaInv * %f * (ps_%d.x_%d_%d - ps_%d.x_%d_%d); \n" % (i+10, 0, params.Mcal[i+10][j] - 1,\
                                 m, tmp_i-1, 0, m+1, tmp_i-1, 0))
 
                         break
@@ -77,7 +77,7 @@ class FSint(OEint):
     def save_int(self):
         self.fha.write("\n  /* FS integral, m=%d */ \n" % (0))
         self.fha.write("  if(I == 3 && J == 0){ \n")
-        self.fha.write("    FSint_0 fs(PAx, PAy, PAz, PCx, PCy, PCz, Zeta, YVerticalTemp); \n")
+        self.fha.write("    FSint_0 fs(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, YVerticalTemp); \n")
         for i in range(0,10):
             self.fha.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = fs.x_%d_%d;\n" % (i+10, 0, i+10, 0))
 

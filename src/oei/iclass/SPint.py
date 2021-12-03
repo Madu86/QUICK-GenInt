@@ -75,8 +75,8 @@ class SPint(OEint):
     def save_int_grad(self):
         self.fhga.write("\n  /* SP integral gradient, m=%d */ \n" % (0))
         self.fhga.write("  if(I == 0 && J == 1){ \n")
-        self.fhga.write("    PPint_0 pp(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, Zeta, YVerticalTemp); \n")
-        self.fhga.write("    SDint_0 sd(PBx, PBy, PBz, PCx, PCy, PCz, Zeta, YVerticalTemp); \n\n")
+        self.fhga.write("    PPint_0 pp(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, YVerticalTemp); \n")
+        self.fhga.write("    SDint_0 sd(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, YVerticalTemp); \n\n")
 
         self.fhga.write("    LOCSTORE(store, 0, 0, STOREDIM, STOREDIM) = VY(0, 0, 0);\n")
 
