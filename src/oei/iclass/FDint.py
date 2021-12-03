@@ -104,8 +104,12 @@ class FDint(OEint):
                             tmp_mcal2[k] -= 1
                             tmp_j=params.trans[tmp_mcal2[0]][tmp_mcal2[1]][tmp_mcal2[2]]
 
-                            self.fhd.write("  val = %s * LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d) - %s * LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d); \n" % (self.PB[k], i+10, tmp_j-1, m,\
-                            self.PC[k], i+10, tmp_j-1, m+1))
+                            #self.fhd.write("  val = %s * LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d) - %s * LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d); \n" % (self.PB[k], i+10, tmp_j-1, m,\
+                            #self.PC[k], i+10, tmp_j-1, m+1))
+
+                            self.fhd.write("  val = %s * store[%d*gridDim.x*blockDim.x+blockIdx.x*blockDim.x+threadIdx.x] - %s * store[%d*gridDim.x*blockDim.x+blockIdx.x*blockDim.x+threadIdx.x]; \n" % (self.PB[k],\
+                            ((i+10)+((tmp_j-1)*params.OEI_STORE_DIM_X)+(params.OEI_STORE_DIM_X*params.OEI_STORE_DIM_Y*m)),\
+                            self.PC[k], (i+10)+((tmp_j-1)*params.OEI_STORE_DIM_X)+(params.OEI_STORE_DIM_X*params.OEI_STORE_DIM_Y*(m+1))))
 
                             if params.Mcal[j+4][k] > 1:
                                 iclass_obj="fs"
@@ -119,7 +123,8 @@ class FDint(OEint):
                                 self.fhd.write("  val += TwoZetaInv * %f * (%s_%d.x_%d_%d - %s_%d.x_%d_%d); \n" % (params.Mcal[i+10][k], iclass_obj, m, tmp_i-1, tmp_j-1,\
                                 iclass_obj, m+1, tmp_i-1, tmp_j-1))
 
-                            self.fhd.write("  LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d) = val; \n" % (i+10, j+4, m))
+                            #self.fhd.write("  LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d) = val; \n" % (i+10, j+4, m))
+                            self.fhd.write("  store[%d*gridDim.x*blockDim.x+blockIdx.x*blockDim.x+threadIdx.x] = val; \n" % ((i+10)+((j+4)*params.OEI_STORE_DIM_X)+(params.OEI_STORE_DIM_X*params.OEI_STORE_DIM_Y*m)))
                             break
                                   
             self.fhd.write("#endif \n")   

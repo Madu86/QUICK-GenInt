@@ -95,7 +95,8 @@ class FPint(OEint):
                                 tmp_i=params.trans[tmp_mcal[0]][tmp_mcal[1]][tmp_mcal[2]]
                                 self.fhd.write("  val += TwoZetaInv * %f * (ds_%d.x_%d_%d - ds_%d.x_%d_%d); \n" % (params.Mcal[i+10][k], m, tmp_i-1, 0, m+1, tmp_i-1, 0))
 
-                            self.fhd.write("  LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d) = val; \n" % (i+10, j+1, m))
+                            #self.fhd.write("  LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d) = val; \n" % (i+10, j+1, m))
+                            self.fhd.write("  store[%d*gridDim.x*blockDim.x+blockIdx.x*blockDim.x+threadIdx.x] = val; \n" % ((i+10)+((j+1)*params.OEI_STORE_DIM_X)+(params.OEI_STORE_DIM_X*params.OEI_STORE_DIM_Y*m)))
                             break
 
             self.fhd.write("#endif \n") 
