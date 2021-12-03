@@ -103,9 +103,15 @@ class FDint(OEint):
                         if params.Mcal[j+4][k] != 0:
                             tmp_mcal2[k] -= 1
                             tmp_j=params.trans[tmp_mcal2[0]][tmp_mcal2[1]][tmp_mcal2[2]]
+                            iclass_obj="fp"
 
+                            self.fhd.write("#ifdef REG_FP \n")                           
+                            self.fhd.write("  val = %s * %s_%d.x_%d_%d - %s * %s_%d.x_%d_%d; \n" % (self.PB[k], iclass_obj, m, i+10, tmp_j-1,\
+                            self.PC[k], iclass_obj, m+1, i+10, tmp_j-1))
+                            self.fhd.write("#else \n")
                             self.fhd.write("  val = %s * LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d) - %s * LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d); \n" % (self.PB[k], i+10, tmp_j-1, m,\
                             self.PC[k], i+10, tmp_j-1, m+1))
+                            self.fhd.write("#endif \n")
 
                             if params.Mcal[j+4][k] > 1:
                                 iclass_obj="fs"
