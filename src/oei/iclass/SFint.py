@@ -101,7 +101,7 @@ class SFint(OEint):
 
     # generate code to save computed [s|f] integral
     def save_int(self):
-        self.fha.write("\n  /* SF integral, m=%d */ \n" % (0))
+        self.fha.write("\n  // SF integral, m=%d  \n" % (0))
         self.fha.write("  if(I == 0 && J == 3){ \n")
         self.fha.write("    SFint_0 sf(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); \n")
 

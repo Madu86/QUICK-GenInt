@@ -94,7 +94,7 @@ class FFint(OEint):
 
     # generate code to save computed [f|f] integral
     def save_int(self):
-        self.fha.write("\n  /* FF integral, m=%d */ \n" % (0))
+        self.fha.write("\n  // FF integral, m=%d  \n" % (0))
         self.fha.write("  if(I == 3 && J == 3){ \n")
         self.fha.write("    FFint_0 ff(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); \n")
 

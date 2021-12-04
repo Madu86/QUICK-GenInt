@@ -135,7 +135,7 @@ class DFint(OEint):
 
     # generate code to save computed [d|f] integral
     def save_int(self):
-        self.fha.write("\n  /* DF integral, m=%d */ \n" % (0))
+        self.fha.write("\n  // DF integral, m=%d  \n" % (0))
         self.fha.write("  if(I == 2 && J == 3){ \n")
         self.fha.write("    DFint_0 df(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); \n")
 

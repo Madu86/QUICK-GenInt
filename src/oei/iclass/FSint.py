@@ -100,7 +100,7 @@ class FSint(OEint):
 
     # generate code to save computed [d|s] integral
     def save_int(self):
-        self.fha.write("\n  /* FS integral, m=%d */ \n" % (0))
+        self.fha.write("\n  // FS integral, m=%d  \n" % (0))
         self.fha.write("  if(I == 3 && J == 0){ \n")
         self.fha.write("    FSint_0 fs(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); \n")
 

@@ -139,7 +139,7 @@ class FDint(OEint):
 
     # generate code to save computed [f|d] integral
     def save_int(self):
-        self.fha.write("\n  /* FD integral, m=%d */ \n" % (0))
+        self.fha.write("\n  // FD integral, m=%d  \n" % (0))
         self.fha.write("  if(I == 3 && J == 2){ \n")
         self.fha.write("    FDint_0 fd(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); \n")
 

@@ -127,7 +127,7 @@ class PFint(OEint):
 
     # generate code to save computed [p|f] integral
     def save_int(self):
-        self.fha.write("\n  /* PF integral, m=%d */ \n" % (0))
+        self.fha.write("\n  // PF integral, m=%d  \n" % (0))
         self.fha.write("  if(I == 1 && J == 3){ \n")
         self.fha.write("    PFint_0 pf(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); \n")
 

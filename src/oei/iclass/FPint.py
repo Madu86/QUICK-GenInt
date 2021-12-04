@@ -115,7 +115,7 @@ class FPint(OEint):
 
     # generate code to save computed [f|p] integral
     def save_int(self):
-        self.fha.write("\n  /* FP integral, m=%d */ \n" % (0))
+        self.fha.write("\n  // FP integral, m=%d  \n" % (0))
         self.fha.write("  if(I == 3 && J == 1){ \n")
         self.fha.write("    FPint_0 fp(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); \n")
 
