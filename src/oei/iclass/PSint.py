@@ -74,15 +74,15 @@ class PSint(OEint):
     def save_int_grad(self):
         self.fhga.write("\n  /* PS integral gradient, m=%d */ \n" % (0))
         self.fhga.write("  if(I == 1 && J == 0){ \n")
-        self.fhga.write("    PPint_0 pp(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); \n")
-        self.fhga.write("    DSint_0 ds(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); \n\n")
 
-        self.fhga.write("    LOCSTORE(store, 0, 0, STOREDIM, STOREDIM) = VY(0, 0, 0);\n")
+        self.fhga.write("    \nLOCSTORE(store, 0, 0, STOREDIM, STOREDIM) = VY(0, 0, 0);\n")
 
+        self.fhga.write("    \nPPint_0 pp(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); \n\n")
         for i in range(0,3):
             for j in range(0,3):
                 self.fhga.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = pp.x_%d_%d;\n" % (i+1, j+1, i+1, j+1))
  
+        self.fhga.write("    \nDSint_0 ds(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); \n\n")
         for i in range(0,6):
             self.fhga.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = ds.x_%d_%d;\n" % (i+4, 0, i+4, 0))     
 

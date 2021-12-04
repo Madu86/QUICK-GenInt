@@ -88,17 +88,17 @@ class SDint(OEint):
     def save_int_grad(self):
         self.fhga.write("\n  /* SD integral gradient, m=%d */ \n" % (0))
         self.fhga.write("  if(I == 0 && J == 2){ \n")
-        self.fhga.write("    SPint_0 sp(PBx, PBy, PBz, PCx, PCy, PCz, store, YVerticalTemp); \n")
-        self.fhga.write("    PDint_0 pd(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); \n")
-        self.fhga.write("    SFint_0 sf(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); \n\n")
 
+        self.fhga.write("    \nSPint_0 sp(PBx, PBy, PBz, PCx, PCy, PCz, store, YVerticalTemp); \n\n")
         for i in range(0,3):                
             self.fhga.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = sp.x_%d_%d;\n" % (0, i+1, 0, i+1))
 
+        self.fhga.write("    \nPDint_0 pd(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); \n\n")
         for i in range(0,6):
             for j in range(0,3):
                 self.fhga.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = pd.x_%d_%d;\n" % (j+1, i+4, j+1, i+4)) 
 
+        self.fhga.write("    \nSFint_0 sf(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); \n\n")
         self.fhga.write("#ifdef REG_SF \n")
         for i in range(0,10):
             self.fhga.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = sf.x_%d_%d;\n" % (0, i+10, 0, i+10))   
