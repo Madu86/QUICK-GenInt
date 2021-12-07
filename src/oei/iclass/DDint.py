@@ -56,13 +56,18 @@ class DDint(OEint):
                 QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ \n\n" % (self.func_qualifier, m, m))
             self.fhd.write("  PPint_%d pp_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|p] for m=%d \n" % (m, m, m))
             self.fhd.write("  DSint_%d ds_%d(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=%d \n" % (m, m, m))
-            self.fhd.write("  DPint_%d dp_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|p] for m=%d \n" % (m, m, m))            
+            self.fhd.write("#ifndef USE_PARTIAL_DP \n")
+            self.fhd.write("  DPint_%d dp_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|p] for m=%d \n" % (m, m, m))
+            self.fhd.write("#endif \n")            
             self.fhd.write("  PPint_%d pp_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|p] for m=%d \n" % (m+1, m+1, m+1))
             self.fhd.write("  DSint_%d ds_%d(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=%d \n" % (m+1, m+1, m+1))
-            self.fhd.write("  DPint_%d dp_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|p] for m=%d \n\n" % (m+1, m+1, m+1))             
+            self.fhd.write("#ifndef USE_PARTIAL_DP \n")
+            self.fhd.write("  DPint_%d dp_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|p] for m=%d \n" % (m+1, m+1, m+1))             
+            self.fhd.write("#endif \n\n") 
 
             # save all computed values into class variables that will reside in register/lmem space
             self.fhd.write("#ifdef REG_DD \n")
+
             for i in range(0,6):
                 for j in range(0,6):
                     tmp_mcal1=[params.Mcal[i+4][0], params.Mcal[i+4][1], params.Mcal[i+4][2]]
@@ -91,7 +96,49 @@ class DDint(OEint):
             self.fhd.write("#else \n")
 
             # save all computed values into store array in global memory
-            self.fhd.write("  QUICKDouble val; \n")
+            # write code to perform this using partial classes at lower register utilization
+            self.fhd.write("#ifdef USE_PARTIAL_DP \n")
+
+            for i in range(0,6):
+
+                self.fhd.write("  { \n")
+                self.fhd.write("    DPint_%d_%d dp_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|p] for m=%d \n" % (m, i+1, m, m)) 
+                self.fhd.write("    DPint_%d_%d dp_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|p] for m=%d \n\n" % (m+1, i+1, m+1, m+1)) 
+
+                self.fhd.write("    QUICKDouble val; \n\n")
+
+                for j in range(0,6):
+                    tmp_mcal1=[params.Mcal[i+4][0], params.Mcal[i+4][1], params.Mcal[i+4][2]]
+                    tmp_mcal2=[params.Mcal[j+4][0], params.Mcal[j+4][1], params.Mcal[j+4][2]]
+
+                    for k in range(0,3):
+                        if params.Mcal[j+4][k] != 0:
+                            tmp_mcal2[k] -= 1
+                            tmp_j=params.trans[tmp_mcal2[0]][tmp_mcal2[1]][tmp_mcal2[2]]
+                            iclass_obj="dp"
+                            self.fhd.write("    val = %s * %s_%d.x_%d_%d - %s * %s_%d.x_%d_%d; \n" % (self.PB[k], iclass_obj, m, i+4, tmp_j-1,\
+                            self.PC[k], iclass_obj, m+1, i+4, tmp_j-1))
+
+                            if params.Mcal[j+4][k] > 1:
+                                iclass_obj="ds"
+                                self.fhd.write("    val += TwoZetaInv * %f * (%s_%d.x_%d_%d - %s_%d.x_%d_%d); \n" % (params.Mcal[j+4][k]-1, iclass_obj, m, i+4, 0, \
+                                iclass_obj, m+1, i+4, 0))
+
+                            if tmp_mcal1[k] > 0:
+                                tmp_mcal1[k] -= 1
+                                tmp_i=params.trans[tmp_mcal1[0]][tmp_mcal1[1]][tmp_mcal1[2]]
+                                iclass_obj="pp"
+                                self.fhd.write("    val += TwoZetaInv * %f * (%s_%d.x_%d_%d - %s_%d.x_%d_%d); \n" % (params.Mcal[i+4][k], iclass_obj, m, tmp_i-1, tmp_j-1,\
+                                iclass_obj, m+1, tmp_i-1, tmp_j-1))
+
+                            self.fhd.write("    LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d) = val; \n" % (i+4, j+4, m))
+                            break            
+                self.fhd.write("  } \n\n")
+
+            self.fhd.write("#else \n")
+
+            # write code to perform this using full classes at higher register utilization
+            self.fhd.write("\n  QUICKDouble val; \n")
 
             for i in range(0,6):
                 for j in range(0,6):
@@ -120,6 +167,7 @@ class DDint(OEint):
 
                             self.fhd.write("  LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d) = val; \n" % (i+4, j+4, m))
                             break
+            self.fhd.write("#endif \n")
             self.fhd.write("#endif \n") 
             self.fhd.write("\n } \n")
 
