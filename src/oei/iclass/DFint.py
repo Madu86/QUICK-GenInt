@@ -56,10 +56,14 @@ class DFint(OEint):
                 QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ \n\n" % (self.func_qualifier, m, m))
             self.fhd.write("  PDint_%d pd_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|d] for m=%d \n" % (m, m, m))
             self.fhd.write("  SFint_%d sf_%d(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=%d \n" % (m, m, m))
-            self.fhd.write("  PFint_%d pf_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=%d \n" % (m, m, m))            
+            self.fhd.write("#ifndef USE_PARTIAL_PF \n")
+            self.fhd.write("  PFint_%d pf_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=%d \n" % (m, m, m))     
+            self.fhd.write("#endif \n")       
             self.fhd.write("  PDint_%d pd_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|d] for m=%d \n" % (m+1, m+1, m+1))
             self.fhd.write("  SFint_%d sf_%d(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=%d \n" % (m+1, m+1, m+1))
-            self.fhd.write("  PFint_%d pf_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=%d \n\n" % (m+1, m+1, m+1))             
+            self.fhd.write("#ifndef USE_PARTIAL_PF \n")
+            self.fhd.write("  PFint_%d pf_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=%d \n" % (m+1, m+1, m+1))             
+            self.fhd.write("#endif \n\n")
 
             # save all computed values into class variables that will reside in register/lmem space
             self.fhd.write("#ifdef REG_DF \n")
@@ -91,6 +95,57 @@ class DFint(OEint):
             self.fhd.write("#else \n")
 
             # save all computed values into store array in global memory
+            # write code to perform this using partial classes at lower register utilization
+            self.fhd.write("#ifdef USE_PARTIAL_PF \n")
+            for i in range(0,10):
+                
+                self.fhd.write("  { \n")
+                self.fhd.write("    PFint_%d_%d pf_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=%d \n" % (m, i+1, m, m))  
+                self.fhd.write("    PFint_%d_%d pf_%d(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=%d \n\n" % (m+1, i+1, m+1, m+1))
+
+                self.fhd.write("    QUICKDouble val; \n\n")
+
+                for j in range(0,6):
+                    tmp_mcal1=[params.Mcal[i+10][0], params.Mcal[i+10][1], params.Mcal[i+10][2]]
+                    tmp_mcal2=[params.Mcal[j+4][0], params.Mcal[j+4][1], params.Mcal[j+4][2]]
+
+                    for k in range(0,3):
+                        if params.Mcal[j+4][k] != 0:
+                            tmp_mcal2[k] -= 1
+                            tmp_j=params.trans[tmp_mcal2[0]][tmp_mcal2[1]][tmp_mcal2[2]]
+                            iclass_obj="pf"
+                            self.fhd.write("#ifdef REG_PF \n")
+                            self.fhd.write("    val = %s * %s_%d.x_%d_%d - %s * %s_%d.x_%d_%d; \n" % (self.PA[k], iclass_obj, m, tmp_j-1, i+10,\
+                            self.PC[k], iclass_obj, m+1, tmp_j-1, i+10))
+                            self.fhd.write("#else \n")
+                            self.fhd.write("    val = %s * LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d) - %s * LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d); \n" % (self.PA[k], tmp_j-1, i+10, m,\
+                            self.PC[k], tmp_j-1, i+10, m+1))
+                            self.fhd.write("#endif \n")
+
+                            if params.Mcal[j+4][k] > 1:
+                                iclass_obj="sf"
+
+                                self.fhd.write("#ifdef REG_SF \n")
+                                self.fhd.write("    val += TwoZetaInv * (%s_%d.x_%d_%d - %s_%d.x_%d_%d); \n" % (iclass_obj, m, 0, i+10,\
+                                iclass_obj, m+1, 0, i+10))
+                                self.fhd.write("#else \n")
+                                self.fhd.write("    val += TwoZetaInv * (LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d) - LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d)); \n" % (0, i+10, m,\
+                                0, i+10, m+1))
+                                self.fhd.write("#endif \n")
+
+                            if tmp_mcal1[k] > 0:
+                                tmp_mcal1[k] -= 1
+                                tmp_i=params.trans[tmp_mcal1[0]][tmp_mcal1[1]][tmp_mcal1[2]]
+                                iclass_obj="pd"
+                                self.fhd.write("    val += TwoZetaInv * %f * (%s_%d.x_%d_%d - %s_%d.x_%d_%d); \n" % (params.Mcal[i+10][k], iclass_obj, m, tmp_j-1, tmp_i-1,\
+                                iclass_obj, m+1, tmp_j-1, tmp_i-1))
+
+                            self.fhd.write("    LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d) = val; \n" % (j+4, i+10, m))
+                            break
+                self.fhd.write("  } \n\n")
+            self.fhd.write("#else \n")
+
+            # write code to perform this using full classes at higher register utilization
             self.fhd.write("  QUICKDouble val; \n")
             for i in range(0,10):
                 for j in range(0,6):
@@ -130,7 +185,8 @@ class DFint(OEint):
 
                             self.fhd.write("  LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d) = val; \n" % (j+4, i+10, m))
                             break
-            self.fhd.write("#endif \n") 
+            self.fhd.write("#endif \n")
+            self.fhd.write("#endif \n")
             self.fhd.write("\n } \n")
 
     # generate code to save computed [d|f] integral

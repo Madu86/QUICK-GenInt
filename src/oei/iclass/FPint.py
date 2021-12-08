@@ -50,6 +50,22 @@ class FPint(OEint):
                 QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); \n" % (self.func_qualifier, m))          
             self.fhc.write("}; \n")
 
+            # write partial classes, these are useful to reduce the registry pressure 
+            for i in range(0,10):
+                self.fhc.write("\n/* FP integral partial class, - Part %d, m=%d */ \n" % (i+1, m))
+                self.fhc.write("class FPint_%d_%d{ \n" % (m, i+1))
+                self.fhc.write("public: \n")
+                #self.fhc.write("#ifdef REG_FP \n")
+                for j in range(0,3):
+                    self.fhc.write("  QUICKDouble x_%d_%d; // %s, %s \n" % (i+10, j+1, self.f_lbl[i], self.p_lbl[j]))
+                #self.fhc.write("#endif \n") 
+
+                # write class functions
+                self.fhc.write("  %s FPint_%d_%d(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,\n\
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,\n\
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); \n" % (self.func_qualifier, m, i+1))          
+                self.fhc.write("}; \n")            
+
             # write function definitions
             self.fhd.write("%s FPint_%d::FPint_%d(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,\n\
                 QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,\n\
@@ -112,6 +128,38 @@ class FPint(OEint):
             self.fhd.write("#endif \n") 
             self.fhd.write("\n } \n")
 
+            # write definition for partial classes, note that we will not write code for global memory based implementation here
+            for i in range(0,10):
+                self.fhd.write("\n/* FP integral partial class - Part %d, m=%d */ \n" % (i+1, m))
+                self.fhd.write("%s FPint_%d_%d::FPint_%d_%d(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,\n\
+                    QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,\n\
+                    QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ \n\n" % (self.func_qualifier, m, i+1, m, i+1))
+                self.fhd.write("  DSint_%d ds_%d(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=%d \n" % (m, m, m))            
+                self.fhd.write("  DSint_%d ds_%d(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=%d \n" % (m+1, m+1, m+1))
+                self.fhd.write("  FSint_%d fs_%d(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=%d \n" % (m, m, m))
+                self.fhd.write("  FSint_%d fs_%d(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=%d \n\n" % (m+1, m+1, m+1))
+
+                # save all computed values into class variables that will reside in register/lmem space
+                for j in range(0,3):
+                    tmp_mcal=[params.Mcal[i+10][0], params.Mcal[i+10][1], params.Mcal[i+10][2]]
+                    for k in range(0,3):
+                        if params.Mcal[j+1][k] != 0:
+
+                            self.fhd.write("#ifdef REG_FS \n")
+                            self.fhd.write("  x_%d_%d = %s * fs_%d.x_%d_%d - %s * fs_%d.x_%d_%d; \n" % (i+10, j+1, self.PB[k], m, i+10, 0,\
+                            self.PC[k], m+1, i+10, 0))
+                            self.fhd.write("#else \n")
+                            self.fhd.write("  x_%d_%d = %s * LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d) - %s * LOCSTOREFULL(store, %d, %d, STOREDIM, STOREDIM, %d); \n" % (i+10, j+1, self.PB[k], i+10, 0, m,\
+                            self.PC[k], i+10, 0, m+1))
+                            self.fhd.write("#endif \n")
+
+                            if tmp_mcal[k] != 0:
+                                tmp_mcal[k] -= 1
+                                tmp_i=params.trans[tmp_mcal[0]][tmp_mcal[1]][tmp_mcal[2]]
+                                self.fhd.write("  x_%d_%d += TwoZetaInv * %f * (ds_%d.x_%d_%d - ds_%d.x_%d_%d); \n" % (i+10, j+1, params.Mcal[i+10][k], m, tmp_i-1, 0, m+1, tmp_i-1, 0))
+
+                            break
+                self.fhd.write("\n } \n")
 
     # generate code to save computed [f|p] integral
     def save_int(self):

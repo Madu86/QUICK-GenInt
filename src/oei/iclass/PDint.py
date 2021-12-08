@@ -126,11 +126,20 @@ class PDint(OEint):
                 self.fhga.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = dd.x_%d_%d;\n" % (i+4, j+4, i+4, j+4))
         self.fhga.write("#endif \n")
 
-        self.fhga.write("    \nPFint_0 pf(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); \n\n")
+        self.fhga.write("#ifdef USE_PARTIAL_PF \n")
+        for i in range(0,10):
+            self.fhga.write("  { \n")
+            self.fhga.write("    PFint_0_%d pf(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); \n\n" % (i+1))
+            for j in range(0,3):
+                self.fhga.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = pf.x_%d_%d;\n" % (j+1, i+10, j+1, i+10)) 
+            self.fhga.write("  } \n\n")
+        self.fhga.write("#else \n")
+        self.fhga.write("    PFint_0 pf(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); \n\n")
         self.fhga.write("#ifdef REG_PF \n")
         for i in range(0,10):
             for j in range(0,3):
                 self.fhga.write("    LOCSTORE(store, %d, %d, STOREDIM, STOREDIM) = pf.x_%d_%d;\n" % (j+1, i+10, j+1, i+10)) 
+        self.fhga.write("#endif \n") 
         self.fhga.write("#endif \n") 
 
         if OEint.debug == 1:
