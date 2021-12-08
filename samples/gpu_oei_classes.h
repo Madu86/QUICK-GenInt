@@ -1,6 +1,6 @@
 /*
  !---------------------------------------------------------------------!
- ! Written by QUICK-GenInt code generator on 07/12/2021                !
+ ! Written by QUICK-GenInt code generator on 08/12/2021                !
  !                                                                     !
  ! Copyright (C) 2020-2021 Merz lab                                    !
  ! Copyright (C) 2020-2021 Götz lab                                    !
@@ -951,6 +951,116 @@ public:
                 QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
 }; 
 
+/* FP integral partial class, - Part 1, m=0 */ 
+class FPint_0_1{ 
+public: 
+  QUICKDouble x_10_1; // Fxyz, Px 
+  QUICKDouble x_10_2; // Fxyz, Py 
+  QUICKDouble x_10_3; // Fxyz, Pz 
+  __device__ __inline__ FPint_0_1(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* FP integral partial class, - Part 2, m=0 */ 
+class FPint_0_2{ 
+public: 
+  QUICKDouble x_11_1; // Fxxy, Px 
+  QUICKDouble x_11_2; // Fxxy, Py 
+  QUICKDouble x_11_3; // Fxxy, Pz 
+  __device__ __inline__ FPint_0_2(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* FP integral partial class, - Part 3, m=0 */ 
+class FPint_0_3{ 
+public: 
+  QUICKDouble x_12_1; // Fxyy, Px 
+  QUICKDouble x_12_2; // Fxyy, Py 
+  QUICKDouble x_12_3; // Fxyy, Pz 
+  __device__ __inline__ FPint_0_3(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* FP integral partial class, - Part 4, m=0 */ 
+class FPint_0_4{ 
+public: 
+  QUICKDouble x_13_1; // Fxxz, Px 
+  QUICKDouble x_13_2; // Fxxz, Py 
+  QUICKDouble x_13_3; // Fxxz, Pz 
+  __device__ __inline__ FPint_0_4(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* FP integral partial class, - Part 5, m=0 */ 
+class FPint_0_5{ 
+public: 
+  QUICKDouble x_14_1; // Fxzz, Px 
+  QUICKDouble x_14_2; // Fxzz, Py 
+  QUICKDouble x_14_3; // Fxzz, Pz 
+  __device__ __inline__ FPint_0_5(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* FP integral partial class, - Part 6, m=0 */ 
+class FPint_0_6{ 
+public: 
+  QUICKDouble x_15_1; // Fyyz, Px 
+  QUICKDouble x_15_2; // Fyyz, Py 
+  QUICKDouble x_15_3; // Fyyz, Pz 
+  __device__ __inline__ FPint_0_6(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* FP integral partial class, - Part 7, m=0 */ 
+class FPint_0_7{ 
+public: 
+  QUICKDouble x_16_1; // Fyzz, Px 
+  QUICKDouble x_16_2; // Fyzz, Py 
+  QUICKDouble x_16_3; // Fyzz, Pz 
+  __device__ __inline__ FPint_0_7(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* FP integral partial class, - Part 8, m=0 */ 
+class FPint_0_8{ 
+public: 
+  QUICKDouble x_17_1; // Fxxx, Px 
+  QUICKDouble x_17_2; // Fxxx, Py 
+  QUICKDouble x_17_3; // Fxxx, Pz 
+  __device__ __inline__ FPint_0_8(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* FP integral partial class, - Part 9, m=0 */ 
+class FPint_0_9{ 
+public: 
+  QUICKDouble x_18_1; // Fyyy, Px 
+  QUICKDouble x_18_2; // Fyyy, Py 
+  QUICKDouble x_18_3; // Fyyy, Pz 
+  __device__ __inline__ FPint_0_9(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* FP integral partial class, - Part 10, m=0 */ 
+class FPint_0_10{ 
+public: 
+  QUICKDouble x_19_1; // Fzzz, Px 
+  QUICKDouble x_19_2; // Fzzz, Py 
+  QUICKDouble x_19_3; // Fzzz, Pz 
+  __device__ __inline__ FPint_0_10(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
 /* FP auxilary integral, m=1 */ 
 class FPint_1{ 
 public: 
@@ -987,6 +1097,116 @@ public:
   QUICKDouble x_19_3; // Fzzz, Pz 
 #endif 
   __device__ __inline__ FPint_1(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* FP integral partial class, - Part 1, m=1 */ 
+class FPint_1_1{ 
+public: 
+  QUICKDouble x_10_1; // Fxyz, Px 
+  QUICKDouble x_10_2; // Fxyz, Py 
+  QUICKDouble x_10_3; // Fxyz, Pz 
+  __device__ __inline__ FPint_1_1(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* FP integral partial class, - Part 2, m=1 */ 
+class FPint_1_2{ 
+public: 
+  QUICKDouble x_11_1; // Fxxy, Px 
+  QUICKDouble x_11_2; // Fxxy, Py 
+  QUICKDouble x_11_3; // Fxxy, Pz 
+  __device__ __inline__ FPint_1_2(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* FP integral partial class, - Part 3, m=1 */ 
+class FPint_1_3{ 
+public: 
+  QUICKDouble x_12_1; // Fxyy, Px 
+  QUICKDouble x_12_2; // Fxyy, Py 
+  QUICKDouble x_12_3; // Fxyy, Pz 
+  __device__ __inline__ FPint_1_3(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* FP integral partial class, - Part 4, m=1 */ 
+class FPint_1_4{ 
+public: 
+  QUICKDouble x_13_1; // Fxxz, Px 
+  QUICKDouble x_13_2; // Fxxz, Py 
+  QUICKDouble x_13_3; // Fxxz, Pz 
+  __device__ __inline__ FPint_1_4(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* FP integral partial class, - Part 5, m=1 */ 
+class FPint_1_5{ 
+public: 
+  QUICKDouble x_14_1; // Fxzz, Px 
+  QUICKDouble x_14_2; // Fxzz, Py 
+  QUICKDouble x_14_3; // Fxzz, Pz 
+  __device__ __inline__ FPint_1_5(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* FP integral partial class, - Part 6, m=1 */ 
+class FPint_1_6{ 
+public: 
+  QUICKDouble x_15_1; // Fyyz, Px 
+  QUICKDouble x_15_2; // Fyyz, Py 
+  QUICKDouble x_15_3; // Fyyz, Pz 
+  __device__ __inline__ FPint_1_6(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* FP integral partial class, - Part 7, m=1 */ 
+class FPint_1_7{ 
+public: 
+  QUICKDouble x_16_1; // Fyzz, Px 
+  QUICKDouble x_16_2; // Fyzz, Py 
+  QUICKDouble x_16_3; // Fyzz, Pz 
+  __device__ __inline__ FPint_1_7(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* FP integral partial class, - Part 8, m=1 */ 
+class FPint_1_8{ 
+public: 
+  QUICKDouble x_17_1; // Fxxx, Px 
+  QUICKDouble x_17_2; // Fxxx, Py 
+  QUICKDouble x_17_3; // Fxxx, Pz 
+  __device__ __inline__ FPint_1_8(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* FP integral partial class, - Part 9, m=1 */ 
+class FPint_1_9{ 
+public: 
+  QUICKDouble x_18_1; // Fyyy, Px 
+  QUICKDouble x_18_2; // Fyyy, Py 
+  QUICKDouble x_18_3; // Fyyy, Pz 
+  __device__ __inline__ FPint_1_9(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* FP integral partial class, - Part 10, m=1 */ 
+class FPint_1_10{ 
+public: 
+  QUICKDouble x_19_1; // Fzzz, Px 
+  QUICKDouble x_19_2; // Fzzz, Py 
+  QUICKDouble x_19_3; // Fzzz, Pz 
+  __device__ __inline__ FPint_1_10(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
                 QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
                 QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
 }; 
@@ -1031,6 +1251,116 @@ public:
                 QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
 }; 
 
+/* FP integral partial class, - Part 1, m=2 */ 
+class FPint_2_1{ 
+public: 
+  QUICKDouble x_10_1; // Fxyz, Px 
+  QUICKDouble x_10_2; // Fxyz, Py 
+  QUICKDouble x_10_3; // Fxyz, Pz 
+  __device__ __inline__ FPint_2_1(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* FP integral partial class, - Part 2, m=2 */ 
+class FPint_2_2{ 
+public: 
+  QUICKDouble x_11_1; // Fxxy, Px 
+  QUICKDouble x_11_2; // Fxxy, Py 
+  QUICKDouble x_11_3; // Fxxy, Pz 
+  __device__ __inline__ FPint_2_2(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* FP integral partial class, - Part 3, m=2 */ 
+class FPint_2_3{ 
+public: 
+  QUICKDouble x_12_1; // Fxyy, Px 
+  QUICKDouble x_12_2; // Fxyy, Py 
+  QUICKDouble x_12_3; // Fxyy, Pz 
+  __device__ __inline__ FPint_2_3(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* FP integral partial class, - Part 4, m=2 */ 
+class FPint_2_4{ 
+public: 
+  QUICKDouble x_13_1; // Fxxz, Px 
+  QUICKDouble x_13_2; // Fxxz, Py 
+  QUICKDouble x_13_3; // Fxxz, Pz 
+  __device__ __inline__ FPint_2_4(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* FP integral partial class, - Part 5, m=2 */ 
+class FPint_2_5{ 
+public: 
+  QUICKDouble x_14_1; // Fxzz, Px 
+  QUICKDouble x_14_2; // Fxzz, Py 
+  QUICKDouble x_14_3; // Fxzz, Pz 
+  __device__ __inline__ FPint_2_5(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* FP integral partial class, - Part 6, m=2 */ 
+class FPint_2_6{ 
+public: 
+  QUICKDouble x_15_1; // Fyyz, Px 
+  QUICKDouble x_15_2; // Fyyz, Py 
+  QUICKDouble x_15_3; // Fyyz, Pz 
+  __device__ __inline__ FPint_2_6(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* FP integral partial class, - Part 7, m=2 */ 
+class FPint_2_7{ 
+public: 
+  QUICKDouble x_16_1; // Fyzz, Px 
+  QUICKDouble x_16_2; // Fyzz, Py 
+  QUICKDouble x_16_3; // Fyzz, Pz 
+  __device__ __inline__ FPint_2_7(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* FP integral partial class, - Part 8, m=2 */ 
+class FPint_2_8{ 
+public: 
+  QUICKDouble x_17_1; // Fxxx, Px 
+  QUICKDouble x_17_2; // Fxxx, Py 
+  QUICKDouble x_17_3; // Fxxx, Pz 
+  __device__ __inline__ FPint_2_8(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* FP integral partial class, - Part 9, m=2 */ 
+class FPint_2_9{ 
+public: 
+  QUICKDouble x_18_1; // Fyyy, Px 
+  QUICKDouble x_18_2; // Fyyy, Py 
+  QUICKDouble x_18_3; // Fyyy, Pz 
+  __device__ __inline__ FPint_2_9(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* FP integral partial class, - Part 10, m=2 */ 
+class FPint_2_10{ 
+public: 
+  QUICKDouble x_19_1; // Fzzz, Px 
+  QUICKDouble x_19_2; // Fzzz, Py 
+  QUICKDouble x_19_3; // Fzzz, Pz 
+  __device__ __inline__ FPint_2_10(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
 /* PF true integral, m=0 */ 
 class PFint_0{ 
 public: 
@@ -1067,6 +1397,116 @@ public:
   QUICKDouble x_3_19; // Pz, Fzzz 
 #endif 
   __device__ __inline__ PFint_0(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* PF integral partial class, - Part 1, m=0 */ 
+class PFint_0_1{ 
+public: 
+  QUICKDouble x_1_10; // Px, Fxyz 
+  QUICKDouble x_2_10; // Py, Fxyz 
+  QUICKDouble x_3_10; // Pz, Fxyz 
+  __device__ __inline__ PFint_0_1(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* PF integral partial class, - Part 2, m=0 */ 
+class PFint_0_2{ 
+public: 
+  QUICKDouble x_1_11; // Px, Fxxy 
+  QUICKDouble x_2_11; // Py, Fxxy 
+  QUICKDouble x_3_11; // Pz, Fxxy 
+  __device__ __inline__ PFint_0_2(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* PF integral partial class, - Part 3, m=0 */ 
+class PFint_0_3{ 
+public: 
+  QUICKDouble x_1_12; // Px, Fxyy 
+  QUICKDouble x_2_12; // Py, Fxyy 
+  QUICKDouble x_3_12; // Pz, Fxyy 
+  __device__ __inline__ PFint_0_3(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* PF integral partial class, - Part 4, m=0 */ 
+class PFint_0_4{ 
+public: 
+  QUICKDouble x_1_13; // Px, Fxxz 
+  QUICKDouble x_2_13; // Py, Fxxz 
+  QUICKDouble x_3_13; // Pz, Fxxz 
+  __device__ __inline__ PFint_0_4(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* PF integral partial class, - Part 5, m=0 */ 
+class PFint_0_5{ 
+public: 
+  QUICKDouble x_1_14; // Px, Fxzz 
+  QUICKDouble x_2_14; // Py, Fxzz 
+  QUICKDouble x_3_14; // Pz, Fxzz 
+  __device__ __inline__ PFint_0_5(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* PF integral partial class, - Part 6, m=0 */ 
+class PFint_0_6{ 
+public: 
+  QUICKDouble x_1_15; // Px, Fyyz 
+  QUICKDouble x_2_15; // Py, Fyyz 
+  QUICKDouble x_3_15; // Pz, Fyyz 
+  __device__ __inline__ PFint_0_6(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* PF integral partial class, - Part 7, m=0 */ 
+class PFint_0_7{ 
+public: 
+  QUICKDouble x_1_16; // Px, Fyzz 
+  QUICKDouble x_2_16; // Py, Fyzz 
+  QUICKDouble x_3_16; // Pz, Fyzz 
+  __device__ __inline__ PFint_0_7(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* PF integral partial class, - Part 8, m=0 */ 
+class PFint_0_8{ 
+public: 
+  QUICKDouble x_1_17; // Px, Fxxx 
+  QUICKDouble x_2_17; // Py, Fxxx 
+  QUICKDouble x_3_17; // Pz, Fxxx 
+  __device__ __inline__ PFint_0_8(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* PF integral partial class, - Part 9, m=0 */ 
+class PFint_0_9{ 
+public: 
+  QUICKDouble x_1_18; // Px, Fyyy 
+  QUICKDouble x_2_18; // Py, Fyyy 
+  QUICKDouble x_3_18; // Pz, Fyyy 
+  __device__ __inline__ PFint_0_9(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* PF integral partial class, - Part 10, m=0 */ 
+class PFint_0_10{ 
+public: 
+  QUICKDouble x_1_19; // Px, Fzzz 
+  QUICKDouble x_2_19; // Py, Fzzz 
+  QUICKDouble x_3_19; // Pz, Fzzz 
+  __device__ __inline__ PFint_0_10(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
                 QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
                 QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
 }; 
@@ -1111,6 +1551,116 @@ public:
                 QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
 }; 
 
+/* PF integral partial class, - Part 1, m=1 */ 
+class PFint_1_1{ 
+public: 
+  QUICKDouble x_1_10; // Px, Fxyz 
+  QUICKDouble x_2_10; // Py, Fxyz 
+  QUICKDouble x_3_10; // Pz, Fxyz 
+  __device__ __inline__ PFint_1_1(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* PF integral partial class, - Part 2, m=1 */ 
+class PFint_1_2{ 
+public: 
+  QUICKDouble x_1_11; // Px, Fxxy 
+  QUICKDouble x_2_11; // Py, Fxxy 
+  QUICKDouble x_3_11; // Pz, Fxxy 
+  __device__ __inline__ PFint_1_2(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* PF integral partial class, - Part 3, m=1 */ 
+class PFint_1_3{ 
+public: 
+  QUICKDouble x_1_12; // Px, Fxyy 
+  QUICKDouble x_2_12; // Py, Fxyy 
+  QUICKDouble x_3_12; // Pz, Fxyy 
+  __device__ __inline__ PFint_1_3(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* PF integral partial class, - Part 4, m=1 */ 
+class PFint_1_4{ 
+public: 
+  QUICKDouble x_1_13; // Px, Fxxz 
+  QUICKDouble x_2_13; // Py, Fxxz 
+  QUICKDouble x_3_13; // Pz, Fxxz 
+  __device__ __inline__ PFint_1_4(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* PF integral partial class, - Part 5, m=1 */ 
+class PFint_1_5{ 
+public: 
+  QUICKDouble x_1_14; // Px, Fxzz 
+  QUICKDouble x_2_14; // Py, Fxzz 
+  QUICKDouble x_3_14; // Pz, Fxzz 
+  __device__ __inline__ PFint_1_5(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* PF integral partial class, - Part 6, m=1 */ 
+class PFint_1_6{ 
+public: 
+  QUICKDouble x_1_15; // Px, Fyyz 
+  QUICKDouble x_2_15; // Py, Fyyz 
+  QUICKDouble x_3_15; // Pz, Fyyz 
+  __device__ __inline__ PFint_1_6(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* PF integral partial class, - Part 7, m=1 */ 
+class PFint_1_7{ 
+public: 
+  QUICKDouble x_1_16; // Px, Fyzz 
+  QUICKDouble x_2_16; // Py, Fyzz 
+  QUICKDouble x_3_16; // Pz, Fyzz 
+  __device__ __inline__ PFint_1_7(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* PF integral partial class, - Part 8, m=1 */ 
+class PFint_1_8{ 
+public: 
+  QUICKDouble x_1_17; // Px, Fxxx 
+  QUICKDouble x_2_17; // Py, Fxxx 
+  QUICKDouble x_3_17; // Pz, Fxxx 
+  __device__ __inline__ PFint_1_8(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* PF integral partial class, - Part 9, m=1 */ 
+class PFint_1_9{ 
+public: 
+  QUICKDouble x_1_18; // Px, Fyyy 
+  QUICKDouble x_2_18; // Py, Fyyy 
+  QUICKDouble x_3_18; // Pz, Fyyy 
+  __device__ __inline__ PFint_1_9(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* PF integral partial class, - Part 10, m=1 */ 
+class PFint_1_10{ 
+public: 
+  QUICKDouble x_1_19; // Px, Fzzz 
+  QUICKDouble x_2_19; // Py, Fzzz 
+  QUICKDouble x_3_19; // Pz, Fzzz 
+  __device__ __inline__ PFint_1_10(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
 /* PF auxilary integral, m=2 */ 
 class PFint_2{ 
 public: 
@@ -1147,6 +1697,116 @@ public:
   QUICKDouble x_3_19; // Pz, Fzzz 
 #endif 
   __device__ __inline__ PFint_2(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* PF integral partial class, - Part 1, m=2 */ 
+class PFint_2_1{ 
+public: 
+  QUICKDouble x_1_10; // Px, Fxyz 
+  QUICKDouble x_2_10; // Py, Fxyz 
+  QUICKDouble x_3_10; // Pz, Fxyz 
+  __device__ __inline__ PFint_2_1(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* PF integral partial class, - Part 2, m=2 */ 
+class PFint_2_2{ 
+public: 
+  QUICKDouble x_1_11; // Px, Fxxy 
+  QUICKDouble x_2_11; // Py, Fxxy 
+  QUICKDouble x_3_11; // Pz, Fxxy 
+  __device__ __inline__ PFint_2_2(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* PF integral partial class, - Part 3, m=2 */ 
+class PFint_2_3{ 
+public: 
+  QUICKDouble x_1_12; // Px, Fxyy 
+  QUICKDouble x_2_12; // Py, Fxyy 
+  QUICKDouble x_3_12; // Pz, Fxyy 
+  __device__ __inline__ PFint_2_3(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* PF integral partial class, - Part 4, m=2 */ 
+class PFint_2_4{ 
+public: 
+  QUICKDouble x_1_13; // Px, Fxxz 
+  QUICKDouble x_2_13; // Py, Fxxz 
+  QUICKDouble x_3_13; // Pz, Fxxz 
+  __device__ __inline__ PFint_2_4(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* PF integral partial class, - Part 5, m=2 */ 
+class PFint_2_5{ 
+public: 
+  QUICKDouble x_1_14; // Px, Fxzz 
+  QUICKDouble x_2_14; // Py, Fxzz 
+  QUICKDouble x_3_14; // Pz, Fxzz 
+  __device__ __inline__ PFint_2_5(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* PF integral partial class, - Part 6, m=2 */ 
+class PFint_2_6{ 
+public: 
+  QUICKDouble x_1_15; // Px, Fyyz 
+  QUICKDouble x_2_15; // Py, Fyyz 
+  QUICKDouble x_3_15; // Pz, Fyyz 
+  __device__ __inline__ PFint_2_6(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* PF integral partial class, - Part 7, m=2 */ 
+class PFint_2_7{ 
+public: 
+  QUICKDouble x_1_16; // Px, Fyzz 
+  QUICKDouble x_2_16; // Py, Fyzz 
+  QUICKDouble x_3_16; // Pz, Fyzz 
+  __device__ __inline__ PFint_2_7(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* PF integral partial class, - Part 8, m=2 */ 
+class PFint_2_8{ 
+public: 
+  QUICKDouble x_1_17; // Px, Fxxx 
+  QUICKDouble x_2_17; // Py, Fxxx 
+  QUICKDouble x_3_17; // Pz, Fxxx 
+  __device__ __inline__ PFint_2_8(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* PF integral partial class, - Part 9, m=2 */ 
+class PFint_2_9{ 
+public: 
+  QUICKDouble x_1_18; // Px, Fyyy 
+  QUICKDouble x_2_18; // Py, Fyyy 
+  QUICKDouble x_3_18; // Pz, Fyyy 
+  __device__ __inline__ PFint_2_9(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
+}; 
+
+/* PF integral partial class, - Part 10, m=2 */ 
+class PFint_2_10{ 
+public: 
+  QUICKDouble x_1_19; // Px, Fzzz 
+  QUICKDouble x_2_19; // Py, Fzzz 
+  QUICKDouble x_3_19; // Pz, Fzzz 
+  __device__ __inline__ PFint_2_10(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
                 QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
                 QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp); 
 }; 

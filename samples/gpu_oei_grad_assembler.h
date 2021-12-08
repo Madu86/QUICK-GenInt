@@ -1,6 +1,6 @@
 /*
  !---------------------------------------------------------------------!
- ! Written by QUICK-GenInt code generator on 07/12/2021                !
+ ! Written by QUICK-GenInt code generator on 08/12/2021                !
  !                                                                     !
  ! Copyright (C) 2020-2021 Merz lab                                    !
  ! Copyright (C) 2020-2021 Götz lab                                    !
@@ -465,8 +465,89 @@ DDint_0 dd(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVert
     LOCSTORE(store, 9, 8, STOREDIM, STOREDIM) = dd.x_9_8;
     LOCSTORE(store, 9, 9, STOREDIM, STOREDIM) = dd.x_9_9;
 #endif 
-    
-PFint_0 pf(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); 
+#ifdef USE_PARTIAL_PF 
+  { 
+    PFint_0_1 pf(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); 
+
+    LOCSTORE(store, 1, 10, STOREDIM, STOREDIM) = pf.x_1_10;
+    LOCSTORE(store, 2, 10, STOREDIM, STOREDIM) = pf.x_2_10;
+    LOCSTORE(store, 3, 10, STOREDIM, STOREDIM) = pf.x_3_10;
+  } 
+
+  { 
+    PFint_0_2 pf(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); 
+
+    LOCSTORE(store, 1, 11, STOREDIM, STOREDIM) = pf.x_1_11;
+    LOCSTORE(store, 2, 11, STOREDIM, STOREDIM) = pf.x_2_11;
+    LOCSTORE(store, 3, 11, STOREDIM, STOREDIM) = pf.x_3_11;
+  } 
+
+  { 
+    PFint_0_3 pf(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); 
+
+    LOCSTORE(store, 1, 12, STOREDIM, STOREDIM) = pf.x_1_12;
+    LOCSTORE(store, 2, 12, STOREDIM, STOREDIM) = pf.x_2_12;
+    LOCSTORE(store, 3, 12, STOREDIM, STOREDIM) = pf.x_3_12;
+  } 
+
+  { 
+    PFint_0_4 pf(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); 
+
+    LOCSTORE(store, 1, 13, STOREDIM, STOREDIM) = pf.x_1_13;
+    LOCSTORE(store, 2, 13, STOREDIM, STOREDIM) = pf.x_2_13;
+    LOCSTORE(store, 3, 13, STOREDIM, STOREDIM) = pf.x_3_13;
+  } 
+
+  { 
+    PFint_0_5 pf(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); 
+
+    LOCSTORE(store, 1, 14, STOREDIM, STOREDIM) = pf.x_1_14;
+    LOCSTORE(store, 2, 14, STOREDIM, STOREDIM) = pf.x_2_14;
+    LOCSTORE(store, 3, 14, STOREDIM, STOREDIM) = pf.x_3_14;
+  } 
+
+  { 
+    PFint_0_6 pf(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); 
+
+    LOCSTORE(store, 1, 15, STOREDIM, STOREDIM) = pf.x_1_15;
+    LOCSTORE(store, 2, 15, STOREDIM, STOREDIM) = pf.x_2_15;
+    LOCSTORE(store, 3, 15, STOREDIM, STOREDIM) = pf.x_3_15;
+  } 
+
+  { 
+    PFint_0_7 pf(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); 
+
+    LOCSTORE(store, 1, 16, STOREDIM, STOREDIM) = pf.x_1_16;
+    LOCSTORE(store, 2, 16, STOREDIM, STOREDIM) = pf.x_2_16;
+    LOCSTORE(store, 3, 16, STOREDIM, STOREDIM) = pf.x_3_16;
+  } 
+
+  { 
+    PFint_0_8 pf(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); 
+
+    LOCSTORE(store, 1, 17, STOREDIM, STOREDIM) = pf.x_1_17;
+    LOCSTORE(store, 2, 17, STOREDIM, STOREDIM) = pf.x_2_17;
+    LOCSTORE(store, 3, 17, STOREDIM, STOREDIM) = pf.x_3_17;
+  } 
+
+  { 
+    PFint_0_9 pf(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); 
+
+    LOCSTORE(store, 1, 18, STOREDIM, STOREDIM) = pf.x_1_18;
+    LOCSTORE(store, 2, 18, STOREDIM, STOREDIM) = pf.x_2_18;
+    LOCSTORE(store, 3, 18, STOREDIM, STOREDIM) = pf.x_3_18;
+  } 
+
+  { 
+    PFint_0_10 pf(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); 
+
+    LOCSTORE(store, 1, 19, STOREDIM, STOREDIM) = pf.x_1_19;
+    LOCSTORE(store, 2, 19, STOREDIM, STOREDIM) = pf.x_2_19;
+    LOCSTORE(store, 3, 19, STOREDIM, STOREDIM) = pf.x_3_19;
+  } 
+
+#else 
+    PFint_0 pf(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); 
 
 #ifdef REG_PF 
     LOCSTORE(store, 1, 10, STOREDIM, STOREDIM) = pf.x_1_10;
@@ -499,6 +580,7 @@ PFint_0 pf(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVert
     LOCSTORE(store, 1, 19, STOREDIM, STOREDIM) = pf.x_1_19;
     LOCSTORE(store, 2, 19, STOREDIM, STOREDIM) = pf.x_2_19;
     LOCSTORE(store, 3, 19, STOREDIM, STOREDIM) = pf.x_3_19;
+#endif 
 #endif 
 
 #ifdef DEBUG_OEI 
@@ -651,6 +733,88 @@ DDint_0 dd(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVert
     LOCSTORE(store, 9, 8, STOREDIM, STOREDIM) = dd.x_9_8;
     LOCSTORE(store, 9, 9, STOREDIM, STOREDIM) = dd.x_9_9;
 #endif 
+#ifdef USE_PARTIAL_FP 
+  { 
+    FPint_0_1 fp(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); 
+
+    LOCSTORE(store, 10, 1, STOREDIM, STOREDIM) = fp.x_10_1;
+    LOCSTORE(store, 10, 2, STOREDIM, STOREDIM) = fp.x_10_2;
+    LOCSTORE(store, 10, 3, STOREDIM, STOREDIM) = fp.x_10_3;
+  } 
+
+  { 
+    FPint_0_2 fp(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); 
+
+    LOCSTORE(store, 11, 1, STOREDIM, STOREDIM) = fp.x_11_1;
+    LOCSTORE(store, 11, 2, STOREDIM, STOREDIM) = fp.x_11_2;
+    LOCSTORE(store, 11, 3, STOREDIM, STOREDIM) = fp.x_11_3;
+  } 
+
+  { 
+    FPint_0_3 fp(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); 
+
+    LOCSTORE(store, 12, 1, STOREDIM, STOREDIM) = fp.x_12_1;
+    LOCSTORE(store, 12, 2, STOREDIM, STOREDIM) = fp.x_12_2;
+    LOCSTORE(store, 12, 3, STOREDIM, STOREDIM) = fp.x_12_3;
+  } 
+
+  { 
+    FPint_0_4 fp(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); 
+
+    LOCSTORE(store, 13, 1, STOREDIM, STOREDIM) = fp.x_13_1;
+    LOCSTORE(store, 13, 2, STOREDIM, STOREDIM) = fp.x_13_2;
+    LOCSTORE(store, 13, 3, STOREDIM, STOREDIM) = fp.x_13_3;
+  } 
+
+  { 
+    FPint_0_5 fp(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); 
+
+    LOCSTORE(store, 14, 1, STOREDIM, STOREDIM) = fp.x_14_1;
+    LOCSTORE(store, 14, 2, STOREDIM, STOREDIM) = fp.x_14_2;
+    LOCSTORE(store, 14, 3, STOREDIM, STOREDIM) = fp.x_14_3;
+  } 
+
+  { 
+    FPint_0_6 fp(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); 
+
+    LOCSTORE(store, 15, 1, STOREDIM, STOREDIM) = fp.x_15_1;
+    LOCSTORE(store, 15, 2, STOREDIM, STOREDIM) = fp.x_15_2;
+    LOCSTORE(store, 15, 3, STOREDIM, STOREDIM) = fp.x_15_3;
+  } 
+
+  { 
+    FPint_0_7 fp(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); 
+
+    LOCSTORE(store, 16, 1, STOREDIM, STOREDIM) = fp.x_16_1;
+    LOCSTORE(store, 16, 2, STOREDIM, STOREDIM) = fp.x_16_2;
+    LOCSTORE(store, 16, 3, STOREDIM, STOREDIM) = fp.x_16_3;
+  } 
+
+  { 
+    FPint_0_8 fp(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); 
+
+    LOCSTORE(store, 17, 1, STOREDIM, STOREDIM) = fp.x_17_1;
+    LOCSTORE(store, 17, 2, STOREDIM, STOREDIM) = fp.x_17_2;
+    LOCSTORE(store, 17, 3, STOREDIM, STOREDIM) = fp.x_17_3;
+  } 
+
+  { 
+    FPint_0_9 fp(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); 
+
+    LOCSTORE(store, 18, 1, STOREDIM, STOREDIM) = fp.x_18_1;
+    LOCSTORE(store, 18, 2, STOREDIM, STOREDIM) = fp.x_18_2;
+    LOCSTORE(store, 18, 3, STOREDIM, STOREDIM) = fp.x_18_3;
+  } 
+
+  { 
+    FPint_0_10 fp(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); 
+
+    LOCSTORE(store, 19, 1, STOREDIM, STOREDIM) = fp.x_19_1;
+    LOCSTORE(store, 19, 2, STOREDIM, STOREDIM) = fp.x_19_2;
+    LOCSTORE(store, 19, 3, STOREDIM, STOREDIM) = fp.x_19_3;
+  } 
+
+#else 
     
 FPint_0 fp(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); 
 
@@ -685,6 +849,7 @@ FPint_0 fp(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVert
     LOCSTORE(store, 19, 1, STOREDIM, STOREDIM) = fp.x_19_1;
     LOCSTORE(store, 19, 2, STOREDIM, STOREDIM) = fp.x_19_2;
     LOCSTORE(store, 19, 3, STOREDIM, STOREDIM) = fp.x_19_3;
+#endif 
 #endif 
 
 #ifdef DEBUG_OEI 

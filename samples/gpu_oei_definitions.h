@@ -1,6 +1,6 @@
 /*
  !---------------------------------------------------------------------!
- ! Written by QUICK-GenInt code generator on 07/12/2021                !
+ ! Written by QUICK-GenInt code generator on 08/12/2021                !
  !                                                                     !
  ! Copyright (C) 2020-2021 Merz lab                                    !
  ! Copyright (C) 2020-2021 Götz lab                                    !
@@ -2519,6 +2519,304 @@ __device__ __inline__ FPint_0::FPint_0(QUICKDouble PAx, QUICKDouble PAy, QUICKDo
 
  } 
 
+/* FP integral partial class - Part 1, m=0 */ 
+__device__ __inline__ FPint_0_1::FPint_0_1(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                    QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                    QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  DSint_0 ds_0(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=0 
+  DSint_1 ds_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=1 
+  FSint_0 fs_0(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=0 
+  FSint_1 fs_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=1 
+
+#ifdef REG_FS 
+  x_10_1 = PBx * fs_0.x_10_0 - PCx * fs_1.x_10_0; 
+#else 
+  x_10_1 = PBx * LOCSTOREFULL(store, 10, 0, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 10, 0, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_10_1 += TwoZetaInv * 1.000000 * (ds_0.x_5_0 - ds_1.x_5_0); 
+#ifdef REG_FS 
+  x_10_2 = PBy * fs_0.x_10_0 - PCy * fs_1.x_10_0; 
+#else 
+  x_10_2 = PBy * LOCSTOREFULL(store, 10, 0, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 10, 0, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_10_2 += TwoZetaInv * 1.000000 * (ds_0.x_6_0 - ds_1.x_6_0); 
+#ifdef REG_FS 
+  x_10_3 = PBz * fs_0.x_10_0 - PCz * fs_1.x_10_0; 
+#else 
+  x_10_3 = PBz * LOCSTOREFULL(store, 10, 0, STOREDIM, STOREDIM, 0) - PCz * LOCSTOREFULL(store, 10, 0, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_10_3 += TwoZetaInv * 1.000000 * (ds_0.x_4_0 - ds_1.x_4_0); 
+
+ } 
+
+/* FP integral partial class - Part 2, m=0 */ 
+__device__ __inline__ FPint_0_2::FPint_0_2(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                    QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                    QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  DSint_0 ds_0(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=0 
+  DSint_1 ds_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=1 
+  FSint_0 fs_0(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=0 
+  FSint_1 fs_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=1 
+
+#ifdef REG_FS 
+  x_11_1 = PBx * fs_0.x_11_0 - PCx * fs_1.x_11_0; 
+#else 
+  x_11_1 = PBx * LOCSTOREFULL(store, 11, 0, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 11, 0, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_11_1 += TwoZetaInv * 2.000000 * (ds_0.x_4_0 - ds_1.x_4_0); 
+#ifdef REG_FS 
+  x_11_2 = PBy * fs_0.x_11_0 - PCy * fs_1.x_11_0; 
+#else 
+  x_11_2 = PBy * LOCSTOREFULL(store, 11, 0, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 11, 0, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_11_2 += TwoZetaInv * 1.000000 * (ds_0.x_7_0 - ds_1.x_7_0); 
+#ifdef REG_FS 
+  x_11_3 = PBz * fs_0.x_11_0 - PCz * fs_1.x_11_0; 
+#else 
+  x_11_3 = PBz * LOCSTOREFULL(store, 11, 0, STOREDIM, STOREDIM, 0) - PCz * LOCSTOREFULL(store, 11, 0, STOREDIM, STOREDIM, 1); 
+#endif 
+
+ } 
+
+/* FP integral partial class - Part 3, m=0 */ 
+__device__ __inline__ FPint_0_3::FPint_0_3(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                    QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                    QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  DSint_0 ds_0(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=0 
+  DSint_1 ds_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=1 
+  FSint_0 fs_0(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=0 
+  FSint_1 fs_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=1 
+
+#ifdef REG_FS 
+  x_12_1 = PBx * fs_0.x_12_0 - PCx * fs_1.x_12_0; 
+#else 
+  x_12_1 = PBx * LOCSTOREFULL(store, 12, 0, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 12, 0, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_12_1 += TwoZetaInv * 1.000000 * (ds_0.x_8_0 - ds_1.x_8_0); 
+#ifdef REG_FS 
+  x_12_2 = PBy * fs_0.x_12_0 - PCy * fs_1.x_12_0; 
+#else 
+  x_12_2 = PBy * LOCSTOREFULL(store, 12, 0, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 12, 0, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_12_2 += TwoZetaInv * 2.000000 * (ds_0.x_4_0 - ds_1.x_4_0); 
+#ifdef REG_FS 
+  x_12_3 = PBz * fs_0.x_12_0 - PCz * fs_1.x_12_0; 
+#else 
+  x_12_3 = PBz * LOCSTOREFULL(store, 12, 0, STOREDIM, STOREDIM, 0) - PCz * LOCSTOREFULL(store, 12, 0, STOREDIM, STOREDIM, 1); 
+#endif 
+
+ } 
+
+/* FP integral partial class - Part 4, m=0 */ 
+__device__ __inline__ FPint_0_4::FPint_0_4(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                    QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                    QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  DSint_0 ds_0(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=0 
+  DSint_1 ds_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=1 
+  FSint_0 fs_0(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=0 
+  FSint_1 fs_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=1 
+
+#ifdef REG_FS 
+  x_13_1 = PBx * fs_0.x_13_0 - PCx * fs_1.x_13_0; 
+#else 
+  x_13_1 = PBx * LOCSTOREFULL(store, 13, 0, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 13, 0, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_13_1 += TwoZetaInv * 2.000000 * (ds_0.x_6_0 - ds_1.x_6_0); 
+#ifdef REG_FS 
+  x_13_2 = PBy * fs_0.x_13_0 - PCy * fs_1.x_13_0; 
+#else 
+  x_13_2 = PBy * LOCSTOREFULL(store, 13, 0, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 13, 0, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+  x_13_3 = PBz * fs_0.x_13_0 - PCz * fs_1.x_13_0; 
+#else 
+  x_13_3 = PBz * LOCSTOREFULL(store, 13, 0, STOREDIM, STOREDIM, 0) - PCz * LOCSTOREFULL(store, 13, 0, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_13_3 += TwoZetaInv * 1.000000 * (ds_0.x_7_0 - ds_1.x_7_0); 
+
+ } 
+
+/* FP integral partial class - Part 5, m=0 */ 
+__device__ __inline__ FPint_0_5::FPint_0_5(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                    QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                    QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  DSint_0 ds_0(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=0 
+  DSint_1 ds_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=1 
+  FSint_0 fs_0(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=0 
+  FSint_1 fs_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=1 
+
+#ifdef REG_FS 
+  x_14_1 = PBx * fs_0.x_14_0 - PCx * fs_1.x_14_0; 
+#else 
+  x_14_1 = PBx * LOCSTOREFULL(store, 14, 0, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 14, 0, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_14_1 += TwoZetaInv * 1.000000 * (ds_0.x_9_0 - ds_1.x_9_0); 
+#ifdef REG_FS 
+  x_14_2 = PBy * fs_0.x_14_0 - PCy * fs_1.x_14_0; 
+#else 
+  x_14_2 = PBy * LOCSTOREFULL(store, 14, 0, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 14, 0, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+  x_14_3 = PBz * fs_0.x_14_0 - PCz * fs_1.x_14_0; 
+#else 
+  x_14_3 = PBz * LOCSTOREFULL(store, 14, 0, STOREDIM, STOREDIM, 0) - PCz * LOCSTOREFULL(store, 14, 0, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_14_3 += TwoZetaInv * 2.000000 * (ds_0.x_6_0 - ds_1.x_6_0); 
+
+ } 
+
+/* FP integral partial class - Part 6, m=0 */ 
+__device__ __inline__ FPint_0_6::FPint_0_6(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                    QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                    QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  DSint_0 ds_0(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=0 
+  DSint_1 ds_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=1 
+  FSint_0 fs_0(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=0 
+  FSint_1 fs_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=1 
+
+#ifdef REG_FS 
+  x_15_1 = PBx * fs_0.x_15_0 - PCx * fs_1.x_15_0; 
+#else 
+  x_15_1 = PBx * LOCSTOREFULL(store, 15, 0, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 15, 0, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+  x_15_2 = PBy * fs_0.x_15_0 - PCy * fs_1.x_15_0; 
+#else 
+  x_15_2 = PBy * LOCSTOREFULL(store, 15, 0, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 15, 0, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_15_2 += TwoZetaInv * 2.000000 * (ds_0.x_5_0 - ds_1.x_5_0); 
+#ifdef REG_FS 
+  x_15_3 = PBz * fs_0.x_15_0 - PCz * fs_1.x_15_0; 
+#else 
+  x_15_3 = PBz * LOCSTOREFULL(store, 15, 0, STOREDIM, STOREDIM, 0) - PCz * LOCSTOREFULL(store, 15, 0, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_15_3 += TwoZetaInv * 1.000000 * (ds_0.x_8_0 - ds_1.x_8_0); 
+
+ } 
+
+/* FP integral partial class - Part 7, m=0 */ 
+__device__ __inline__ FPint_0_7::FPint_0_7(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                    QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                    QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  DSint_0 ds_0(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=0 
+  DSint_1 ds_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=1 
+  FSint_0 fs_0(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=0 
+  FSint_1 fs_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=1 
+
+#ifdef REG_FS 
+  x_16_1 = PBx * fs_0.x_16_0 - PCx * fs_1.x_16_0; 
+#else 
+  x_16_1 = PBx * LOCSTOREFULL(store, 16, 0, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 16, 0, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+  x_16_2 = PBy * fs_0.x_16_0 - PCy * fs_1.x_16_0; 
+#else 
+  x_16_2 = PBy * LOCSTOREFULL(store, 16, 0, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 16, 0, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_16_2 += TwoZetaInv * 1.000000 * (ds_0.x_9_0 - ds_1.x_9_0); 
+#ifdef REG_FS 
+  x_16_3 = PBz * fs_0.x_16_0 - PCz * fs_1.x_16_0; 
+#else 
+  x_16_3 = PBz * LOCSTOREFULL(store, 16, 0, STOREDIM, STOREDIM, 0) - PCz * LOCSTOREFULL(store, 16, 0, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_16_3 += TwoZetaInv * 2.000000 * (ds_0.x_5_0 - ds_1.x_5_0); 
+
+ } 
+
+/* FP integral partial class - Part 8, m=0 */ 
+__device__ __inline__ FPint_0_8::FPint_0_8(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                    QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                    QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  DSint_0 ds_0(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=0 
+  DSint_1 ds_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=1 
+  FSint_0 fs_0(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=0 
+  FSint_1 fs_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=1 
+
+#ifdef REG_FS 
+  x_17_1 = PBx * fs_0.x_17_0 - PCx * fs_1.x_17_0; 
+#else 
+  x_17_1 = PBx * LOCSTOREFULL(store, 17, 0, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 17, 0, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_17_1 += TwoZetaInv * 3.000000 * (ds_0.x_7_0 - ds_1.x_7_0); 
+#ifdef REG_FS 
+  x_17_2 = PBy * fs_0.x_17_0 - PCy * fs_1.x_17_0; 
+#else 
+  x_17_2 = PBy * LOCSTOREFULL(store, 17, 0, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 17, 0, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+  x_17_3 = PBz * fs_0.x_17_0 - PCz * fs_1.x_17_0; 
+#else 
+  x_17_3 = PBz * LOCSTOREFULL(store, 17, 0, STOREDIM, STOREDIM, 0) - PCz * LOCSTOREFULL(store, 17, 0, STOREDIM, STOREDIM, 1); 
+#endif 
+
+ } 
+
+/* FP integral partial class - Part 9, m=0 */ 
+__device__ __inline__ FPint_0_9::FPint_0_9(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                    QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                    QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  DSint_0 ds_0(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=0 
+  DSint_1 ds_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=1 
+  FSint_0 fs_0(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=0 
+  FSint_1 fs_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=1 
+
+#ifdef REG_FS 
+  x_18_1 = PBx * fs_0.x_18_0 - PCx * fs_1.x_18_0; 
+#else 
+  x_18_1 = PBx * LOCSTOREFULL(store, 18, 0, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 18, 0, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+  x_18_2 = PBy * fs_0.x_18_0 - PCy * fs_1.x_18_0; 
+#else 
+  x_18_2 = PBy * LOCSTOREFULL(store, 18, 0, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 18, 0, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_18_2 += TwoZetaInv * 3.000000 * (ds_0.x_8_0 - ds_1.x_8_0); 
+#ifdef REG_FS 
+  x_18_3 = PBz * fs_0.x_18_0 - PCz * fs_1.x_18_0; 
+#else 
+  x_18_3 = PBz * LOCSTOREFULL(store, 18, 0, STOREDIM, STOREDIM, 0) - PCz * LOCSTOREFULL(store, 18, 0, STOREDIM, STOREDIM, 1); 
+#endif 
+
+ } 
+
+/* FP integral partial class - Part 10, m=0 */ 
+__device__ __inline__ FPint_0_10::FPint_0_10(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                    QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                    QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  DSint_0 ds_0(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=0 
+  DSint_1 ds_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=1 
+  FSint_0 fs_0(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=0 
+  FSint_1 fs_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=1 
+
+#ifdef REG_FS 
+  x_19_1 = PBx * fs_0.x_19_0 - PCx * fs_1.x_19_0; 
+#else 
+  x_19_1 = PBx * LOCSTOREFULL(store, 19, 0, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 19, 0, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+  x_19_2 = PBy * fs_0.x_19_0 - PCy * fs_1.x_19_0; 
+#else 
+  x_19_2 = PBy * LOCSTOREFULL(store, 19, 0, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 19, 0, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+  x_19_3 = PBz * fs_0.x_19_0 - PCz * fs_1.x_19_0; 
+#else 
+  x_19_3 = PBz * LOCSTOREFULL(store, 19, 0, STOREDIM, STOREDIM, 0) - PCz * LOCSTOREFULL(store, 19, 0, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_19_3 += TwoZetaInv * 3.000000 * (ds_0.x_9_0 - ds_1.x_9_0); 
+
+ } 
+
 /* FP auxilary integral, m=1 */ 
 __device__ __inline__ FPint_1::FPint_1(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
                 QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
@@ -2899,6 +3197,304 @@ __device__ __inline__ FPint_1::FPint_1(QUICKDouble PAx, QUICKDouble PAy, QUICKDo
   val += TwoZetaInv * 3.000000 * (ds_1.x_9_0 - ds_2.x_9_0); 
   LOCSTOREFULL(store, 19, 3, STOREDIM, STOREDIM, 1) = val; 
 #endif 
+
+ } 
+
+/* FP integral partial class - Part 1, m=1 */ 
+__device__ __inline__ FPint_1_1::FPint_1_1(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                    QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                    QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  DSint_1 ds_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=1 
+  DSint_2 ds_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=2 
+  FSint_1 fs_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=1 
+  FSint_2 fs_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=2 
+
+#ifdef REG_FS 
+  x_10_1 = PBx * fs_1.x_10_0 - PCx * fs_2.x_10_0; 
+#else 
+  x_10_1 = PBx * LOCSTOREFULL(store, 10, 0, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 10, 0, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_10_1 += TwoZetaInv * 1.000000 * (ds_1.x_5_0 - ds_2.x_5_0); 
+#ifdef REG_FS 
+  x_10_2 = PBy * fs_1.x_10_0 - PCy * fs_2.x_10_0; 
+#else 
+  x_10_2 = PBy * LOCSTOREFULL(store, 10, 0, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 10, 0, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_10_2 += TwoZetaInv * 1.000000 * (ds_1.x_6_0 - ds_2.x_6_0); 
+#ifdef REG_FS 
+  x_10_3 = PBz * fs_1.x_10_0 - PCz * fs_2.x_10_0; 
+#else 
+  x_10_3 = PBz * LOCSTOREFULL(store, 10, 0, STOREDIM, STOREDIM, 1) - PCz * LOCSTOREFULL(store, 10, 0, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_10_3 += TwoZetaInv * 1.000000 * (ds_1.x_4_0 - ds_2.x_4_0); 
+
+ } 
+
+/* FP integral partial class - Part 2, m=1 */ 
+__device__ __inline__ FPint_1_2::FPint_1_2(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                    QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                    QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  DSint_1 ds_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=1 
+  DSint_2 ds_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=2 
+  FSint_1 fs_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=1 
+  FSint_2 fs_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=2 
+
+#ifdef REG_FS 
+  x_11_1 = PBx * fs_1.x_11_0 - PCx * fs_2.x_11_0; 
+#else 
+  x_11_1 = PBx * LOCSTOREFULL(store, 11, 0, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 11, 0, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_11_1 += TwoZetaInv * 2.000000 * (ds_1.x_4_0 - ds_2.x_4_0); 
+#ifdef REG_FS 
+  x_11_2 = PBy * fs_1.x_11_0 - PCy * fs_2.x_11_0; 
+#else 
+  x_11_2 = PBy * LOCSTOREFULL(store, 11, 0, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 11, 0, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_11_2 += TwoZetaInv * 1.000000 * (ds_1.x_7_0 - ds_2.x_7_0); 
+#ifdef REG_FS 
+  x_11_3 = PBz * fs_1.x_11_0 - PCz * fs_2.x_11_0; 
+#else 
+  x_11_3 = PBz * LOCSTOREFULL(store, 11, 0, STOREDIM, STOREDIM, 1) - PCz * LOCSTOREFULL(store, 11, 0, STOREDIM, STOREDIM, 2); 
+#endif 
+
+ } 
+
+/* FP integral partial class - Part 3, m=1 */ 
+__device__ __inline__ FPint_1_3::FPint_1_3(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                    QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                    QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  DSint_1 ds_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=1 
+  DSint_2 ds_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=2 
+  FSint_1 fs_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=1 
+  FSint_2 fs_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=2 
+
+#ifdef REG_FS 
+  x_12_1 = PBx * fs_1.x_12_0 - PCx * fs_2.x_12_0; 
+#else 
+  x_12_1 = PBx * LOCSTOREFULL(store, 12, 0, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 12, 0, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_12_1 += TwoZetaInv * 1.000000 * (ds_1.x_8_0 - ds_2.x_8_0); 
+#ifdef REG_FS 
+  x_12_2 = PBy * fs_1.x_12_0 - PCy * fs_2.x_12_0; 
+#else 
+  x_12_2 = PBy * LOCSTOREFULL(store, 12, 0, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 12, 0, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_12_2 += TwoZetaInv * 2.000000 * (ds_1.x_4_0 - ds_2.x_4_0); 
+#ifdef REG_FS 
+  x_12_3 = PBz * fs_1.x_12_0 - PCz * fs_2.x_12_0; 
+#else 
+  x_12_3 = PBz * LOCSTOREFULL(store, 12, 0, STOREDIM, STOREDIM, 1) - PCz * LOCSTOREFULL(store, 12, 0, STOREDIM, STOREDIM, 2); 
+#endif 
+
+ } 
+
+/* FP integral partial class - Part 4, m=1 */ 
+__device__ __inline__ FPint_1_4::FPint_1_4(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                    QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                    QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  DSint_1 ds_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=1 
+  DSint_2 ds_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=2 
+  FSint_1 fs_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=1 
+  FSint_2 fs_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=2 
+
+#ifdef REG_FS 
+  x_13_1 = PBx * fs_1.x_13_0 - PCx * fs_2.x_13_0; 
+#else 
+  x_13_1 = PBx * LOCSTOREFULL(store, 13, 0, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 13, 0, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_13_1 += TwoZetaInv * 2.000000 * (ds_1.x_6_0 - ds_2.x_6_0); 
+#ifdef REG_FS 
+  x_13_2 = PBy * fs_1.x_13_0 - PCy * fs_2.x_13_0; 
+#else 
+  x_13_2 = PBy * LOCSTOREFULL(store, 13, 0, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 13, 0, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+  x_13_3 = PBz * fs_1.x_13_0 - PCz * fs_2.x_13_0; 
+#else 
+  x_13_3 = PBz * LOCSTOREFULL(store, 13, 0, STOREDIM, STOREDIM, 1) - PCz * LOCSTOREFULL(store, 13, 0, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_13_3 += TwoZetaInv * 1.000000 * (ds_1.x_7_0 - ds_2.x_7_0); 
+
+ } 
+
+/* FP integral partial class - Part 5, m=1 */ 
+__device__ __inline__ FPint_1_5::FPint_1_5(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                    QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                    QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  DSint_1 ds_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=1 
+  DSint_2 ds_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=2 
+  FSint_1 fs_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=1 
+  FSint_2 fs_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=2 
+
+#ifdef REG_FS 
+  x_14_1 = PBx * fs_1.x_14_0 - PCx * fs_2.x_14_0; 
+#else 
+  x_14_1 = PBx * LOCSTOREFULL(store, 14, 0, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 14, 0, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_14_1 += TwoZetaInv * 1.000000 * (ds_1.x_9_0 - ds_2.x_9_0); 
+#ifdef REG_FS 
+  x_14_2 = PBy * fs_1.x_14_0 - PCy * fs_2.x_14_0; 
+#else 
+  x_14_2 = PBy * LOCSTOREFULL(store, 14, 0, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 14, 0, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+  x_14_3 = PBz * fs_1.x_14_0 - PCz * fs_2.x_14_0; 
+#else 
+  x_14_3 = PBz * LOCSTOREFULL(store, 14, 0, STOREDIM, STOREDIM, 1) - PCz * LOCSTOREFULL(store, 14, 0, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_14_3 += TwoZetaInv * 2.000000 * (ds_1.x_6_0 - ds_2.x_6_0); 
+
+ } 
+
+/* FP integral partial class - Part 6, m=1 */ 
+__device__ __inline__ FPint_1_6::FPint_1_6(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                    QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                    QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  DSint_1 ds_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=1 
+  DSint_2 ds_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=2 
+  FSint_1 fs_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=1 
+  FSint_2 fs_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=2 
+
+#ifdef REG_FS 
+  x_15_1 = PBx * fs_1.x_15_0 - PCx * fs_2.x_15_0; 
+#else 
+  x_15_1 = PBx * LOCSTOREFULL(store, 15, 0, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 15, 0, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+  x_15_2 = PBy * fs_1.x_15_0 - PCy * fs_2.x_15_0; 
+#else 
+  x_15_2 = PBy * LOCSTOREFULL(store, 15, 0, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 15, 0, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_15_2 += TwoZetaInv * 2.000000 * (ds_1.x_5_0 - ds_2.x_5_0); 
+#ifdef REG_FS 
+  x_15_3 = PBz * fs_1.x_15_0 - PCz * fs_2.x_15_0; 
+#else 
+  x_15_3 = PBz * LOCSTOREFULL(store, 15, 0, STOREDIM, STOREDIM, 1) - PCz * LOCSTOREFULL(store, 15, 0, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_15_3 += TwoZetaInv * 1.000000 * (ds_1.x_8_0 - ds_2.x_8_0); 
+
+ } 
+
+/* FP integral partial class - Part 7, m=1 */ 
+__device__ __inline__ FPint_1_7::FPint_1_7(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                    QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                    QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  DSint_1 ds_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=1 
+  DSint_2 ds_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=2 
+  FSint_1 fs_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=1 
+  FSint_2 fs_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=2 
+
+#ifdef REG_FS 
+  x_16_1 = PBx * fs_1.x_16_0 - PCx * fs_2.x_16_0; 
+#else 
+  x_16_1 = PBx * LOCSTOREFULL(store, 16, 0, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 16, 0, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+  x_16_2 = PBy * fs_1.x_16_0 - PCy * fs_2.x_16_0; 
+#else 
+  x_16_2 = PBy * LOCSTOREFULL(store, 16, 0, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 16, 0, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_16_2 += TwoZetaInv * 1.000000 * (ds_1.x_9_0 - ds_2.x_9_0); 
+#ifdef REG_FS 
+  x_16_3 = PBz * fs_1.x_16_0 - PCz * fs_2.x_16_0; 
+#else 
+  x_16_3 = PBz * LOCSTOREFULL(store, 16, 0, STOREDIM, STOREDIM, 1) - PCz * LOCSTOREFULL(store, 16, 0, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_16_3 += TwoZetaInv * 2.000000 * (ds_1.x_5_0 - ds_2.x_5_0); 
+
+ } 
+
+/* FP integral partial class - Part 8, m=1 */ 
+__device__ __inline__ FPint_1_8::FPint_1_8(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                    QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                    QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  DSint_1 ds_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=1 
+  DSint_2 ds_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=2 
+  FSint_1 fs_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=1 
+  FSint_2 fs_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=2 
+
+#ifdef REG_FS 
+  x_17_1 = PBx * fs_1.x_17_0 - PCx * fs_2.x_17_0; 
+#else 
+  x_17_1 = PBx * LOCSTOREFULL(store, 17, 0, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 17, 0, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_17_1 += TwoZetaInv * 3.000000 * (ds_1.x_7_0 - ds_2.x_7_0); 
+#ifdef REG_FS 
+  x_17_2 = PBy * fs_1.x_17_0 - PCy * fs_2.x_17_0; 
+#else 
+  x_17_2 = PBy * LOCSTOREFULL(store, 17, 0, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 17, 0, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+  x_17_3 = PBz * fs_1.x_17_0 - PCz * fs_2.x_17_0; 
+#else 
+  x_17_3 = PBz * LOCSTOREFULL(store, 17, 0, STOREDIM, STOREDIM, 1) - PCz * LOCSTOREFULL(store, 17, 0, STOREDIM, STOREDIM, 2); 
+#endif 
+
+ } 
+
+/* FP integral partial class - Part 9, m=1 */ 
+__device__ __inline__ FPint_1_9::FPint_1_9(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                    QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                    QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  DSint_1 ds_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=1 
+  DSint_2 ds_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=2 
+  FSint_1 fs_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=1 
+  FSint_2 fs_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=2 
+
+#ifdef REG_FS 
+  x_18_1 = PBx * fs_1.x_18_0 - PCx * fs_2.x_18_0; 
+#else 
+  x_18_1 = PBx * LOCSTOREFULL(store, 18, 0, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 18, 0, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+  x_18_2 = PBy * fs_1.x_18_0 - PCy * fs_2.x_18_0; 
+#else 
+  x_18_2 = PBy * LOCSTOREFULL(store, 18, 0, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 18, 0, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_18_2 += TwoZetaInv * 3.000000 * (ds_1.x_8_0 - ds_2.x_8_0); 
+#ifdef REG_FS 
+  x_18_3 = PBz * fs_1.x_18_0 - PCz * fs_2.x_18_0; 
+#else 
+  x_18_3 = PBz * LOCSTOREFULL(store, 18, 0, STOREDIM, STOREDIM, 1) - PCz * LOCSTOREFULL(store, 18, 0, STOREDIM, STOREDIM, 2); 
+#endif 
+
+ } 
+
+/* FP integral partial class - Part 10, m=1 */ 
+__device__ __inline__ FPint_1_10::FPint_1_10(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                    QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                    QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  DSint_1 ds_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=1 
+  DSint_2 ds_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=2 
+  FSint_1 fs_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=1 
+  FSint_2 fs_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=2 
+
+#ifdef REG_FS 
+  x_19_1 = PBx * fs_1.x_19_0 - PCx * fs_2.x_19_0; 
+#else 
+  x_19_1 = PBx * LOCSTOREFULL(store, 19, 0, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 19, 0, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+  x_19_2 = PBy * fs_1.x_19_0 - PCy * fs_2.x_19_0; 
+#else 
+  x_19_2 = PBy * LOCSTOREFULL(store, 19, 0, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 19, 0, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+  x_19_3 = PBz * fs_1.x_19_0 - PCz * fs_2.x_19_0; 
+#else 
+  x_19_3 = PBz * LOCSTOREFULL(store, 19, 0, STOREDIM, STOREDIM, 1) - PCz * LOCSTOREFULL(store, 19, 0, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_19_3 += TwoZetaInv * 3.000000 * (ds_1.x_9_0 - ds_2.x_9_0); 
 
  } 
 
@@ -3285,6 +3881,304 @@ __device__ __inline__ FPint_2::FPint_2(QUICKDouble PAx, QUICKDouble PAy, QUICKDo
 
  } 
 
+/* FP integral partial class - Part 1, m=2 */ 
+__device__ __inline__ FPint_2_1::FPint_2_1(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                    QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                    QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  DSint_2 ds_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=2 
+  DSint_3 ds_3(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=3 
+  FSint_2 fs_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=2 
+  FSint_3 fs_3(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=3 
+
+#ifdef REG_FS 
+  x_10_1 = PBx * fs_2.x_10_0 - PCx * fs_3.x_10_0; 
+#else 
+  x_10_1 = PBx * LOCSTOREFULL(store, 10, 0, STOREDIM, STOREDIM, 2) - PCx * LOCSTOREFULL(store, 10, 0, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_10_1 += TwoZetaInv * 1.000000 * (ds_2.x_5_0 - ds_3.x_5_0); 
+#ifdef REG_FS 
+  x_10_2 = PBy * fs_2.x_10_0 - PCy * fs_3.x_10_0; 
+#else 
+  x_10_2 = PBy * LOCSTOREFULL(store, 10, 0, STOREDIM, STOREDIM, 2) - PCy * LOCSTOREFULL(store, 10, 0, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_10_2 += TwoZetaInv * 1.000000 * (ds_2.x_6_0 - ds_3.x_6_0); 
+#ifdef REG_FS 
+  x_10_3 = PBz * fs_2.x_10_0 - PCz * fs_3.x_10_0; 
+#else 
+  x_10_3 = PBz * LOCSTOREFULL(store, 10, 0, STOREDIM, STOREDIM, 2) - PCz * LOCSTOREFULL(store, 10, 0, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_10_3 += TwoZetaInv * 1.000000 * (ds_2.x_4_0 - ds_3.x_4_0); 
+
+ } 
+
+/* FP integral partial class - Part 2, m=2 */ 
+__device__ __inline__ FPint_2_2::FPint_2_2(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                    QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                    QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  DSint_2 ds_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=2 
+  DSint_3 ds_3(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=3 
+  FSint_2 fs_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=2 
+  FSint_3 fs_3(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=3 
+
+#ifdef REG_FS 
+  x_11_1 = PBx * fs_2.x_11_0 - PCx * fs_3.x_11_0; 
+#else 
+  x_11_1 = PBx * LOCSTOREFULL(store, 11, 0, STOREDIM, STOREDIM, 2) - PCx * LOCSTOREFULL(store, 11, 0, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_11_1 += TwoZetaInv * 2.000000 * (ds_2.x_4_0 - ds_3.x_4_0); 
+#ifdef REG_FS 
+  x_11_2 = PBy * fs_2.x_11_0 - PCy * fs_3.x_11_0; 
+#else 
+  x_11_2 = PBy * LOCSTOREFULL(store, 11, 0, STOREDIM, STOREDIM, 2) - PCy * LOCSTOREFULL(store, 11, 0, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_11_2 += TwoZetaInv * 1.000000 * (ds_2.x_7_0 - ds_3.x_7_0); 
+#ifdef REG_FS 
+  x_11_3 = PBz * fs_2.x_11_0 - PCz * fs_3.x_11_0; 
+#else 
+  x_11_3 = PBz * LOCSTOREFULL(store, 11, 0, STOREDIM, STOREDIM, 2) - PCz * LOCSTOREFULL(store, 11, 0, STOREDIM, STOREDIM, 3); 
+#endif 
+
+ } 
+
+/* FP integral partial class - Part 3, m=2 */ 
+__device__ __inline__ FPint_2_3::FPint_2_3(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                    QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                    QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  DSint_2 ds_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=2 
+  DSint_3 ds_3(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=3 
+  FSint_2 fs_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=2 
+  FSint_3 fs_3(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=3 
+
+#ifdef REG_FS 
+  x_12_1 = PBx * fs_2.x_12_0 - PCx * fs_3.x_12_0; 
+#else 
+  x_12_1 = PBx * LOCSTOREFULL(store, 12, 0, STOREDIM, STOREDIM, 2) - PCx * LOCSTOREFULL(store, 12, 0, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_12_1 += TwoZetaInv * 1.000000 * (ds_2.x_8_0 - ds_3.x_8_0); 
+#ifdef REG_FS 
+  x_12_2 = PBy * fs_2.x_12_0 - PCy * fs_3.x_12_0; 
+#else 
+  x_12_2 = PBy * LOCSTOREFULL(store, 12, 0, STOREDIM, STOREDIM, 2) - PCy * LOCSTOREFULL(store, 12, 0, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_12_2 += TwoZetaInv * 2.000000 * (ds_2.x_4_0 - ds_3.x_4_0); 
+#ifdef REG_FS 
+  x_12_3 = PBz * fs_2.x_12_0 - PCz * fs_3.x_12_0; 
+#else 
+  x_12_3 = PBz * LOCSTOREFULL(store, 12, 0, STOREDIM, STOREDIM, 2) - PCz * LOCSTOREFULL(store, 12, 0, STOREDIM, STOREDIM, 3); 
+#endif 
+
+ } 
+
+/* FP integral partial class - Part 4, m=2 */ 
+__device__ __inline__ FPint_2_4::FPint_2_4(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                    QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                    QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  DSint_2 ds_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=2 
+  DSint_3 ds_3(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=3 
+  FSint_2 fs_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=2 
+  FSint_3 fs_3(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=3 
+
+#ifdef REG_FS 
+  x_13_1 = PBx * fs_2.x_13_0 - PCx * fs_3.x_13_0; 
+#else 
+  x_13_1 = PBx * LOCSTOREFULL(store, 13, 0, STOREDIM, STOREDIM, 2) - PCx * LOCSTOREFULL(store, 13, 0, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_13_1 += TwoZetaInv * 2.000000 * (ds_2.x_6_0 - ds_3.x_6_0); 
+#ifdef REG_FS 
+  x_13_2 = PBy * fs_2.x_13_0 - PCy * fs_3.x_13_0; 
+#else 
+  x_13_2 = PBy * LOCSTOREFULL(store, 13, 0, STOREDIM, STOREDIM, 2) - PCy * LOCSTOREFULL(store, 13, 0, STOREDIM, STOREDIM, 3); 
+#endif 
+#ifdef REG_FS 
+  x_13_3 = PBz * fs_2.x_13_0 - PCz * fs_3.x_13_0; 
+#else 
+  x_13_3 = PBz * LOCSTOREFULL(store, 13, 0, STOREDIM, STOREDIM, 2) - PCz * LOCSTOREFULL(store, 13, 0, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_13_3 += TwoZetaInv * 1.000000 * (ds_2.x_7_0 - ds_3.x_7_0); 
+
+ } 
+
+/* FP integral partial class - Part 5, m=2 */ 
+__device__ __inline__ FPint_2_5::FPint_2_5(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                    QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                    QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  DSint_2 ds_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=2 
+  DSint_3 ds_3(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=3 
+  FSint_2 fs_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=2 
+  FSint_3 fs_3(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=3 
+
+#ifdef REG_FS 
+  x_14_1 = PBx * fs_2.x_14_0 - PCx * fs_3.x_14_0; 
+#else 
+  x_14_1 = PBx * LOCSTOREFULL(store, 14, 0, STOREDIM, STOREDIM, 2) - PCx * LOCSTOREFULL(store, 14, 0, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_14_1 += TwoZetaInv * 1.000000 * (ds_2.x_9_0 - ds_3.x_9_0); 
+#ifdef REG_FS 
+  x_14_2 = PBy * fs_2.x_14_0 - PCy * fs_3.x_14_0; 
+#else 
+  x_14_2 = PBy * LOCSTOREFULL(store, 14, 0, STOREDIM, STOREDIM, 2) - PCy * LOCSTOREFULL(store, 14, 0, STOREDIM, STOREDIM, 3); 
+#endif 
+#ifdef REG_FS 
+  x_14_3 = PBz * fs_2.x_14_0 - PCz * fs_3.x_14_0; 
+#else 
+  x_14_3 = PBz * LOCSTOREFULL(store, 14, 0, STOREDIM, STOREDIM, 2) - PCz * LOCSTOREFULL(store, 14, 0, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_14_3 += TwoZetaInv * 2.000000 * (ds_2.x_6_0 - ds_3.x_6_0); 
+
+ } 
+
+/* FP integral partial class - Part 6, m=2 */ 
+__device__ __inline__ FPint_2_6::FPint_2_6(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                    QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                    QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  DSint_2 ds_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=2 
+  DSint_3 ds_3(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=3 
+  FSint_2 fs_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=2 
+  FSint_3 fs_3(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=3 
+
+#ifdef REG_FS 
+  x_15_1 = PBx * fs_2.x_15_0 - PCx * fs_3.x_15_0; 
+#else 
+  x_15_1 = PBx * LOCSTOREFULL(store, 15, 0, STOREDIM, STOREDIM, 2) - PCx * LOCSTOREFULL(store, 15, 0, STOREDIM, STOREDIM, 3); 
+#endif 
+#ifdef REG_FS 
+  x_15_2 = PBy * fs_2.x_15_0 - PCy * fs_3.x_15_0; 
+#else 
+  x_15_2 = PBy * LOCSTOREFULL(store, 15, 0, STOREDIM, STOREDIM, 2) - PCy * LOCSTOREFULL(store, 15, 0, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_15_2 += TwoZetaInv * 2.000000 * (ds_2.x_5_0 - ds_3.x_5_0); 
+#ifdef REG_FS 
+  x_15_3 = PBz * fs_2.x_15_0 - PCz * fs_3.x_15_0; 
+#else 
+  x_15_3 = PBz * LOCSTOREFULL(store, 15, 0, STOREDIM, STOREDIM, 2) - PCz * LOCSTOREFULL(store, 15, 0, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_15_3 += TwoZetaInv * 1.000000 * (ds_2.x_8_0 - ds_3.x_8_0); 
+
+ } 
+
+/* FP integral partial class - Part 7, m=2 */ 
+__device__ __inline__ FPint_2_7::FPint_2_7(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                    QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                    QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  DSint_2 ds_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=2 
+  DSint_3 ds_3(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=3 
+  FSint_2 fs_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=2 
+  FSint_3 fs_3(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=3 
+
+#ifdef REG_FS 
+  x_16_1 = PBx * fs_2.x_16_0 - PCx * fs_3.x_16_0; 
+#else 
+  x_16_1 = PBx * LOCSTOREFULL(store, 16, 0, STOREDIM, STOREDIM, 2) - PCx * LOCSTOREFULL(store, 16, 0, STOREDIM, STOREDIM, 3); 
+#endif 
+#ifdef REG_FS 
+  x_16_2 = PBy * fs_2.x_16_0 - PCy * fs_3.x_16_0; 
+#else 
+  x_16_2 = PBy * LOCSTOREFULL(store, 16, 0, STOREDIM, STOREDIM, 2) - PCy * LOCSTOREFULL(store, 16, 0, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_16_2 += TwoZetaInv * 1.000000 * (ds_2.x_9_0 - ds_3.x_9_0); 
+#ifdef REG_FS 
+  x_16_3 = PBz * fs_2.x_16_0 - PCz * fs_3.x_16_0; 
+#else 
+  x_16_3 = PBz * LOCSTOREFULL(store, 16, 0, STOREDIM, STOREDIM, 2) - PCz * LOCSTOREFULL(store, 16, 0, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_16_3 += TwoZetaInv * 2.000000 * (ds_2.x_5_0 - ds_3.x_5_0); 
+
+ } 
+
+/* FP integral partial class - Part 8, m=2 */ 
+__device__ __inline__ FPint_2_8::FPint_2_8(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                    QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                    QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  DSint_2 ds_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=2 
+  DSint_3 ds_3(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=3 
+  FSint_2 fs_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=2 
+  FSint_3 fs_3(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=3 
+
+#ifdef REG_FS 
+  x_17_1 = PBx * fs_2.x_17_0 - PCx * fs_3.x_17_0; 
+#else 
+  x_17_1 = PBx * LOCSTOREFULL(store, 17, 0, STOREDIM, STOREDIM, 2) - PCx * LOCSTOREFULL(store, 17, 0, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_17_1 += TwoZetaInv * 3.000000 * (ds_2.x_7_0 - ds_3.x_7_0); 
+#ifdef REG_FS 
+  x_17_2 = PBy * fs_2.x_17_0 - PCy * fs_3.x_17_0; 
+#else 
+  x_17_2 = PBy * LOCSTOREFULL(store, 17, 0, STOREDIM, STOREDIM, 2) - PCy * LOCSTOREFULL(store, 17, 0, STOREDIM, STOREDIM, 3); 
+#endif 
+#ifdef REG_FS 
+  x_17_3 = PBz * fs_2.x_17_0 - PCz * fs_3.x_17_0; 
+#else 
+  x_17_3 = PBz * LOCSTOREFULL(store, 17, 0, STOREDIM, STOREDIM, 2) - PCz * LOCSTOREFULL(store, 17, 0, STOREDIM, STOREDIM, 3); 
+#endif 
+
+ } 
+
+/* FP integral partial class - Part 9, m=2 */ 
+__device__ __inline__ FPint_2_9::FPint_2_9(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                    QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                    QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  DSint_2 ds_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=2 
+  DSint_3 ds_3(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=3 
+  FSint_2 fs_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=2 
+  FSint_3 fs_3(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=3 
+
+#ifdef REG_FS 
+  x_18_1 = PBx * fs_2.x_18_0 - PCx * fs_3.x_18_0; 
+#else 
+  x_18_1 = PBx * LOCSTOREFULL(store, 18, 0, STOREDIM, STOREDIM, 2) - PCx * LOCSTOREFULL(store, 18, 0, STOREDIM, STOREDIM, 3); 
+#endif 
+#ifdef REG_FS 
+  x_18_2 = PBy * fs_2.x_18_0 - PCy * fs_3.x_18_0; 
+#else 
+  x_18_2 = PBy * LOCSTOREFULL(store, 18, 0, STOREDIM, STOREDIM, 2) - PCy * LOCSTOREFULL(store, 18, 0, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_18_2 += TwoZetaInv * 3.000000 * (ds_2.x_8_0 - ds_3.x_8_0); 
+#ifdef REG_FS 
+  x_18_3 = PBz * fs_2.x_18_0 - PCz * fs_3.x_18_0; 
+#else 
+  x_18_3 = PBz * LOCSTOREFULL(store, 18, 0, STOREDIM, STOREDIM, 2) - PCz * LOCSTOREFULL(store, 18, 0, STOREDIM, STOREDIM, 3); 
+#endif 
+
+ } 
+
+/* FP integral partial class - Part 10, m=2 */ 
+__device__ __inline__ FPint_2_10::FPint_2_10(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                    QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                    QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  DSint_2 ds_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=2 
+  DSint_3 ds_3(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|s] for m=3 
+  FSint_2 fs_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=2 
+  FSint_3 fs_3(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=3 
+
+#ifdef REG_FS 
+  x_19_1 = PBx * fs_2.x_19_0 - PCx * fs_3.x_19_0; 
+#else 
+  x_19_1 = PBx * LOCSTOREFULL(store, 19, 0, STOREDIM, STOREDIM, 2) - PCx * LOCSTOREFULL(store, 19, 0, STOREDIM, STOREDIM, 3); 
+#endif 
+#ifdef REG_FS 
+  x_19_2 = PBy * fs_2.x_19_0 - PCy * fs_3.x_19_0; 
+#else 
+  x_19_2 = PBy * LOCSTOREFULL(store, 19, 0, STOREDIM, STOREDIM, 2) - PCy * LOCSTOREFULL(store, 19, 0, STOREDIM, STOREDIM, 3); 
+#endif 
+#ifdef REG_FS 
+  x_19_3 = PBz * fs_2.x_19_0 - PCz * fs_3.x_19_0; 
+#else 
+  x_19_3 = PBz * LOCSTOREFULL(store, 19, 0, STOREDIM, STOREDIM, 2) - PCz * LOCSTOREFULL(store, 19, 0, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_19_3 += TwoZetaInv * 3.000000 * (ds_2.x_9_0 - ds_3.x_9_0); 
+
+ } 
+
 /* PF true integral, m=0 */ 
 __device__ __inline__ PFint_0::PFint_0(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
                 QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
@@ -3665,6 +4559,304 @@ __device__ __inline__ PFint_0::PFint_0(QUICKDouble PAx, QUICKDouble PAy, QUICKDo
   val += TwoZetaInv * 3.000000 * (sd_0.x_0_9 - sd_1.x_0_9); 
   LOCSTOREFULL(store, 3, 19, STOREDIM, STOREDIM, 0) = val; 
 #endif 
+
+ } 
+
+/* PF integral partial class - Part 1, m=0 */ 
+__device__ __inline__ PFint_0_1::PFint_0_1(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  SDint_0 sd_0(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=0 
+  SDint_1 sd_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=1 
+  SFint_0 sf_0(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=0 
+  SFint_1 sf_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=1 
+
+#ifdef REG_SF 
+  x_1_10 = PAx * sf_0.x_0_10 - PCx * sf_1.x_0_10; 
+#else 
+  x_1_10 = PAx * LOCSTOREFULL(store, 0, 10, STOREDIM, STOREDIM, 0)- PCx * LOCSTOREFULL(store, 0, 10, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_1_10 += TwoZetaInv * 1.000000 * (sd_0.x_0_5 - sd_1.x_0_5); 
+#ifdef REG_SF 
+  x_2_10 = PAy * sf_0.x_0_10 - PCy * sf_1.x_0_10; 
+#else 
+  x_2_10 = PAy * LOCSTOREFULL(store, 0, 10, STOREDIM, STOREDIM, 0)- PCy * LOCSTOREFULL(store, 0, 10, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_2_10 += TwoZetaInv * 1.000000 * (sd_0.x_0_6 - sd_1.x_0_6); 
+#ifdef REG_SF 
+  x_3_10 = PAz * sf_0.x_0_10 - PCz * sf_1.x_0_10; 
+#else 
+  x_3_10 = PAz * LOCSTOREFULL(store, 0, 10, STOREDIM, STOREDIM, 0)- PCz * LOCSTOREFULL(store, 0, 10, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_3_10 += TwoZetaInv * 1.000000 * (sd_0.x_0_4 - sd_1.x_0_4); 
+
+ } 
+
+/* PF integral partial class - Part 2, m=0 */ 
+__device__ __inline__ PFint_0_2::PFint_0_2(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  SDint_0 sd_0(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=0 
+  SDint_1 sd_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=1 
+  SFint_0 sf_0(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=0 
+  SFint_1 sf_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=1 
+
+#ifdef REG_SF 
+  x_1_11 = PAx * sf_0.x_0_11 - PCx * sf_1.x_0_11; 
+#else 
+  x_1_11 = PAx * LOCSTOREFULL(store, 0, 11, STOREDIM, STOREDIM, 0)- PCx * LOCSTOREFULL(store, 0, 11, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_1_11 += TwoZetaInv * 2.000000 * (sd_0.x_0_4 - sd_1.x_0_4); 
+#ifdef REG_SF 
+  x_2_11 = PAy * sf_0.x_0_11 - PCy * sf_1.x_0_11; 
+#else 
+  x_2_11 = PAy * LOCSTOREFULL(store, 0, 11, STOREDIM, STOREDIM, 0)- PCy * LOCSTOREFULL(store, 0, 11, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_2_11 += TwoZetaInv * 1.000000 * (sd_0.x_0_7 - sd_1.x_0_7); 
+#ifdef REG_SF 
+  x_3_11 = PAz * sf_0.x_0_11 - PCz * sf_1.x_0_11; 
+#else 
+  x_3_11 = PAz * LOCSTOREFULL(store, 0, 11, STOREDIM, STOREDIM, 0)- PCz * LOCSTOREFULL(store, 0, 11, STOREDIM, STOREDIM, 1); 
+#endif 
+
+ } 
+
+/* PF integral partial class - Part 3, m=0 */ 
+__device__ __inline__ PFint_0_3::PFint_0_3(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  SDint_0 sd_0(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=0 
+  SDint_1 sd_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=1 
+  SFint_0 sf_0(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=0 
+  SFint_1 sf_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=1 
+
+#ifdef REG_SF 
+  x_1_12 = PAx * sf_0.x_0_12 - PCx * sf_1.x_0_12; 
+#else 
+  x_1_12 = PAx * LOCSTOREFULL(store, 0, 12, STOREDIM, STOREDIM, 0)- PCx * LOCSTOREFULL(store, 0, 12, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_1_12 += TwoZetaInv * 1.000000 * (sd_0.x_0_8 - sd_1.x_0_8); 
+#ifdef REG_SF 
+  x_2_12 = PAy * sf_0.x_0_12 - PCy * sf_1.x_0_12; 
+#else 
+  x_2_12 = PAy * LOCSTOREFULL(store, 0, 12, STOREDIM, STOREDIM, 0)- PCy * LOCSTOREFULL(store, 0, 12, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_2_12 += TwoZetaInv * 2.000000 * (sd_0.x_0_4 - sd_1.x_0_4); 
+#ifdef REG_SF 
+  x_3_12 = PAz * sf_0.x_0_12 - PCz * sf_1.x_0_12; 
+#else 
+  x_3_12 = PAz * LOCSTOREFULL(store, 0, 12, STOREDIM, STOREDIM, 0)- PCz * LOCSTOREFULL(store, 0, 12, STOREDIM, STOREDIM, 1); 
+#endif 
+
+ } 
+
+/* PF integral partial class - Part 4, m=0 */ 
+__device__ __inline__ PFint_0_4::PFint_0_4(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  SDint_0 sd_0(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=0 
+  SDint_1 sd_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=1 
+  SFint_0 sf_0(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=0 
+  SFint_1 sf_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=1 
+
+#ifdef REG_SF 
+  x_1_13 = PAx * sf_0.x_0_13 - PCx * sf_1.x_0_13; 
+#else 
+  x_1_13 = PAx * LOCSTOREFULL(store, 0, 13, STOREDIM, STOREDIM, 0)- PCx * LOCSTOREFULL(store, 0, 13, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_1_13 += TwoZetaInv * 2.000000 * (sd_0.x_0_6 - sd_1.x_0_6); 
+#ifdef REG_SF 
+  x_2_13 = PAy * sf_0.x_0_13 - PCy * sf_1.x_0_13; 
+#else 
+  x_2_13 = PAy * LOCSTOREFULL(store, 0, 13, STOREDIM, STOREDIM, 0)- PCy * LOCSTOREFULL(store, 0, 13, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+  x_3_13 = PAz * sf_0.x_0_13 - PCz * sf_1.x_0_13; 
+#else 
+  x_3_13 = PAz * LOCSTOREFULL(store, 0, 13, STOREDIM, STOREDIM, 0)- PCz * LOCSTOREFULL(store, 0, 13, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_3_13 += TwoZetaInv * 1.000000 * (sd_0.x_0_7 - sd_1.x_0_7); 
+
+ } 
+
+/* PF integral partial class - Part 5, m=0 */ 
+__device__ __inline__ PFint_0_5::PFint_0_5(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  SDint_0 sd_0(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=0 
+  SDint_1 sd_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=1 
+  SFint_0 sf_0(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=0 
+  SFint_1 sf_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=1 
+
+#ifdef REG_SF 
+  x_1_14 = PAx * sf_0.x_0_14 - PCx * sf_1.x_0_14; 
+#else 
+  x_1_14 = PAx * LOCSTOREFULL(store, 0, 14, STOREDIM, STOREDIM, 0)- PCx * LOCSTOREFULL(store, 0, 14, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_1_14 += TwoZetaInv * 1.000000 * (sd_0.x_0_9 - sd_1.x_0_9); 
+#ifdef REG_SF 
+  x_2_14 = PAy * sf_0.x_0_14 - PCy * sf_1.x_0_14; 
+#else 
+  x_2_14 = PAy * LOCSTOREFULL(store, 0, 14, STOREDIM, STOREDIM, 0)- PCy * LOCSTOREFULL(store, 0, 14, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+  x_3_14 = PAz * sf_0.x_0_14 - PCz * sf_1.x_0_14; 
+#else 
+  x_3_14 = PAz * LOCSTOREFULL(store, 0, 14, STOREDIM, STOREDIM, 0)- PCz * LOCSTOREFULL(store, 0, 14, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_3_14 += TwoZetaInv * 2.000000 * (sd_0.x_0_6 - sd_1.x_0_6); 
+
+ } 
+
+/* PF integral partial class - Part 6, m=0 */ 
+__device__ __inline__ PFint_0_6::PFint_0_6(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  SDint_0 sd_0(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=0 
+  SDint_1 sd_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=1 
+  SFint_0 sf_0(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=0 
+  SFint_1 sf_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=1 
+
+#ifdef REG_SF 
+  x_1_15 = PAx * sf_0.x_0_15 - PCx * sf_1.x_0_15; 
+#else 
+  x_1_15 = PAx * LOCSTOREFULL(store, 0, 15, STOREDIM, STOREDIM, 0)- PCx * LOCSTOREFULL(store, 0, 15, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+  x_2_15 = PAy * sf_0.x_0_15 - PCy * sf_1.x_0_15; 
+#else 
+  x_2_15 = PAy * LOCSTOREFULL(store, 0, 15, STOREDIM, STOREDIM, 0)- PCy * LOCSTOREFULL(store, 0, 15, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_2_15 += TwoZetaInv * 2.000000 * (sd_0.x_0_5 - sd_1.x_0_5); 
+#ifdef REG_SF 
+  x_3_15 = PAz * sf_0.x_0_15 - PCz * sf_1.x_0_15; 
+#else 
+  x_3_15 = PAz * LOCSTOREFULL(store, 0, 15, STOREDIM, STOREDIM, 0)- PCz * LOCSTOREFULL(store, 0, 15, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_3_15 += TwoZetaInv * 1.000000 * (sd_0.x_0_8 - sd_1.x_0_8); 
+
+ } 
+
+/* PF integral partial class - Part 7, m=0 */ 
+__device__ __inline__ PFint_0_7::PFint_0_7(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  SDint_0 sd_0(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=0 
+  SDint_1 sd_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=1 
+  SFint_0 sf_0(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=0 
+  SFint_1 sf_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=1 
+
+#ifdef REG_SF 
+  x_1_16 = PAx * sf_0.x_0_16 - PCx * sf_1.x_0_16; 
+#else 
+  x_1_16 = PAx * LOCSTOREFULL(store, 0, 16, STOREDIM, STOREDIM, 0)- PCx * LOCSTOREFULL(store, 0, 16, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+  x_2_16 = PAy * sf_0.x_0_16 - PCy * sf_1.x_0_16; 
+#else 
+  x_2_16 = PAy * LOCSTOREFULL(store, 0, 16, STOREDIM, STOREDIM, 0)- PCy * LOCSTOREFULL(store, 0, 16, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_2_16 += TwoZetaInv * 1.000000 * (sd_0.x_0_9 - sd_1.x_0_9); 
+#ifdef REG_SF 
+  x_3_16 = PAz * sf_0.x_0_16 - PCz * sf_1.x_0_16; 
+#else 
+  x_3_16 = PAz * LOCSTOREFULL(store, 0, 16, STOREDIM, STOREDIM, 0)- PCz * LOCSTOREFULL(store, 0, 16, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_3_16 += TwoZetaInv * 2.000000 * (sd_0.x_0_5 - sd_1.x_0_5); 
+
+ } 
+
+/* PF integral partial class - Part 8, m=0 */ 
+__device__ __inline__ PFint_0_8::PFint_0_8(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  SDint_0 sd_0(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=0 
+  SDint_1 sd_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=1 
+  SFint_0 sf_0(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=0 
+  SFint_1 sf_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=1 
+
+#ifdef REG_SF 
+  x_1_17 = PAx * sf_0.x_0_17 - PCx * sf_1.x_0_17; 
+#else 
+  x_1_17 = PAx * LOCSTOREFULL(store, 0, 17, STOREDIM, STOREDIM, 0)- PCx * LOCSTOREFULL(store, 0, 17, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_1_17 += TwoZetaInv * 3.000000 * (sd_0.x_0_7 - sd_1.x_0_7); 
+#ifdef REG_SF 
+  x_2_17 = PAy * sf_0.x_0_17 - PCy * sf_1.x_0_17; 
+#else 
+  x_2_17 = PAy * LOCSTOREFULL(store, 0, 17, STOREDIM, STOREDIM, 0)- PCy * LOCSTOREFULL(store, 0, 17, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+  x_3_17 = PAz * sf_0.x_0_17 - PCz * sf_1.x_0_17; 
+#else 
+  x_3_17 = PAz * LOCSTOREFULL(store, 0, 17, STOREDIM, STOREDIM, 0)- PCz * LOCSTOREFULL(store, 0, 17, STOREDIM, STOREDIM, 1); 
+#endif 
+
+ } 
+
+/* PF integral partial class - Part 9, m=0 */ 
+__device__ __inline__ PFint_0_9::PFint_0_9(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  SDint_0 sd_0(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=0 
+  SDint_1 sd_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=1 
+  SFint_0 sf_0(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=0 
+  SFint_1 sf_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=1 
+
+#ifdef REG_SF 
+  x_1_18 = PAx * sf_0.x_0_18 - PCx * sf_1.x_0_18; 
+#else 
+  x_1_18 = PAx * LOCSTOREFULL(store, 0, 18, STOREDIM, STOREDIM, 0)- PCx * LOCSTOREFULL(store, 0, 18, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+  x_2_18 = PAy * sf_0.x_0_18 - PCy * sf_1.x_0_18; 
+#else 
+  x_2_18 = PAy * LOCSTOREFULL(store, 0, 18, STOREDIM, STOREDIM, 0)- PCy * LOCSTOREFULL(store, 0, 18, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_2_18 += TwoZetaInv * 3.000000 * (sd_0.x_0_8 - sd_1.x_0_8); 
+#ifdef REG_SF 
+  x_3_18 = PAz * sf_0.x_0_18 - PCz * sf_1.x_0_18; 
+#else 
+  x_3_18 = PAz * LOCSTOREFULL(store, 0, 18, STOREDIM, STOREDIM, 0)- PCz * LOCSTOREFULL(store, 0, 18, STOREDIM, STOREDIM, 1); 
+#endif 
+
+ } 
+
+/* PF integral partial class - Part 10, m=0 */ 
+__device__ __inline__ PFint_0_10::PFint_0_10(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  SDint_0 sd_0(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=0 
+  SDint_1 sd_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=1 
+  SFint_0 sf_0(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=0 
+  SFint_1 sf_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=1 
+
+#ifdef REG_SF 
+  x_1_19 = PAx * sf_0.x_0_19 - PCx * sf_1.x_0_19; 
+#else 
+  x_1_19 = PAx * LOCSTOREFULL(store, 0, 19, STOREDIM, STOREDIM, 0)- PCx * LOCSTOREFULL(store, 0, 19, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+  x_2_19 = PAy * sf_0.x_0_19 - PCy * sf_1.x_0_19; 
+#else 
+  x_2_19 = PAy * LOCSTOREFULL(store, 0, 19, STOREDIM, STOREDIM, 0)- PCy * LOCSTOREFULL(store, 0, 19, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+  x_3_19 = PAz * sf_0.x_0_19 - PCz * sf_1.x_0_19; 
+#else 
+  x_3_19 = PAz * LOCSTOREFULL(store, 0, 19, STOREDIM, STOREDIM, 0)- PCz * LOCSTOREFULL(store, 0, 19, STOREDIM, STOREDIM, 1); 
+#endif 
+  x_3_19 += TwoZetaInv * 3.000000 * (sd_0.x_0_9 - sd_1.x_0_9); 
 
  } 
 
@@ -4051,6 +5243,304 @@ __device__ __inline__ PFint_1::PFint_1(QUICKDouble PAx, QUICKDouble PAy, QUICKDo
 
  } 
 
+/* PF integral partial class - Part 1, m=1 */ 
+__device__ __inline__ PFint_1_1::PFint_1_1(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  SDint_1 sd_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=1 
+  SDint_2 sd_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=2 
+  SFint_1 sf_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=1 
+  SFint_2 sf_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=2 
+
+#ifdef REG_SF 
+  x_1_10 = PAx * sf_1.x_0_10 - PCx * sf_2.x_0_10; 
+#else 
+  x_1_10 = PAx * LOCSTOREFULL(store, 0, 10, STOREDIM, STOREDIM, 1)- PCx * LOCSTOREFULL(store, 0, 10, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_1_10 += TwoZetaInv * 1.000000 * (sd_1.x_0_5 - sd_2.x_0_5); 
+#ifdef REG_SF 
+  x_2_10 = PAy * sf_1.x_0_10 - PCy * sf_2.x_0_10; 
+#else 
+  x_2_10 = PAy * LOCSTOREFULL(store, 0, 10, STOREDIM, STOREDIM, 1)- PCy * LOCSTOREFULL(store, 0, 10, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_2_10 += TwoZetaInv * 1.000000 * (sd_1.x_0_6 - sd_2.x_0_6); 
+#ifdef REG_SF 
+  x_3_10 = PAz * sf_1.x_0_10 - PCz * sf_2.x_0_10; 
+#else 
+  x_3_10 = PAz * LOCSTOREFULL(store, 0, 10, STOREDIM, STOREDIM, 1)- PCz * LOCSTOREFULL(store, 0, 10, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_3_10 += TwoZetaInv * 1.000000 * (sd_1.x_0_4 - sd_2.x_0_4); 
+
+ } 
+
+/* PF integral partial class - Part 2, m=1 */ 
+__device__ __inline__ PFint_1_2::PFint_1_2(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  SDint_1 sd_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=1 
+  SDint_2 sd_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=2 
+  SFint_1 sf_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=1 
+  SFint_2 sf_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=2 
+
+#ifdef REG_SF 
+  x_1_11 = PAx * sf_1.x_0_11 - PCx * sf_2.x_0_11; 
+#else 
+  x_1_11 = PAx * LOCSTOREFULL(store, 0, 11, STOREDIM, STOREDIM, 1)- PCx * LOCSTOREFULL(store, 0, 11, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_1_11 += TwoZetaInv * 2.000000 * (sd_1.x_0_4 - sd_2.x_0_4); 
+#ifdef REG_SF 
+  x_2_11 = PAy * sf_1.x_0_11 - PCy * sf_2.x_0_11; 
+#else 
+  x_2_11 = PAy * LOCSTOREFULL(store, 0, 11, STOREDIM, STOREDIM, 1)- PCy * LOCSTOREFULL(store, 0, 11, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_2_11 += TwoZetaInv * 1.000000 * (sd_1.x_0_7 - sd_2.x_0_7); 
+#ifdef REG_SF 
+  x_3_11 = PAz * sf_1.x_0_11 - PCz * sf_2.x_0_11; 
+#else 
+  x_3_11 = PAz * LOCSTOREFULL(store, 0, 11, STOREDIM, STOREDIM, 1)- PCz * LOCSTOREFULL(store, 0, 11, STOREDIM, STOREDIM, 2); 
+#endif 
+
+ } 
+
+/* PF integral partial class - Part 3, m=1 */ 
+__device__ __inline__ PFint_1_3::PFint_1_3(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  SDint_1 sd_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=1 
+  SDint_2 sd_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=2 
+  SFint_1 sf_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=1 
+  SFint_2 sf_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=2 
+
+#ifdef REG_SF 
+  x_1_12 = PAx * sf_1.x_0_12 - PCx * sf_2.x_0_12; 
+#else 
+  x_1_12 = PAx * LOCSTOREFULL(store, 0, 12, STOREDIM, STOREDIM, 1)- PCx * LOCSTOREFULL(store, 0, 12, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_1_12 += TwoZetaInv * 1.000000 * (sd_1.x_0_8 - sd_2.x_0_8); 
+#ifdef REG_SF 
+  x_2_12 = PAy * sf_1.x_0_12 - PCy * sf_2.x_0_12; 
+#else 
+  x_2_12 = PAy * LOCSTOREFULL(store, 0, 12, STOREDIM, STOREDIM, 1)- PCy * LOCSTOREFULL(store, 0, 12, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_2_12 += TwoZetaInv * 2.000000 * (sd_1.x_0_4 - sd_2.x_0_4); 
+#ifdef REG_SF 
+  x_3_12 = PAz * sf_1.x_0_12 - PCz * sf_2.x_0_12; 
+#else 
+  x_3_12 = PAz * LOCSTOREFULL(store, 0, 12, STOREDIM, STOREDIM, 1)- PCz * LOCSTOREFULL(store, 0, 12, STOREDIM, STOREDIM, 2); 
+#endif 
+
+ } 
+
+/* PF integral partial class - Part 4, m=1 */ 
+__device__ __inline__ PFint_1_4::PFint_1_4(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  SDint_1 sd_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=1 
+  SDint_2 sd_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=2 
+  SFint_1 sf_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=1 
+  SFint_2 sf_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=2 
+
+#ifdef REG_SF 
+  x_1_13 = PAx * sf_1.x_0_13 - PCx * sf_2.x_0_13; 
+#else 
+  x_1_13 = PAx * LOCSTOREFULL(store, 0, 13, STOREDIM, STOREDIM, 1)- PCx * LOCSTOREFULL(store, 0, 13, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_1_13 += TwoZetaInv * 2.000000 * (sd_1.x_0_6 - sd_2.x_0_6); 
+#ifdef REG_SF 
+  x_2_13 = PAy * sf_1.x_0_13 - PCy * sf_2.x_0_13; 
+#else 
+  x_2_13 = PAy * LOCSTOREFULL(store, 0, 13, STOREDIM, STOREDIM, 1)- PCy * LOCSTOREFULL(store, 0, 13, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+  x_3_13 = PAz * sf_1.x_0_13 - PCz * sf_2.x_0_13; 
+#else 
+  x_3_13 = PAz * LOCSTOREFULL(store, 0, 13, STOREDIM, STOREDIM, 1)- PCz * LOCSTOREFULL(store, 0, 13, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_3_13 += TwoZetaInv * 1.000000 * (sd_1.x_0_7 - sd_2.x_0_7); 
+
+ } 
+
+/* PF integral partial class - Part 5, m=1 */ 
+__device__ __inline__ PFint_1_5::PFint_1_5(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  SDint_1 sd_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=1 
+  SDint_2 sd_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=2 
+  SFint_1 sf_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=1 
+  SFint_2 sf_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=2 
+
+#ifdef REG_SF 
+  x_1_14 = PAx * sf_1.x_0_14 - PCx * sf_2.x_0_14; 
+#else 
+  x_1_14 = PAx * LOCSTOREFULL(store, 0, 14, STOREDIM, STOREDIM, 1)- PCx * LOCSTOREFULL(store, 0, 14, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_1_14 += TwoZetaInv * 1.000000 * (sd_1.x_0_9 - sd_2.x_0_9); 
+#ifdef REG_SF 
+  x_2_14 = PAy * sf_1.x_0_14 - PCy * sf_2.x_0_14; 
+#else 
+  x_2_14 = PAy * LOCSTOREFULL(store, 0, 14, STOREDIM, STOREDIM, 1)- PCy * LOCSTOREFULL(store, 0, 14, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+  x_3_14 = PAz * sf_1.x_0_14 - PCz * sf_2.x_0_14; 
+#else 
+  x_3_14 = PAz * LOCSTOREFULL(store, 0, 14, STOREDIM, STOREDIM, 1)- PCz * LOCSTOREFULL(store, 0, 14, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_3_14 += TwoZetaInv * 2.000000 * (sd_1.x_0_6 - sd_2.x_0_6); 
+
+ } 
+
+/* PF integral partial class - Part 6, m=1 */ 
+__device__ __inline__ PFint_1_6::PFint_1_6(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  SDint_1 sd_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=1 
+  SDint_2 sd_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=2 
+  SFint_1 sf_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=1 
+  SFint_2 sf_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=2 
+
+#ifdef REG_SF 
+  x_1_15 = PAx * sf_1.x_0_15 - PCx * sf_2.x_0_15; 
+#else 
+  x_1_15 = PAx * LOCSTOREFULL(store, 0, 15, STOREDIM, STOREDIM, 1)- PCx * LOCSTOREFULL(store, 0, 15, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+  x_2_15 = PAy * sf_1.x_0_15 - PCy * sf_2.x_0_15; 
+#else 
+  x_2_15 = PAy * LOCSTOREFULL(store, 0, 15, STOREDIM, STOREDIM, 1)- PCy * LOCSTOREFULL(store, 0, 15, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_2_15 += TwoZetaInv * 2.000000 * (sd_1.x_0_5 - sd_2.x_0_5); 
+#ifdef REG_SF 
+  x_3_15 = PAz * sf_1.x_0_15 - PCz * sf_2.x_0_15; 
+#else 
+  x_3_15 = PAz * LOCSTOREFULL(store, 0, 15, STOREDIM, STOREDIM, 1)- PCz * LOCSTOREFULL(store, 0, 15, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_3_15 += TwoZetaInv * 1.000000 * (sd_1.x_0_8 - sd_2.x_0_8); 
+
+ } 
+
+/* PF integral partial class - Part 7, m=1 */ 
+__device__ __inline__ PFint_1_7::PFint_1_7(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  SDint_1 sd_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=1 
+  SDint_2 sd_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=2 
+  SFint_1 sf_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=1 
+  SFint_2 sf_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=2 
+
+#ifdef REG_SF 
+  x_1_16 = PAx * sf_1.x_0_16 - PCx * sf_2.x_0_16; 
+#else 
+  x_1_16 = PAx * LOCSTOREFULL(store, 0, 16, STOREDIM, STOREDIM, 1)- PCx * LOCSTOREFULL(store, 0, 16, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+  x_2_16 = PAy * sf_1.x_0_16 - PCy * sf_2.x_0_16; 
+#else 
+  x_2_16 = PAy * LOCSTOREFULL(store, 0, 16, STOREDIM, STOREDIM, 1)- PCy * LOCSTOREFULL(store, 0, 16, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_2_16 += TwoZetaInv * 1.000000 * (sd_1.x_0_9 - sd_2.x_0_9); 
+#ifdef REG_SF 
+  x_3_16 = PAz * sf_1.x_0_16 - PCz * sf_2.x_0_16; 
+#else 
+  x_3_16 = PAz * LOCSTOREFULL(store, 0, 16, STOREDIM, STOREDIM, 1)- PCz * LOCSTOREFULL(store, 0, 16, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_3_16 += TwoZetaInv * 2.000000 * (sd_1.x_0_5 - sd_2.x_0_5); 
+
+ } 
+
+/* PF integral partial class - Part 8, m=1 */ 
+__device__ __inline__ PFint_1_8::PFint_1_8(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  SDint_1 sd_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=1 
+  SDint_2 sd_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=2 
+  SFint_1 sf_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=1 
+  SFint_2 sf_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=2 
+
+#ifdef REG_SF 
+  x_1_17 = PAx * sf_1.x_0_17 - PCx * sf_2.x_0_17; 
+#else 
+  x_1_17 = PAx * LOCSTOREFULL(store, 0, 17, STOREDIM, STOREDIM, 1)- PCx * LOCSTOREFULL(store, 0, 17, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_1_17 += TwoZetaInv * 3.000000 * (sd_1.x_0_7 - sd_2.x_0_7); 
+#ifdef REG_SF 
+  x_2_17 = PAy * sf_1.x_0_17 - PCy * sf_2.x_0_17; 
+#else 
+  x_2_17 = PAy * LOCSTOREFULL(store, 0, 17, STOREDIM, STOREDIM, 1)- PCy * LOCSTOREFULL(store, 0, 17, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+  x_3_17 = PAz * sf_1.x_0_17 - PCz * sf_2.x_0_17; 
+#else 
+  x_3_17 = PAz * LOCSTOREFULL(store, 0, 17, STOREDIM, STOREDIM, 1)- PCz * LOCSTOREFULL(store, 0, 17, STOREDIM, STOREDIM, 2); 
+#endif 
+
+ } 
+
+/* PF integral partial class - Part 9, m=1 */ 
+__device__ __inline__ PFint_1_9::PFint_1_9(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  SDint_1 sd_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=1 
+  SDint_2 sd_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=2 
+  SFint_1 sf_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=1 
+  SFint_2 sf_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=2 
+
+#ifdef REG_SF 
+  x_1_18 = PAx * sf_1.x_0_18 - PCx * sf_2.x_0_18; 
+#else 
+  x_1_18 = PAx * LOCSTOREFULL(store, 0, 18, STOREDIM, STOREDIM, 1)- PCx * LOCSTOREFULL(store, 0, 18, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+  x_2_18 = PAy * sf_1.x_0_18 - PCy * sf_2.x_0_18; 
+#else 
+  x_2_18 = PAy * LOCSTOREFULL(store, 0, 18, STOREDIM, STOREDIM, 1)- PCy * LOCSTOREFULL(store, 0, 18, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_2_18 += TwoZetaInv * 3.000000 * (sd_1.x_0_8 - sd_2.x_0_8); 
+#ifdef REG_SF 
+  x_3_18 = PAz * sf_1.x_0_18 - PCz * sf_2.x_0_18; 
+#else 
+  x_3_18 = PAz * LOCSTOREFULL(store, 0, 18, STOREDIM, STOREDIM, 1)- PCz * LOCSTOREFULL(store, 0, 18, STOREDIM, STOREDIM, 2); 
+#endif 
+
+ } 
+
+/* PF integral partial class - Part 10, m=1 */ 
+__device__ __inline__ PFint_1_10::PFint_1_10(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  SDint_1 sd_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=1 
+  SDint_2 sd_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=2 
+  SFint_1 sf_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=1 
+  SFint_2 sf_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=2 
+
+#ifdef REG_SF 
+  x_1_19 = PAx * sf_1.x_0_19 - PCx * sf_2.x_0_19; 
+#else 
+  x_1_19 = PAx * LOCSTOREFULL(store, 0, 19, STOREDIM, STOREDIM, 1)- PCx * LOCSTOREFULL(store, 0, 19, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+  x_2_19 = PAy * sf_1.x_0_19 - PCy * sf_2.x_0_19; 
+#else 
+  x_2_19 = PAy * LOCSTOREFULL(store, 0, 19, STOREDIM, STOREDIM, 1)- PCy * LOCSTOREFULL(store, 0, 19, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+  x_3_19 = PAz * sf_1.x_0_19 - PCz * sf_2.x_0_19; 
+#else 
+  x_3_19 = PAz * LOCSTOREFULL(store, 0, 19, STOREDIM, STOREDIM, 1)- PCz * LOCSTOREFULL(store, 0, 19, STOREDIM, STOREDIM, 2); 
+#endif 
+  x_3_19 += TwoZetaInv * 3.000000 * (sd_1.x_0_9 - sd_2.x_0_9); 
+
+ } 
+
 /* PF auxilary integral, m=2 */ 
 __device__ __inline__ PFint_2::PFint_2(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
                 QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
@@ -4434,6 +5924,304 @@ __device__ __inline__ PFint_2::PFint_2(QUICKDouble PAx, QUICKDouble PAy, QUICKDo
 
  } 
 
+/* PF integral partial class - Part 1, m=2 */ 
+__device__ __inline__ PFint_2_1::PFint_2_1(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  SDint_2 sd_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=2 
+  SDint_3 sd_3(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=3 
+  SFint_2 sf_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=2 
+  SFint_3 sf_3(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=3 
+
+#ifdef REG_SF 
+  x_1_10 = PAx * sf_2.x_0_10 - PCx * sf_3.x_0_10; 
+#else 
+  x_1_10 = PAx * LOCSTOREFULL(store, 0, 10, STOREDIM, STOREDIM, 2)- PCx * LOCSTOREFULL(store, 0, 10, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_1_10 += TwoZetaInv * 1.000000 * (sd_2.x_0_5 - sd_3.x_0_5); 
+#ifdef REG_SF 
+  x_2_10 = PAy * sf_2.x_0_10 - PCy * sf_3.x_0_10; 
+#else 
+  x_2_10 = PAy * LOCSTOREFULL(store, 0, 10, STOREDIM, STOREDIM, 2)- PCy * LOCSTOREFULL(store, 0, 10, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_2_10 += TwoZetaInv * 1.000000 * (sd_2.x_0_6 - sd_3.x_0_6); 
+#ifdef REG_SF 
+  x_3_10 = PAz * sf_2.x_0_10 - PCz * sf_3.x_0_10; 
+#else 
+  x_3_10 = PAz * LOCSTOREFULL(store, 0, 10, STOREDIM, STOREDIM, 2)- PCz * LOCSTOREFULL(store, 0, 10, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_3_10 += TwoZetaInv * 1.000000 * (sd_2.x_0_4 - sd_3.x_0_4); 
+
+ } 
+
+/* PF integral partial class - Part 2, m=2 */ 
+__device__ __inline__ PFint_2_2::PFint_2_2(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  SDint_2 sd_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=2 
+  SDint_3 sd_3(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=3 
+  SFint_2 sf_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=2 
+  SFint_3 sf_3(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=3 
+
+#ifdef REG_SF 
+  x_1_11 = PAx * sf_2.x_0_11 - PCx * sf_3.x_0_11; 
+#else 
+  x_1_11 = PAx * LOCSTOREFULL(store, 0, 11, STOREDIM, STOREDIM, 2)- PCx * LOCSTOREFULL(store, 0, 11, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_1_11 += TwoZetaInv * 2.000000 * (sd_2.x_0_4 - sd_3.x_0_4); 
+#ifdef REG_SF 
+  x_2_11 = PAy * sf_2.x_0_11 - PCy * sf_3.x_0_11; 
+#else 
+  x_2_11 = PAy * LOCSTOREFULL(store, 0, 11, STOREDIM, STOREDIM, 2)- PCy * LOCSTOREFULL(store, 0, 11, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_2_11 += TwoZetaInv * 1.000000 * (sd_2.x_0_7 - sd_3.x_0_7); 
+#ifdef REG_SF 
+  x_3_11 = PAz * sf_2.x_0_11 - PCz * sf_3.x_0_11; 
+#else 
+  x_3_11 = PAz * LOCSTOREFULL(store, 0, 11, STOREDIM, STOREDIM, 2)- PCz * LOCSTOREFULL(store, 0, 11, STOREDIM, STOREDIM, 3); 
+#endif 
+
+ } 
+
+/* PF integral partial class - Part 3, m=2 */ 
+__device__ __inline__ PFint_2_3::PFint_2_3(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  SDint_2 sd_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=2 
+  SDint_3 sd_3(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=3 
+  SFint_2 sf_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=2 
+  SFint_3 sf_3(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=3 
+
+#ifdef REG_SF 
+  x_1_12 = PAx * sf_2.x_0_12 - PCx * sf_3.x_0_12; 
+#else 
+  x_1_12 = PAx * LOCSTOREFULL(store, 0, 12, STOREDIM, STOREDIM, 2)- PCx * LOCSTOREFULL(store, 0, 12, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_1_12 += TwoZetaInv * 1.000000 * (sd_2.x_0_8 - sd_3.x_0_8); 
+#ifdef REG_SF 
+  x_2_12 = PAy * sf_2.x_0_12 - PCy * sf_3.x_0_12; 
+#else 
+  x_2_12 = PAy * LOCSTOREFULL(store, 0, 12, STOREDIM, STOREDIM, 2)- PCy * LOCSTOREFULL(store, 0, 12, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_2_12 += TwoZetaInv * 2.000000 * (sd_2.x_0_4 - sd_3.x_0_4); 
+#ifdef REG_SF 
+  x_3_12 = PAz * sf_2.x_0_12 - PCz * sf_3.x_0_12; 
+#else 
+  x_3_12 = PAz * LOCSTOREFULL(store, 0, 12, STOREDIM, STOREDIM, 2)- PCz * LOCSTOREFULL(store, 0, 12, STOREDIM, STOREDIM, 3); 
+#endif 
+
+ } 
+
+/* PF integral partial class - Part 4, m=2 */ 
+__device__ __inline__ PFint_2_4::PFint_2_4(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  SDint_2 sd_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=2 
+  SDint_3 sd_3(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=3 
+  SFint_2 sf_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=2 
+  SFint_3 sf_3(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=3 
+
+#ifdef REG_SF 
+  x_1_13 = PAx * sf_2.x_0_13 - PCx * sf_3.x_0_13; 
+#else 
+  x_1_13 = PAx * LOCSTOREFULL(store, 0, 13, STOREDIM, STOREDIM, 2)- PCx * LOCSTOREFULL(store, 0, 13, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_1_13 += TwoZetaInv * 2.000000 * (sd_2.x_0_6 - sd_3.x_0_6); 
+#ifdef REG_SF 
+  x_2_13 = PAy * sf_2.x_0_13 - PCy * sf_3.x_0_13; 
+#else 
+  x_2_13 = PAy * LOCSTOREFULL(store, 0, 13, STOREDIM, STOREDIM, 2)- PCy * LOCSTOREFULL(store, 0, 13, STOREDIM, STOREDIM, 3); 
+#endif 
+#ifdef REG_SF 
+  x_3_13 = PAz * sf_2.x_0_13 - PCz * sf_3.x_0_13; 
+#else 
+  x_3_13 = PAz * LOCSTOREFULL(store, 0, 13, STOREDIM, STOREDIM, 2)- PCz * LOCSTOREFULL(store, 0, 13, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_3_13 += TwoZetaInv * 1.000000 * (sd_2.x_0_7 - sd_3.x_0_7); 
+
+ } 
+
+/* PF integral partial class - Part 5, m=2 */ 
+__device__ __inline__ PFint_2_5::PFint_2_5(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  SDint_2 sd_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=2 
+  SDint_3 sd_3(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=3 
+  SFint_2 sf_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=2 
+  SFint_3 sf_3(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=3 
+
+#ifdef REG_SF 
+  x_1_14 = PAx * sf_2.x_0_14 - PCx * sf_3.x_0_14; 
+#else 
+  x_1_14 = PAx * LOCSTOREFULL(store, 0, 14, STOREDIM, STOREDIM, 2)- PCx * LOCSTOREFULL(store, 0, 14, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_1_14 += TwoZetaInv * 1.000000 * (sd_2.x_0_9 - sd_3.x_0_9); 
+#ifdef REG_SF 
+  x_2_14 = PAy * sf_2.x_0_14 - PCy * sf_3.x_0_14; 
+#else 
+  x_2_14 = PAy * LOCSTOREFULL(store, 0, 14, STOREDIM, STOREDIM, 2)- PCy * LOCSTOREFULL(store, 0, 14, STOREDIM, STOREDIM, 3); 
+#endif 
+#ifdef REG_SF 
+  x_3_14 = PAz * sf_2.x_0_14 - PCz * sf_3.x_0_14; 
+#else 
+  x_3_14 = PAz * LOCSTOREFULL(store, 0, 14, STOREDIM, STOREDIM, 2)- PCz * LOCSTOREFULL(store, 0, 14, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_3_14 += TwoZetaInv * 2.000000 * (sd_2.x_0_6 - sd_3.x_0_6); 
+
+ } 
+
+/* PF integral partial class - Part 6, m=2 */ 
+__device__ __inline__ PFint_2_6::PFint_2_6(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  SDint_2 sd_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=2 
+  SDint_3 sd_3(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=3 
+  SFint_2 sf_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=2 
+  SFint_3 sf_3(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=3 
+
+#ifdef REG_SF 
+  x_1_15 = PAx * sf_2.x_0_15 - PCx * sf_3.x_0_15; 
+#else 
+  x_1_15 = PAx * LOCSTOREFULL(store, 0, 15, STOREDIM, STOREDIM, 2)- PCx * LOCSTOREFULL(store, 0, 15, STOREDIM, STOREDIM, 3); 
+#endif 
+#ifdef REG_SF 
+  x_2_15 = PAy * sf_2.x_0_15 - PCy * sf_3.x_0_15; 
+#else 
+  x_2_15 = PAy * LOCSTOREFULL(store, 0, 15, STOREDIM, STOREDIM, 2)- PCy * LOCSTOREFULL(store, 0, 15, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_2_15 += TwoZetaInv * 2.000000 * (sd_2.x_0_5 - sd_3.x_0_5); 
+#ifdef REG_SF 
+  x_3_15 = PAz * sf_2.x_0_15 - PCz * sf_3.x_0_15; 
+#else 
+  x_3_15 = PAz * LOCSTOREFULL(store, 0, 15, STOREDIM, STOREDIM, 2)- PCz * LOCSTOREFULL(store, 0, 15, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_3_15 += TwoZetaInv * 1.000000 * (sd_2.x_0_8 - sd_3.x_0_8); 
+
+ } 
+
+/* PF integral partial class - Part 7, m=2 */ 
+__device__ __inline__ PFint_2_7::PFint_2_7(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  SDint_2 sd_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=2 
+  SDint_3 sd_3(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=3 
+  SFint_2 sf_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=2 
+  SFint_3 sf_3(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=3 
+
+#ifdef REG_SF 
+  x_1_16 = PAx * sf_2.x_0_16 - PCx * sf_3.x_0_16; 
+#else 
+  x_1_16 = PAx * LOCSTOREFULL(store, 0, 16, STOREDIM, STOREDIM, 2)- PCx * LOCSTOREFULL(store, 0, 16, STOREDIM, STOREDIM, 3); 
+#endif 
+#ifdef REG_SF 
+  x_2_16 = PAy * sf_2.x_0_16 - PCy * sf_3.x_0_16; 
+#else 
+  x_2_16 = PAy * LOCSTOREFULL(store, 0, 16, STOREDIM, STOREDIM, 2)- PCy * LOCSTOREFULL(store, 0, 16, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_2_16 += TwoZetaInv * 1.000000 * (sd_2.x_0_9 - sd_3.x_0_9); 
+#ifdef REG_SF 
+  x_3_16 = PAz * sf_2.x_0_16 - PCz * sf_3.x_0_16; 
+#else 
+  x_3_16 = PAz * LOCSTOREFULL(store, 0, 16, STOREDIM, STOREDIM, 2)- PCz * LOCSTOREFULL(store, 0, 16, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_3_16 += TwoZetaInv * 2.000000 * (sd_2.x_0_5 - sd_3.x_0_5); 
+
+ } 
+
+/* PF integral partial class - Part 8, m=2 */ 
+__device__ __inline__ PFint_2_8::PFint_2_8(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  SDint_2 sd_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=2 
+  SDint_3 sd_3(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=3 
+  SFint_2 sf_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=2 
+  SFint_3 sf_3(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=3 
+
+#ifdef REG_SF 
+  x_1_17 = PAx * sf_2.x_0_17 - PCx * sf_3.x_0_17; 
+#else 
+  x_1_17 = PAx * LOCSTOREFULL(store, 0, 17, STOREDIM, STOREDIM, 2)- PCx * LOCSTOREFULL(store, 0, 17, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_1_17 += TwoZetaInv * 3.000000 * (sd_2.x_0_7 - sd_3.x_0_7); 
+#ifdef REG_SF 
+  x_2_17 = PAy * sf_2.x_0_17 - PCy * sf_3.x_0_17; 
+#else 
+  x_2_17 = PAy * LOCSTOREFULL(store, 0, 17, STOREDIM, STOREDIM, 2)- PCy * LOCSTOREFULL(store, 0, 17, STOREDIM, STOREDIM, 3); 
+#endif 
+#ifdef REG_SF 
+  x_3_17 = PAz * sf_2.x_0_17 - PCz * sf_3.x_0_17; 
+#else 
+  x_3_17 = PAz * LOCSTOREFULL(store, 0, 17, STOREDIM, STOREDIM, 2)- PCz * LOCSTOREFULL(store, 0, 17, STOREDIM, STOREDIM, 3); 
+#endif 
+
+ } 
+
+/* PF integral partial class - Part 9, m=2 */ 
+__device__ __inline__ PFint_2_9::PFint_2_9(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  SDint_2 sd_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=2 
+  SDint_3 sd_3(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=3 
+  SFint_2 sf_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=2 
+  SFint_3 sf_3(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=3 
+
+#ifdef REG_SF 
+  x_1_18 = PAx * sf_2.x_0_18 - PCx * sf_3.x_0_18; 
+#else 
+  x_1_18 = PAx * LOCSTOREFULL(store, 0, 18, STOREDIM, STOREDIM, 2)- PCx * LOCSTOREFULL(store, 0, 18, STOREDIM, STOREDIM, 3); 
+#endif 
+#ifdef REG_SF 
+  x_2_18 = PAy * sf_2.x_0_18 - PCy * sf_3.x_0_18; 
+#else 
+  x_2_18 = PAy * LOCSTOREFULL(store, 0, 18, STOREDIM, STOREDIM, 2)- PCy * LOCSTOREFULL(store, 0, 18, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_2_18 += TwoZetaInv * 3.000000 * (sd_2.x_0_8 - sd_3.x_0_8); 
+#ifdef REG_SF 
+  x_3_18 = PAz * sf_2.x_0_18 - PCz * sf_3.x_0_18; 
+#else 
+  x_3_18 = PAz * LOCSTOREFULL(store, 0, 18, STOREDIM, STOREDIM, 2)- PCz * LOCSTOREFULL(store, 0, 18, STOREDIM, STOREDIM, 3); 
+#endif 
+
+ } 
+
+/* PF integral partial class - Part 10, m=2 */ 
+__device__ __inline__ PFint_2_10::PFint_2_10(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
+                QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
+                QUICKDouble TwoZetaInv, QUICKDouble* store, QUICKDouble* YVerticalTemp){ 
+
+  SDint_2 sd_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=2 
+  SDint_3 sd_3(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|d] for m=3 
+  SFint_2 sf_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=2 
+  SFint_3 sf_3(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=3 
+
+#ifdef REG_SF 
+  x_1_19 = PAx * sf_2.x_0_19 - PCx * sf_3.x_0_19; 
+#else 
+  x_1_19 = PAx * LOCSTOREFULL(store, 0, 19, STOREDIM, STOREDIM, 2)- PCx * LOCSTOREFULL(store, 0, 19, STOREDIM, STOREDIM, 3); 
+#endif 
+#ifdef REG_SF 
+  x_2_19 = PAy * sf_2.x_0_19 - PCy * sf_3.x_0_19; 
+#else 
+  x_2_19 = PAy * LOCSTOREFULL(store, 0, 19, STOREDIM, STOREDIM, 2)- PCy * LOCSTOREFULL(store, 0, 19, STOREDIM, STOREDIM, 3); 
+#endif 
+#ifdef REG_SF 
+  x_3_19 = PAz * sf_2.x_0_19 - PCz * sf_3.x_0_19; 
+#else 
+  x_3_19 = PAz * LOCSTOREFULL(store, 0, 19, STOREDIM, STOREDIM, 2)- PCz * LOCSTOREFULL(store, 0, 19, STOREDIM, STOREDIM, 3); 
+#endif 
+  x_3_19 += TwoZetaInv * 3.000000 * (sd_2.x_0_9 - sd_3.x_0_9); 
+
+ } 
+
 /* FD true integral, m=0 */ 
 __device__ __inline__ FDint_0::FDint_0(QUICKDouble PAx, QUICKDouble PAy, QUICKDouble PAz,
                 QUICKDouble PBx, QUICKDouble PBy, QUICKDouble PBz, QUICKDouble PCx, QUICKDouble PCy, QUICKDouble PCz,
@@ -4441,10 +6229,14 @@ __device__ __inline__ FDint_0::FDint_0(QUICKDouble PAx, QUICKDouble PAy, QUICKDo
 
   DPint_0 dp_0(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|p] for m=0 
   FSint_0 fs_0(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=0 
+#ifndef USE_PARTIAL_FP 
   FPint_0 fp_0(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=0 
+#endif 
   DPint_1 dp_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|p] for m=1 
   FSint_1 fs_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=1 
+#ifndef USE_PARTIAL_FP 
   FPint_1 fp_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=1 
+#endif 
 
 #ifdef REG_FD 
   x_10_4 = PBx * fp_0.x_10_2 - PCx * fp_1.x_10_2; 
@@ -4573,6 +6365,634 @@ __device__ __inline__ FDint_0::FDint_0(QUICKDouble PAx, QUICKDouble PAy, QUICKDo
   x_19_9 = PBz * fp_0.x_19_3 - PCz * fp_1.x_19_3; 
   x_19_9 += TwoZetaInv * (fs_0.x_19_0 - fs_1.x_19_0); 
   x_19_9 += TwoZetaInv * 3.000000 * (dp_0.x_9_3 - dp_1.x_9_3); 
+#else 
+#ifdef USE_PARTIAL_FP 
+  { 
+    FPint_0_1 fp_0(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=0 
+    FPint_1_1 fp_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=1 
+
+    QUICKDouble val; 
+
+#ifdef REG_FP 
+    val = PBx * fp_0.x_10_2 - PCx * fp_1.x_10_2; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 10, 2, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 10, 2, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_0.x_5_2 - dp_1.x_5_2); 
+    LOCSTOREFULL(store, 10, 4, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_0.x_10_3 - PCy * fp_1.x_10_3; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 10, 3, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 10, 3, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_0.x_6_3 - dp_1.x_6_3); 
+    LOCSTOREFULL(store, 10, 5, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_0.x_10_3 - PCx * fp_1.x_10_3; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 10, 3, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 10, 3, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_0.x_5_3 - dp_1.x_5_3); 
+    LOCSTOREFULL(store, 10, 6, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_0.x_10_1 - PCx * fp_1.x_10_1; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 10, 1, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 10, 1, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_0.x_10_0 - fs_1.x_10_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 10, 0, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 10, 0, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_0.x_5_1 - dp_1.x_5_1); 
+    LOCSTOREFULL(store, 10, 7, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_0.x_10_2 - PCy * fp_1.x_10_2; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 10, 2, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 10, 2, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_0.x_10_0 - fs_1.x_10_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 10, 0, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 10, 0, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_0.x_6_2 - dp_1.x_6_2); 
+    LOCSTOREFULL(store, 10, 8, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBz * fp_0.x_10_3 - PCz * fp_1.x_10_3; 
+#else 
+    val = PBz * LOCSTOREFULL(store, 10, 3, STOREDIM, STOREDIM, 0) - PCz * LOCSTOREFULL(store, 10, 3, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_0.x_10_0 - fs_1.x_10_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 10, 0, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 10, 0, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_0.x_4_3 - dp_1.x_4_3); 
+    LOCSTOREFULL(store, 10, 9, STOREDIM, STOREDIM, 0) = val; 
+  } 
+
+  { 
+    FPint_0_2 fp_0(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=0 
+    FPint_1_2 fp_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=1 
+
+    QUICKDouble val; 
+
+#ifdef REG_FP 
+    val = PBx * fp_0.x_11_2 - PCx * fp_1.x_11_2; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 11, 2, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 11, 2, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (dp_0.x_4_2 - dp_1.x_4_2); 
+    LOCSTOREFULL(store, 11, 4, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_0.x_11_3 - PCy * fp_1.x_11_3; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 11, 3, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 11, 3, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_0.x_7_3 - dp_1.x_7_3); 
+    LOCSTOREFULL(store, 11, 5, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_0.x_11_3 - PCx * fp_1.x_11_3; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 11, 3, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 11, 3, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (dp_0.x_4_3 - dp_1.x_4_3); 
+    LOCSTOREFULL(store, 11, 6, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_0.x_11_1 - PCx * fp_1.x_11_1; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 11, 1, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 11, 1, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_0.x_11_0 - fs_1.x_11_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 11, 0, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 11, 0, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (dp_0.x_4_1 - dp_1.x_4_1); 
+    LOCSTOREFULL(store, 11, 7, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_0.x_11_2 - PCy * fp_1.x_11_2; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 11, 2, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 11, 2, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_0.x_11_0 - fs_1.x_11_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 11, 0, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 11, 0, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_0.x_7_2 - dp_1.x_7_2); 
+    LOCSTOREFULL(store, 11, 8, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBz * fp_0.x_11_3 - PCz * fp_1.x_11_3; 
+#else 
+    val = PBz * LOCSTOREFULL(store, 11, 3, STOREDIM, STOREDIM, 0) - PCz * LOCSTOREFULL(store, 11, 3, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_0.x_11_0 - fs_1.x_11_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 11, 0, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 11, 0, STOREDIM, STOREDIM, 1)); 
+#endif 
+    LOCSTOREFULL(store, 11, 9, STOREDIM, STOREDIM, 0) = val; 
+  } 
+
+  { 
+    FPint_0_3 fp_0(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=0 
+    FPint_1_3 fp_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=1 
+
+    QUICKDouble val; 
+
+#ifdef REG_FP 
+    val = PBx * fp_0.x_12_2 - PCx * fp_1.x_12_2; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 12, 2, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 12, 2, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_0.x_8_2 - dp_1.x_8_2); 
+    LOCSTOREFULL(store, 12, 4, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_0.x_12_3 - PCy * fp_1.x_12_3; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 12, 3, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 12, 3, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (dp_0.x_4_3 - dp_1.x_4_3); 
+    LOCSTOREFULL(store, 12, 5, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_0.x_12_3 - PCx * fp_1.x_12_3; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 12, 3, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 12, 3, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_0.x_8_3 - dp_1.x_8_3); 
+    LOCSTOREFULL(store, 12, 6, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_0.x_12_1 - PCx * fp_1.x_12_1; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 12, 1, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 12, 1, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_0.x_12_0 - fs_1.x_12_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 12, 0, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 12, 0, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_0.x_8_1 - dp_1.x_8_1); 
+    LOCSTOREFULL(store, 12, 7, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_0.x_12_2 - PCy * fp_1.x_12_2; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 12, 2, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 12, 2, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_0.x_12_0 - fs_1.x_12_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 12, 0, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 12, 0, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (dp_0.x_4_2 - dp_1.x_4_2); 
+    LOCSTOREFULL(store, 12, 8, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBz * fp_0.x_12_3 - PCz * fp_1.x_12_3; 
+#else 
+    val = PBz * LOCSTOREFULL(store, 12, 3, STOREDIM, STOREDIM, 0) - PCz * LOCSTOREFULL(store, 12, 3, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_0.x_12_0 - fs_1.x_12_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 12, 0, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 12, 0, STOREDIM, STOREDIM, 1)); 
+#endif 
+    LOCSTOREFULL(store, 12, 9, STOREDIM, STOREDIM, 0) = val; 
+  } 
+
+  { 
+    FPint_0_4 fp_0(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=0 
+    FPint_1_4 fp_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=1 
+
+    QUICKDouble val; 
+
+#ifdef REG_FP 
+    val = PBx * fp_0.x_13_2 - PCx * fp_1.x_13_2; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 13, 2, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 13, 2, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (dp_0.x_6_2 - dp_1.x_6_2); 
+    LOCSTOREFULL(store, 13, 4, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_0.x_13_3 - PCy * fp_1.x_13_3; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 13, 3, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 13, 3, STOREDIM, STOREDIM, 1); 
+#endif 
+    LOCSTOREFULL(store, 13, 5, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_0.x_13_3 - PCx * fp_1.x_13_3; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 13, 3, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 13, 3, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (dp_0.x_6_3 - dp_1.x_6_3); 
+    LOCSTOREFULL(store, 13, 6, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_0.x_13_1 - PCx * fp_1.x_13_1; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 13, 1, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 13, 1, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_0.x_13_0 - fs_1.x_13_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 13, 0, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 13, 0, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (dp_0.x_6_1 - dp_1.x_6_1); 
+    LOCSTOREFULL(store, 13, 7, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_0.x_13_2 - PCy * fp_1.x_13_2; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 13, 2, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 13, 2, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_0.x_13_0 - fs_1.x_13_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 13, 0, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 13, 0, STOREDIM, STOREDIM, 1)); 
+#endif 
+    LOCSTOREFULL(store, 13, 8, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBz * fp_0.x_13_3 - PCz * fp_1.x_13_3; 
+#else 
+    val = PBz * LOCSTOREFULL(store, 13, 3, STOREDIM, STOREDIM, 0) - PCz * LOCSTOREFULL(store, 13, 3, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_0.x_13_0 - fs_1.x_13_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 13, 0, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 13, 0, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_0.x_7_3 - dp_1.x_7_3); 
+    LOCSTOREFULL(store, 13, 9, STOREDIM, STOREDIM, 0) = val; 
+  } 
+
+  { 
+    FPint_0_5 fp_0(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=0 
+    FPint_1_5 fp_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=1 
+
+    QUICKDouble val; 
+
+#ifdef REG_FP 
+    val = PBx * fp_0.x_14_2 - PCx * fp_1.x_14_2; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 14, 2, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 14, 2, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_0.x_9_2 - dp_1.x_9_2); 
+    LOCSTOREFULL(store, 14, 4, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_0.x_14_3 - PCy * fp_1.x_14_3; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 14, 3, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 14, 3, STOREDIM, STOREDIM, 1); 
+#endif 
+    LOCSTOREFULL(store, 14, 5, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_0.x_14_3 - PCx * fp_1.x_14_3; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 14, 3, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 14, 3, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_0.x_9_3 - dp_1.x_9_3); 
+    LOCSTOREFULL(store, 14, 6, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_0.x_14_1 - PCx * fp_1.x_14_1; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 14, 1, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 14, 1, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_0.x_14_0 - fs_1.x_14_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 14, 0, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 14, 0, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_0.x_9_1 - dp_1.x_9_1); 
+    LOCSTOREFULL(store, 14, 7, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_0.x_14_2 - PCy * fp_1.x_14_2; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 14, 2, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 14, 2, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_0.x_14_0 - fs_1.x_14_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 14, 0, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 14, 0, STOREDIM, STOREDIM, 1)); 
+#endif 
+    LOCSTOREFULL(store, 14, 8, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBz * fp_0.x_14_3 - PCz * fp_1.x_14_3; 
+#else 
+    val = PBz * LOCSTOREFULL(store, 14, 3, STOREDIM, STOREDIM, 0) - PCz * LOCSTOREFULL(store, 14, 3, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_0.x_14_0 - fs_1.x_14_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 14, 0, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 14, 0, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (dp_0.x_6_3 - dp_1.x_6_3); 
+    LOCSTOREFULL(store, 14, 9, STOREDIM, STOREDIM, 0) = val; 
+  } 
+
+  { 
+    FPint_0_6 fp_0(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=0 
+    FPint_1_6 fp_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=1 
+
+    QUICKDouble val; 
+
+#ifdef REG_FP 
+    val = PBx * fp_0.x_15_2 - PCx * fp_1.x_15_2; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 15, 2, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 15, 2, STOREDIM, STOREDIM, 1); 
+#endif 
+    LOCSTOREFULL(store, 15, 4, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_0.x_15_3 - PCy * fp_1.x_15_3; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 15, 3, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 15, 3, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (dp_0.x_5_3 - dp_1.x_5_3); 
+    LOCSTOREFULL(store, 15, 5, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_0.x_15_3 - PCx * fp_1.x_15_3; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 15, 3, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 15, 3, STOREDIM, STOREDIM, 1); 
+#endif 
+    LOCSTOREFULL(store, 15, 6, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_0.x_15_1 - PCx * fp_1.x_15_1; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 15, 1, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 15, 1, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_0.x_15_0 - fs_1.x_15_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 15, 0, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 15, 0, STOREDIM, STOREDIM, 1)); 
+#endif 
+    LOCSTOREFULL(store, 15, 7, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_0.x_15_2 - PCy * fp_1.x_15_2; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 15, 2, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 15, 2, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_0.x_15_0 - fs_1.x_15_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 15, 0, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 15, 0, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (dp_0.x_5_2 - dp_1.x_5_2); 
+    LOCSTOREFULL(store, 15, 8, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBz * fp_0.x_15_3 - PCz * fp_1.x_15_3; 
+#else 
+    val = PBz * LOCSTOREFULL(store, 15, 3, STOREDIM, STOREDIM, 0) - PCz * LOCSTOREFULL(store, 15, 3, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_0.x_15_0 - fs_1.x_15_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 15, 0, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 15, 0, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_0.x_8_3 - dp_1.x_8_3); 
+    LOCSTOREFULL(store, 15, 9, STOREDIM, STOREDIM, 0) = val; 
+  } 
+
+  { 
+    FPint_0_7 fp_0(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=0 
+    FPint_1_7 fp_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=1 
+
+    QUICKDouble val; 
+
+#ifdef REG_FP 
+    val = PBx * fp_0.x_16_2 - PCx * fp_1.x_16_2; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 16, 2, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 16, 2, STOREDIM, STOREDIM, 1); 
+#endif 
+    LOCSTOREFULL(store, 16, 4, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_0.x_16_3 - PCy * fp_1.x_16_3; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 16, 3, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 16, 3, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_0.x_9_3 - dp_1.x_9_3); 
+    LOCSTOREFULL(store, 16, 5, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_0.x_16_3 - PCx * fp_1.x_16_3; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 16, 3, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 16, 3, STOREDIM, STOREDIM, 1); 
+#endif 
+    LOCSTOREFULL(store, 16, 6, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_0.x_16_1 - PCx * fp_1.x_16_1; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 16, 1, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 16, 1, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_0.x_16_0 - fs_1.x_16_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 16, 0, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 16, 0, STOREDIM, STOREDIM, 1)); 
+#endif 
+    LOCSTOREFULL(store, 16, 7, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_0.x_16_2 - PCy * fp_1.x_16_2; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 16, 2, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 16, 2, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_0.x_16_0 - fs_1.x_16_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 16, 0, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 16, 0, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_0.x_9_2 - dp_1.x_9_2); 
+    LOCSTOREFULL(store, 16, 8, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBz * fp_0.x_16_3 - PCz * fp_1.x_16_3; 
+#else 
+    val = PBz * LOCSTOREFULL(store, 16, 3, STOREDIM, STOREDIM, 0) - PCz * LOCSTOREFULL(store, 16, 3, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_0.x_16_0 - fs_1.x_16_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 16, 0, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 16, 0, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (dp_0.x_5_3 - dp_1.x_5_3); 
+    LOCSTOREFULL(store, 16, 9, STOREDIM, STOREDIM, 0) = val; 
+  } 
+
+  { 
+    FPint_0_8 fp_0(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=0 
+    FPint_1_8 fp_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=1 
+
+    QUICKDouble val; 
+
+#ifdef REG_FP 
+    val = PBx * fp_0.x_17_2 - PCx * fp_1.x_17_2; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 17, 2, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 17, 2, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 3.000000 * (dp_0.x_7_2 - dp_1.x_7_2); 
+    LOCSTOREFULL(store, 17, 4, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_0.x_17_3 - PCy * fp_1.x_17_3; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 17, 3, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 17, 3, STOREDIM, STOREDIM, 1); 
+#endif 
+    LOCSTOREFULL(store, 17, 5, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_0.x_17_3 - PCx * fp_1.x_17_3; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 17, 3, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 17, 3, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 3.000000 * (dp_0.x_7_3 - dp_1.x_7_3); 
+    LOCSTOREFULL(store, 17, 6, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_0.x_17_1 - PCx * fp_1.x_17_1; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 17, 1, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 17, 1, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_0.x_17_0 - fs_1.x_17_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 17, 0, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 17, 0, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 3.000000 * (dp_0.x_7_1 - dp_1.x_7_1); 
+    LOCSTOREFULL(store, 17, 7, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_0.x_17_2 - PCy * fp_1.x_17_2; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 17, 2, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 17, 2, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_0.x_17_0 - fs_1.x_17_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 17, 0, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 17, 0, STOREDIM, STOREDIM, 1)); 
+#endif 
+    LOCSTOREFULL(store, 17, 8, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBz * fp_0.x_17_3 - PCz * fp_1.x_17_3; 
+#else 
+    val = PBz * LOCSTOREFULL(store, 17, 3, STOREDIM, STOREDIM, 0) - PCz * LOCSTOREFULL(store, 17, 3, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_0.x_17_0 - fs_1.x_17_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 17, 0, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 17, 0, STOREDIM, STOREDIM, 1)); 
+#endif 
+    LOCSTOREFULL(store, 17, 9, STOREDIM, STOREDIM, 0) = val; 
+  } 
+
+  { 
+    FPint_0_9 fp_0(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=0 
+    FPint_1_9 fp_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=1 
+
+    QUICKDouble val; 
+
+#ifdef REG_FP 
+    val = PBx * fp_0.x_18_2 - PCx * fp_1.x_18_2; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 18, 2, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 18, 2, STOREDIM, STOREDIM, 1); 
+#endif 
+    LOCSTOREFULL(store, 18, 4, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_0.x_18_3 - PCy * fp_1.x_18_3; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 18, 3, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 18, 3, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 3.000000 * (dp_0.x_8_3 - dp_1.x_8_3); 
+    LOCSTOREFULL(store, 18, 5, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_0.x_18_3 - PCx * fp_1.x_18_3; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 18, 3, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 18, 3, STOREDIM, STOREDIM, 1); 
+#endif 
+    LOCSTOREFULL(store, 18, 6, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_0.x_18_1 - PCx * fp_1.x_18_1; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 18, 1, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 18, 1, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_0.x_18_0 - fs_1.x_18_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 18, 0, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 18, 0, STOREDIM, STOREDIM, 1)); 
+#endif 
+    LOCSTOREFULL(store, 18, 7, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_0.x_18_2 - PCy * fp_1.x_18_2; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 18, 2, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 18, 2, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_0.x_18_0 - fs_1.x_18_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 18, 0, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 18, 0, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 3.000000 * (dp_0.x_8_2 - dp_1.x_8_2); 
+    LOCSTOREFULL(store, 18, 8, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBz * fp_0.x_18_3 - PCz * fp_1.x_18_3; 
+#else 
+    val = PBz * LOCSTOREFULL(store, 18, 3, STOREDIM, STOREDIM, 0) - PCz * LOCSTOREFULL(store, 18, 3, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_0.x_18_0 - fs_1.x_18_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 18, 0, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 18, 0, STOREDIM, STOREDIM, 1)); 
+#endif 
+    LOCSTOREFULL(store, 18, 9, STOREDIM, STOREDIM, 0) = val; 
+  } 
+
+  { 
+    FPint_0_10 fp_0(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=0 
+    FPint_1_10 fp_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=1 
+
+    QUICKDouble val; 
+
+#ifdef REG_FP 
+    val = PBx * fp_0.x_19_2 - PCx * fp_1.x_19_2; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 19, 2, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 19, 2, STOREDIM, STOREDIM, 1); 
+#endif 
+    LOCSTOREFULL(store, 19, 4, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_0.x_19_3 - PCy * fp_1.x_19_3; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 19, 3, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 19, 3, STOREDIM, STOREDIM, 1); 
+#endif 
+    LOCSTOREFULL(store, 19, 5, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_0.x_19_3 - PCx * fp_1.x_19_3; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 19, 3, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 19, 3, STOREDIM, STOREDIM, 1); 
+#endif 
+    LOCSTOREFULL(store, 19, 6, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_0.x_19_1 - PCx * fp_1.x_19_1; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 19, 1, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 19, 1, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_0.x_19_0 - fs_1.x_19_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 19, 0, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 19, 0, STOREDIM, STOREDIM, 1)); 
+#endif 
+    LOCSTOREFULL(store, 19, 7, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_0.x_19_2 - PCy * fp_1.x_19_2; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 19, 2, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 19, 2, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_0.x_19_0 - fs_1.x_19_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 19, 0, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 19, 0, STOREDIM, STOREDIM, 1)); 
+#endif 
+    LOCSTOREFULL(store, 19, 8, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_FP 
+    val = PBz * fp_0.x_19_3 - PCz * fp_1.x_19_3; 
+#else 
+    val = PBz * LOCSTOREFULL(store, 19, 3, STOREDIM, STOREDIM, 0) - PCz * LOCSTOREFULL(store, 19, 3, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_0.x_19_0 - fs_1.x_19_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 19, 0, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 19, 0, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 3.000000 * (dp_0.x_9_3 - dp_1.x_9_3); 
+    LOCSTOREFULL(store, 19, 9, STOREDIM, STOREDIM, 0) = val; 
+  } 
+
 #else 
   QUICKDouble val; 
 #ifdef REG_FP 
@@ -5122,6 +7542,7 @@ __device__ __inline__ FDint_0::FDint_0(QUICKDouble PAx, QUICKDouble PAy, QUICKDo
   val += TwoZetaInv * 3.000000 * (dp_0.x_9_3 - dp_1.x_9_3); 
   LOCSTOREFULL(store, 19, 9, STOREDIM, STOREDIM, 0) = val; 
 #endif 
+#endif 
 
  } 
 
@@ -5132,10 +7553,14 @@ __device__ __inline__ FDint_1::FDint_1(QUICKDouble PAx, QUICKDouble PAy, QUICKDo
 
   DPint_1 dp_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|p] for m=1 
   FSint_1 fs_1(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=1 
+#ifndef USE_PARTIAL_FP 
   FPint_1 fp_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=1 
+#endif 
   DPint_2 dp_2(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [d|p] for m=2 
   FSint_2 fs_2(PAx, PAy, PAz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|s] for m=2 
+#ifndef USE_PARTIAL_FP 
   FPint_2 fp_2(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=2 
+#endif 
 
 #ifdef REG_FD 
   x_10_4 = PBx * fp_1.x_10_2 - PCx * fp_2.x_10_2; 
@@ -5264,6 +7689,634 @@ __device__ __inline__ FDint_1::FDint_1(QUICKDouble PAx, QUICKDouble PAy, QUICKDo
   x_19_9 = PBz * fp_1.x_19_3 - PCz * fp_2.x_19_3; 
   x_19_9 += TwoZetaInv * (fs_1.x_19_0 - fs_2.x_19_0); 
   x_19_9 += TwoZetaInv * 3.000000 * (dp_1.x_9_3 - dp_2.x_9_3); 
+#else 
+#ifdef USE_PARTIAL_FP 
+  { 
+    FPint_1_1 fp_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=1 
+    FPint_2_1 fp_2(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=2 
+
+    QUICKDouble val; 
+
+#ifdef REG_FP 
+    val = PBx * fp_1.x_10_2 - PCx * fp_2.x_10_2; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 10, 2, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 10, 2, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_1.x_5_2 - dp_2.x_5_2); 
+    LOCSTOREFULL(store, 10, 4, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_1.x_10_3 - PCy * fp_2.x_10_3; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 10, 3, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 10, 3, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_1.x_6_3 - dp_2.x_6_3); 
+    LOCSTOREFULL(store, 10, 5, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_1.x_10_3 - PCx * fp_2.x_10_3; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 10, 3, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 10, 3, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_1.x_5_3 - dp_2.x_5_3); 
+    LOCSTOREFULL(store, 10, 6, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_1.x_10_1 - PCx * fp_2.x_10_1; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 10, 1, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 10, 1, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_1.x_10_0 - fs_2.x_10_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 10, 0, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 10, 0, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_1.x_5_1 - dp_2.x_5_1); 
+    LOCSTOREFULL(store, 10, 7, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_1.x_10_2 - PCy * fp_2.x_10_2; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 10, 2, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 10, 2, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_1.x_10_0 - fs_2.x_10_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 10, 0, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 10, 0, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_1.x_6_2 - dp_2.x_6_2); 
+    LOCSTOREFULL(store, 10, 8, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBz * fp_1.x_10_3 - PCz * fp_2.x_10_3; 
+#else 
+    val = PBz * LOCSTOREFULL(store, 10, 3, STOREDIM, STOREDIM, 1) - PCz * LOCSTOREFULL(store, 10, 3, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_1.x_10_0 - fs_2.x_10_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 10, 0, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 10, 0, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_1.x_4_3 - dp_2.x_4_3); 
+    LOCSTOREFULL(store, 10, 9, STOREDIM, STOREDIM, 1) = val; 
+  } 
+
+  { 
+    FPint_1_2 fp_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=1 
+    FPint_2_2 fp_2(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=2 
+
+    QUICKDouble val; 
+
+#ifdef REG_FP 
+    val = PBx * fp_1.x_11_2 - PCx * fp_2.x_11_2; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 11, 2, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 11, 2, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (dp_1.x_4_2 - dp_2.x_4_2); 
+    LOCSTOREFULL(store, 11, 4, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_1.x_11_3 - PCy * fp_2.x_11_3; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 11, 3, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 11, 3, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_1.x_7_3 - dp_2.x_7_3); 
+    LOCSTOREFULL(store, 11, 5, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_1.x_11_3 - PCx * fp_2.x_11_3; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 11, 3, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 11, 3, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (dp_1.x_4_3 - dp_2.x_4_3); 
+    LOCSTOREFULL(store, 11, 6, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_1.x_11_1 - PCx * fp_2.x_11_1; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 11, 1, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 11, 1, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_1.x_11_0 - fs_2.x_11_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 11, 0, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 11, 0, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (dp_1.x_4_1 - dp_2.x_4_1); 
+    LOCSTOREFULL(store, 11, 7, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_1.x_11_2 - PCy * fp_2.x_11_2; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 11, 2, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 11, 2, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_1.x_11_0 - fs_2.x_11_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 11, 0, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 11, 0, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_1.x_7_2 - dp_2.x_7_2); 
+    LOCSTOREFULL(store, 11, 8, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBz * fp_1.x_11_3 - PCz * fp_2.x_11_3; 
+#else 
+    val = PBz * LOCSTOREFULL(store, 11, 3, STOREDIM, STOREDIM, 1) - PCz * LOCSTOREFULL(store, 11, 3, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_1.x_11_0 - fs_2.x_11_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 11, 0, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 11, 0, STOREDIM, STOREDIM, 2)); 
+#endif 
+    LOCSTOREFULL(store, 11, 9, STOREDIM, STOREDIM, 1) = val; 
+  } 
+
+  { 
+    FPint_1_3 fp_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=1 
+    FPint_2_3 fp_2(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=2 
+
+    QUICKDouble val; 
+
+#ifdef REG_FP 
+    val = PBx * fp_1.x_12_2 - PCx * fp_2.x_12_2; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 12, 2, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 12, 2, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_1.x_8_2 - dp_2.x_8_2); 
+    LOCSTOREFULL(store, 12, 4, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_1.x_12_3 - PCy * fp_2.x_12_3; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 12, 3, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 12, 3, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (dp_1.x_4_3 - dp_2.x_4_3); 
+    LOCSTOREFULL(store, 12, 5, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_1.x_12_3 - PCx * fp_2.x_12_3; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 12, 3, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 12, 3, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_1.x_8_3 - dp_2.x_8_3); 
+    LOCSTOREFULL(store, 12, 6, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_1.x_12_1 - PCx * fp_2.x_12_1; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 12, 1, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 12, 1, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_1.x_12_0 - fs_2.x_12_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 12, 0, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 12, 0, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_1.x_8_1 - dp_2.x_8_1); 
+    LOCSTOREFULL(store, 12, 7, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_1.x_12_2 - PCy * fp_2.x_12_2; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 12, 2, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 12, 2, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_1.x_12_0 - fs_2.x_12_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 12, 0, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 12, 0, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (dp_1.x_4_2 - dp_2.x_4_2); 
+    LOCSTOREFULL(store, 12, 8, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBz * fp_1.x_12_3 - PCz * fp_2.x_12_3; 
+#else 
+    val = PBz * LOCSTOREFULL(store, 12, 3, STOREDIM, STOREDIM, 1) - PCz * LOCSTOREFULL(store, 12, 3, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_1.x_12_0 - fs_2.x_12_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 12, 0, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 12, 0, STOREDIM, STOREDIM, 2)); 
+#endif 
+    LOCSTOREFULL(store, 12, 9, STOREDIM, STOREDIM, 1) = val; 
+  } 
+
+  { 
+    FPint_1_4 fp_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=1 
+    FPint_2_4 fp_2(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=2 
+
+    QUICKDouble val; 
+
+#ifdef REG_FP 
+    val = PBx * fp_1.x_13_2 - PCx * fp_2.x_13_2; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 13, 2, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 13, 2, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (dp_1.x_6_2 - dp_2.x_6_2); 
+    LOCSTOREFULL(store, 13, 4, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_1.x_13_3 - PCy * fp_2.x_13_3; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 13, 3, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 13, 3, STOREDIM, STOREDIM, 2); 
+#endif 
+    LOCSTOREFULL(store, 13, 5, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_1.x_13_3 - PCx * fp_2.x_13_3; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 13, 3, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 13, 3, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (dp_1.x_6_3 - dp_2.x_6_3); 
+    LOCSTOREFULL(store, 13, 6, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_1.x_13_1 - PCx * fp_2.x_13_1; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 13, 1, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 13, 1, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_1.x_13_0 - fs_2.x_13_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 13, 0, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 13, 0, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (dp_1.x_6_1 - dp_2.x_6_1); 
+    LOCSTOREFULL(store, 13, 7, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_1.x_13_2 - PCy * fp_2.x_13_2; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 13, 2, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 13, 2, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_1.x_13_0 - fs_2.x_13_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 13, 0, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 13, 0, STOREDIM, STOREDIM, 2)); 
+#endif 
+    LOCSTOREFULL(store, 13, 8, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBz * fp_1.x_13_3 - PCz * fp_2.x_13_3; 
+#else 
+    val = PBz * LOCSTOREFULL(store, 13, 3, STOREDIM, STOREDIM, 1) - PCz * LOCSTOREFULL(store, 13, 3, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_1.x_13_0 - fs_2.x_13_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 13, 0, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 13, 0, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_1.x_7_3 - dp_2.x_7_3); 
+    LOCSTOREFULL(store, 13, 9, STOREDIM, STOREDIM, 1) = val; 
+  } 
+
+  { 
+    FPint_1_5 fp_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=1 
+    FPint_2_5 fp_2(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=2 
+
+    QUICKDouble val; 
+
+#ifdef REG_FP 
+    val = PBx * fp_1.x_14_2 - PCx * fp_2.x_14_2; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 14, 2, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 14, 2, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_1.x_9_2 - dp_2.x_9_2); 
+    LOCSTOREFULL(store, 14, 4, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_1.x_14_3 - PCy * fp_2.x_14_3; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 14, 3, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 14, 3, STOREDIM, STOREDIM, 2); 
+#endif 
+    LOCSTOREFULL(store, 14, 5, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_1.x_14_3 - PCx * fp_2.x_14_3; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 14, 3, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 14, 3, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_1.x_9_3 - dp_2.x_9_3); 
+    LOCSTOREFULL(store, 14, 6, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_1.x_14_1 - PCx * fp_2.x_14_1; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 14, 1, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 14, 1, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_1.x_14_0 - fs_2.x_14_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 14, 0, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 14, 0, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_1.x_9_1 - dp_2.x_9_1); 
+    LOCSTOREFULL(store, 14, 7, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_1.x_14_2 - PCy * fp_2.x_14_2; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 14, 2, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 14, 2, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_1.x_14_0 - fs_2.x_14_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 14, 0, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 14, 0, STOREDIM, STOREDIM, 2)); 
+#endif 
+    LOCSTOREFULL(store, 14, 8, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBz * fp_1.x_14_3 - PCz * fp_2.x_14_3; 
+#else 
+    val = PBz * LOCSTOREFULL(store, 14, 3, STOREDIM, STOREDIM, 1) - PCz * LOCSTOREFULL(store, 14, 3, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_1.x_14_0 - fs_2.x_14_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 14, 0, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 14, 0, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (dp_1.x_6_3 - dp_2.x_6_3); 
+    LOCSTOREFULL(store, 14, 9, STOREDIM, STOREDIM, 1) = val; 
+  } 
+
+  { 
+    FPint_1_6 fp_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=1 
+    FPint_2_6 fp_2(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=2 
+
+    QUICKDouble val; 
+
+#ifdef REG_FP 
+    val = PBx * fp_1.x_15_2 - PCx * fp_2.x_15_2; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 15, 2, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 15, 2, STOREDIM, STOREDIM, 2); 
+#endif 
+    LOCSTOREFULL(store, 15, 4, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_1.x_15_3 - PCy * fp_2.x_15_3; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 15, 3, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 15, 3, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (dp_1.x_5_3 - dp_2.x_5_3); 
+    LOCSTOREFULL(store, 15, 5, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_1.x_15_3 - PCx * fp_2.x_15_3; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 15, 3, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 15, 3, STOREDIM, STOREDIM, 2); 
+#endif 
+    LOCSTOREFULL(store, 15, 6, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_1.x_15_1 - PCx * fp_2.x_15_1; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 15, 1, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 15, 1, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_1.x_15_0 - fs_2.x_15_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 15, 0, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 15, 0, STOREDIM, STOREDIM, 2)); 
+#endif 
+    LOCSTOREFULL(store, 15, 7, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_1.x_15_2 - PCy * fp_2.x_15_2; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 15, 2, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 15, 2, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_1.x_15_0 - fs_2.x_15_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 15, 0, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 15, 0, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (dp_1.x_5_2 - dp_2.x_5_2); 
+    LOCSTOREFULL(store, 15, 8, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBz * fp_1.x_15_3 - PCz * fp_2.x_15_3; 
+#else 
+    val = PBz * LOCSTOREFULL(store, 15, 3, STOREDIM, STOREDIM, 1) - PCz * LOCSTOREFULL(store, 15, 3, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_1.x_15_0 - fs_2.x_15_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 15, 0, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 15, 0, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_1.x_8_3 - dp_2.x_8_3); 
+    LOCSTOREFULL(store, 15, 9, STOREDIM, STOREDIM, 1) = val; 
+  } 
+
+  { 
+    FPint_1_7 fp_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=1 
+    FPint_2_7 fp_2(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=2 
+
+    QUICKDouble val; 
+
+#ifdef REG_FP 
+    val = PBx * fp_1.x_16_2 - PCx * fp_2.x_16_2; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 16, 2, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 16, 2, STOREDIM, STOREDIM, 2); 
+#endif 
+    LOCSTOREFULL(store, 16, 4, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_1.x_16_3 - PCy * fp_2.x_16_3; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 16, 3, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 16, 3, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_1.x_9_3 - dp_2.x_9_3); 
+    LOCSTOREFULL(store, 16, 5, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_1.x_16_3 - PCx * fp_2.x_16_3; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 16, 3, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 16, 3, STOREDIM, STOREDIM, 2); 
+#endif 
+    LOCSTOREFULL(store, 16, 6, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_1.x_16_1 - PCx * fp_2.x_16_1; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 16, 1, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 16, 1, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_1.x_16_0 - fs_2.x_16_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 16, 0, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 16, 0, STOREDIM, STOREDIM, 2)); 
+#endif 
+    LOCSTOREFULL(store, 16, 7, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_1.x_16_2 - PCy * fp_2.x_16_2; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 16, 2, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 16, 2, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_1.x_16_0 - fs_2.x_16_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 16, 0, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 16, 0, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (dp_1.x_9_2 - dp_2.x_9_2); 
+    LOCSTOREFULL(store, 16, 8, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBz * fp_1.x_16_3 - PCz * fp_2.x_16_3; 
+#else 
+    val = PBz * LOCSTOREFULL(store, 16, 3, STOREDIM, STOREDIM, 1) - PCz * LOCSTOREFULL(store, 16, 3, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_1.x_16_0 - fs_2.x_16_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 16, 0, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 16, 0, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (dp_1.x_5_3 - dp_2.x_5_3); 
+    LOCSTOREFULL(store, 16, 9, STOREDIM, STOREDIM, 1) = val; 
+  } 
+
+  { 
+    FPint_1_8 fp_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=1 
+    FPint_2_8 fp_2(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=2 
+
+    QUICKDouble val; 
+
+#ifdef REG_FP 
+    val = PBx * fp_1.x_17_2 - PCx * fp_2.x_17_2; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 17, 2, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 17, 2, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 3.000000 * (dp_1.x_7_2 - dp_2.x_7_2); 
+    LOCSTOREFULL(store, 17, 4, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_1.x_17_3 - PCy * fp_2.x_17_3; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 17, 3, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 17, 3, STOREDIM, STOREDIM, 2); 
+#endif 
+    LOCSTOREFULL(store, 17, 5, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_1.x_17_3 - PCx * fp_2.x_17_3; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 17, 3, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 17, 3, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 3.000000 * (dp_1.x_7_3 - dp_2.x_7_3); 
+    LOCSTOREFULL(store, 17, 6, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_1.x_17_1 - PCx * fp_2.x_17_1; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 17, 1, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 17, 1, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_1.x_17_0 - fs_2.x_17_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 17, 0, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 17, 0, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 3.000000 * (dp_1.x_7_1 - dp_2.x_7_1); 
+    LOCSTOREFULL(store, 17, 7, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_1.x_17_2 - PCy * fp_2.x_17_2; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 17, 2, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 17, 2, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_1.x_17_0 - fs_2.x_17_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 17, 0, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 17, 0, STOREDIM, STOREDIM, 2)); 
+#endif 
+    LOCSTOREFULL(store, 17, 8, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBz * fp_1.x_17_3 - PCz * fp_2.x_17_3; 
+#else 
+    val = PBz * LOCSTOREFULL(store, 17, 3, STOREDIM, STOREDIM, 1) - PCz * LOCSTOREFULL(store, 17, 3, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_1.x_17_0 - fs_2.x_17_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 17, 0, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 17, 0, STOREDIM, STOREDIM, 2)); 
+#endif 
+    LOCSTOREFULL(store, 17, 9, STOREDIM, STOREDIM, 1) = val; 
+  } 
+
+  { 
+    FPint_1_9 fp_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=1 
+    FPint_2_9 fp_2(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=2 
+
+    QUICKDouble val; 
+
+#ifdef REG_FP 
+    val = PBx * fp_1.x_18_2 - PCx * fp_2.x_18_2; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 18, 2, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 18, 2, STOREDIM, STOREDIM, 2); 
+#endif 
+    LOCSTOREFULL(store, 18, 4, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_1.x_18_3 - PCy * fp_2.x_18_3; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 18, 3, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 18, 3, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 3.000000 * (dp_1.x_8_3 - dp_2.x_8_3); 
+    LOCSTOREFULL(store, 18, 5, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_1.x_18_3 - PCx * fp_2.x_18_3; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 18, 3, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 18, 3, STOREDIM, STOREDIM, 2); 
+#endif 
+    LOCSTOREFULL(store, 18, 6, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_1.x_18_1 - PCx * fp_2.x_18_1; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 18, 1, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 18, 1, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_1.x_18_0 - fs_2.x_18_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 18, 0, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 18, 0, STOREDIM, STOREDIM, 2)); 
+#endif 
+    LOCSTOREFULL(store, 18, 7, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_1.x_18_2 - PCy * fp_2.x_18_2; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 18, 2, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 18, 2, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_1.x_18_0 - fs_2.x_18_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 18, 0, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 18, 0, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 3.000000 * (dp_1.x_8_2 - dp_2.x_8_2); 
+    LOCSTOREFULL(store, 18, 8, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBz * fp_1.x_18_3 - PCz * fp_2.x_18_3; 
+#else 
+    val = PBz * LOCSTOREFULL(store, 18, 3, STOREDIM, STOREDIM, 1) - PCz * LOCSTOREFULL(store, 18, 3, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_1.x_18_0 - fs_2.x_18_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 18, 0, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 18, 0, STOREDIM, STOREDIM, 2)); 
+#endif 
+    LOCSTOREFULL(store, 18, 9, STOREDIM, STOREDIM, 1) = val; 
+  } 
+
+  { 
+    FPint_1_10 fp_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=1 
+    FPint_2_10 fp_2(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [f|p] for m=2 
+
+    QUICKDouble val; 
+
+#ifdef REG_FP 
+    val = PBx * fp_1.x_19_2 - PCx * fp_2.x_19_2; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 19, 2, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 19, 2, STOREDIM, STOREDIM, 2); 
+#endif 
+    LOCSTOREFULL(store, 19, 4, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_1.x_19_3 - PCy * fp_2.x_19_3; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 19, 3, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 19, 3, STOREDIM, STOREDIM, 2); 
+#endif 
+    LOCSTOREFULL(store, 19, 5, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_1.x_19_3 - PCx * fp_2.x_19_3; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 19, 3, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 19, 3, STOREDIM, STOREDIM, 2); 
+#endif 
+    LOCSTOREFULL(store, 19, 6, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBx * fp_1.x_19_1 - PCx * fp_2.x_19_1; 
+#else 
+    val = PBx * LOCSTOREFULL(store, 19, 1, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 19, 1, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_1.x_19_0 - fs_2.x_19_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 19, 0, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 19, 0, STOREDIM, STOREDIM, 2)); 
+#endif 
+    LOCSTOREFULL(store, 19, 7, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBy * fp_1.x_19_2 - PCy * fp_2.x_19_2; 
+#else 
+    val = PBy * LOCSTOREFULL(store, 19, 2, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 19, 2, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_1.x_19_0 - fs_2.x_19_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 19, 0, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 19, 0, STOREDIM, STOREDIM, 2)); 
+#endif 
+    LOCSTOREFULL(store, 19, 8, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_FP 
+    val = PBz * fp_1.x_19_3 - PCz * fp_2.x_19_3; 
+#else 
+    val = PBz * LOCSTOREFULL(store, 19, 3, STOREDIM, STOREDIM, 1) - PCz * LOCSTOREFULL(store, 19, 3, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_FS 
+    val += TwoZetaInv * (fs_1.x_19_0 - fs_2.x_19_0); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 19, 0, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 19, 0, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 3.000000 * (dp_1.x_9_3 - dp_2.x_9_3); 
+    LOCSTOREFULL(store, 19, 9, STOREDIM, STOREDIM, 1) = val; 
+  } 
+
 #else 
   QUICKDouble val; 
 #ifdef REG_FP 
@@ -5813,6 +8866,7 @@ __device__ __inline__ FDint_1::FDint_1(QUICKDouble PAx, QUICKDouble PAy, QUICKDo
   val += TwoZetaInv * 3.000000 * (dp_1.x_9_3 - dp_2.x_9_3); 
   LOCSTOREFULL(store, 19, 9, STOREDIM, STOREDIM, 1) = val; 
 #endif 
+#endif 
 
  } 
 
@@ -5823,10 +8877,14 @@ __device__ __inline__ DFint_0::DFint_0(QUICKDouble PAx, QUICKDouble PAy, QUICKDo
 
   PDint_0 pd_0(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|d] for m=0 
   SFint_0 sf_0(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=0 
+#ifndef USE_PARTIAL_PF 
   PFint_0 pf_0(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=0 
+#endif 
   PDint_1 pd_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|d] for m=1 
   SFint_1 sf_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=1 
+#ifndef USE_PARTIAL_PF 
   PFint_1 pf_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=1 
+#endif 
 
 #ifdef REG_DF 
   x_4_10 = PAx * pf_0.x_2_10 - PCx * pf_1.x_2_10; 
@@ -5955,6 +9013,634 @@ __device__ __inline__ DFint_0::DFint_0(QUICKDouble PAx, QUICKDouble PAy, QUICKDo
   x_9_19 = PAz * pf_0.x_3_19 - PCz * pf_1.x_3_19; 
   x_9_19 += TwoZetaInv * (sf_0.x_0_19 - sf_1.x_0_19); 
   x_9_19 += TwoZetaInv * 3.000000 * (pd_0.x_3_9 - pd_1.x_3_9); 
+#else 
+#ifdef USE_PARTIAL_PF 
+  { 
+    PFint_0_1 pf_0(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=0 
+    PFint_1_1 pf_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=1 
+
+    QUICKDouble val; 
+
+#ifdef REG_PF 
+    val = PAx * pf_0.x_2_10 - PCx * pf_1.x_2_10; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 2, 10, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 2, 10, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_0.x_2_5 - pd_1.x_2_5); 
+    LOCSTOREFULL(store, 4, 10, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_0.x_3_10 - PCy * pf_1.x_3_10; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 3, 10, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 3, 10, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_0.x_3_6 - pd_1.x_3_6); 
+    LOCSTOREFULL(store, 5, 10, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_0.x_3_10 - PCx * pf_1.x_3_10; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 3, 10, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 3, 10, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_0.x_3_5 - pd_1.x_3_5); 
+    LOCSTOREFULL(store, 6, 10, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_0.x_1_10 - PCx * pf_1.x_1_10; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 1, 10, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 1, 10, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_0.x_0_10 - sf_1.x_0_10); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 10, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 0, 10, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_0.x_1_5 - pd_1.x_1_5); 
+    LOCSTOREFULL(store, 7, 10, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_0.x_2_10 - PCy * pf_1.x_2_10; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 2, 10, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 2, 10, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_0.x_0_10 - sf_1.x_0_10); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 10, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 0, 10, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_0.x_2_6 - pd_1.x_2_6); 
+    LOCSTOREFULL(store, 8, 10, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAz * pf_0.x_3_10 - PCz * pf_1.x_3_10; 
+#else 
+    val = PAz * LOCSTOREFULL(store, 3, 10, STOREDIM, STOREDIM, 0) - PCz * LOCSTOREFULL(store, 3, 10, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_0.x_0_10 - sf_1.x_0_10); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 10, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 0, 10, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_0.x_3_4 - pd_1.x_3_4); 
+    LOCSTOREFULL(store, 9, 10, STOREDIM, STOREDIM, 0) = val; 
+  } 
+
+  { 
+    PFint_0_2 pf_0(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=0 
+    PFint_1_2 pf_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=1 
+
+    QUICKDouble val; 
+
+#ifdef REG_PF 
+    val = PAx * pf_0.x_2_11 - PCx * pf_1.x_2_11; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 2, 11, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 2, 11, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (pd_0.x_2_4 - pd_1.x_2_4); 
+    LOCSTOREFULL(store, 4, 11, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_0.x_3_11 - PCy * pf_1.x_3_11; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 3, 11, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 3, 11, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_0.x_3_7 - pd_1.x_3_7); 
+    LOCSTOREFULL(store, 5, 11, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_0.x_3_11 - PCx * pf_1.x_3_11; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 3, 11, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 3, 11, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (pd_0.x_3_4 - pd_1.x_3_4); 
+    LOCSTOREFULL(store, 6, 11, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_0.x_1_11 - PCx * pf_1.x_1_11; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 1, 11, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 1, 11, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_0.x_0_11 - sf_1.x_0_11); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 11, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 0, 11, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (pd_0.x_1_4 - pd_1.x_1_4); 
+    LOCSTOREFULL(store, 7, 11, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_0.x_2_11 - PCy * pf_1.x_2_11; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 2, 11, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 2, 11, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_0.x_0_11 - sf_1.x_0_11); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 11, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 0, 11, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_0.x_2_7 - pd_1.x_2_7); 
+    LOCSTOREFULL(store, 8, 11, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAz * pf_0.x_3_11 - PCz * pf_1.x_3_11; 
+#else 
+    val = PAz * LOCSTOREFULL(store, 3, 11, STOREDIM, STOREDIM, 0) - PCz * LOCSTOREFULL(store, 3, 11, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_0.x_0_11 - sf_1.x_0_11); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 11, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 0, 11, STOREDIM, STOREDIM, 1)); 
+#endif 
+    LOCSTOREFULL(store, 9, 11, STOREDIM, STOREDIM, 0) = val; 
+  } 
+
+  { 
+    PFint_0_3 pf_0(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=0 
+    PFint_1_3 pf_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=1 
+
+    QUICKDouble val; 
+
+#ifdef REG_PF 
+    val = PAx * pf_0.x_2_12 - PCx * pf_1.x_2_12; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 2, 12, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 2, 12, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_0.x_2_8 - pd_1.x_2_8); 
+    LOCSTOREFULL(store, 4, 12, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_0.x_3_12 - PCy * pf_1.x_3_12; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 3, 12, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 3, 12, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (pd_0.x_3_4 - pd_1.x_3_4); 
+    LOCSTOREFULL(store, 5, 12, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_0.x_3_12 - PCx * pf_1.x_3_12; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 3, 12, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 3, 12, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_0.x_3_8 - pd_1.x_3_8); 
+    LOCSTOREFULL(store, 6, 12, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_0.x_1_12 - PCx * pf_1.x_1_12; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 1, 12, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 1, 12, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_0.x_0_12 - sf_1.x_0_12); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 12, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 0, 12, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_0.x_1_8 - pd_1.x_1_8); 
+    LOCSTOREFULL(store, 7, 12, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_0.x_2_12 - PCy * pf_1.x_2_12; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 2, 12, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 2, 12, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_0.x_0_12 - sf_1.x_0_12); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 12, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 0, 12, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (pd_0.x_2_4 - pd_1.x_2_4); 
+    LOCSTOREFULL(store, 8, 12, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAz * pf_0.x_3_12 - PCz * pf_1.x_3_12; 
+#else 
+    val = PAz * LOCSTOREFULL(store, 3, 12, STOREDIM, STOREDIM, 0) - PCz * LOCSTOREFULL(store, 3, 12, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_0.x_0_12 - sf_1.x_0_12); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 12, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 0, 12, STOREDIM, STOREDIM, 1)); 
+#endif 
+    LOCSTOREFULL(store, 9, 12, STOREDIM, STOREDIM, 0) = val; 
+  } 
+
+  { 
+    PFint_0_4 pf_0(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=0 
+    PFint_1_4 pf_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=1 
+
+    QUICKDouble val; 
+
+#ifdef REG_PF 
+    val = PAx * pf_0.x_2_13 - PCx * pf_1.x_2_13; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 2, 13, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 2, 13, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (pd_0.x_2_6 - pd_1.x_2_6); 
+    LOCSTOREFULL(store, 4, 13, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_0.x_3_13 - PCy * pf_1.x_3_13; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 3, 13, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 3, 13, STOREDIM, STOREDIM, 1); 
+#endif 
+    LOCSTOREFULL(store, 5, 13, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_0.x_3_13 - PCx * pf_1.x_3_13; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 3, 13, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 3, 13, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (pd_0.x_3_6 - pd_1.x_3_6); 
+    LOCSTOREFULL(store, 6, 13, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_0.x_1_13 - PCx * pf_1.x_1_13; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 1, 13, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 1, 13, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_0.x_0_13 - sf_1.x_0_13); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 13, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 0, 13, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (pd_0.x_1_6 - pd_1.x_1_6); 
+    LOCSTOREFULL(store, 7, 13, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_0.x_2_13 - PCy * pf_1.x_2_13; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 2, 13, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 2, 13, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_0.x_0_13 - sf_1.x_0_13); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 13, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 0, 13, STOREDIM, STOREDIM, 1)); 
+#endif 
+    LOCSTOREFULL(store, 8, 13, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAz * pf_0.x_3_13 - PCz * pf_1.x_3_13; 
+#else 
+    val = PAz * LOCSTOREFULL(store, 3, 13, STOREDIM, STOREDIM, 0) - PCz * LOCSTOREFULL(store, 3, 13, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_0.x_0_13 - sf_1.x_0_13); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 13, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 0, 13, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_0.x_3_7 - pd_1.x_3_7); 
+    LOCSTOREFULL(store, 9, 13, STOREDIM, STOREDIM, 0) = val; 
+  } 
+
+  { 
+    PFint_0_5 pf_0(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=0 
+    PFint_1_5 pf_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=1 
+
+    QUICKDouble val; 
+
+#ifdef REG_PF 
+    val = PAx * pf_0.x_2_14 - PCx * pf_1.x_2_14; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 2, 14, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 2, 14, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_0.x_2_9 - pd_1.x_2_9); 
+    LOCSTOREFULL(store, 4, 14, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_0.x_3_14 - PCy * pf_1.x_3_14; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 3, 14, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 3, 14, STOREDIM, STOREDIM, 1); 
+#endif 
+    LOCSTOREFULL(store, 5, 14, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_0.x_3_14 - PCx * pf_1.x_3_14; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 3, 14, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 3, 14, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_0.x_3_9 - pd_1.x_3_9); 
+    LOCSTOREFULL(store, 6, 14, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_0.x_1_14 - PCx * pf_1.x_1_14; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 1, 14, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 1, 14, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_0.x_0_14 - sf_1.x_0_14); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 14, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 0, 14, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_0.x_1_9 - pd_1.x_1_9); 
+    LOCSTOREFULL(store, 7, 14, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_0.x_2_14 - PCy * pf_1.x_2_14; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 2, 14, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 2, 14, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_0.x_0_14 - sf_1.x_0_14); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 14, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 0, 14, STOREDIM, STOREDIM, 1)); 
+#endif 
+    LOCSTOREFULL(store, 8, 14, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAz * pf_0.x_3_14 - PCz * pf_1.x_3_14; 
+#else 
+    val = PAz * LOCSTOREFULL(store, 3, 14, STOREDIM, STOREDIM, 0) - PCz * LOCSTOREFULL(store, 3, 14, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_0.x_0_14 - sf_1.x_0_14); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 14, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 0, 14, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (pd_0.x_3_6 - pd_1.x_3_6); 
+    LOCSTOREFULL(store, 9, 14, STOREDIM, STOREDIM, 0) = val; 
+  } 
+
+  { 
+    PFint_0_6 pf_0(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=0 
+    PFint_1_6 pf_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=1 
+
+    QUICKDouble val; 
+
+#ifdef REG_PF 
+    val = PAx * pf_0.x_2_15 - PCx * pf_1.x_2_15; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 2, 15, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 2, 15, STOREDIM, STOREDIM, 1); 
+#endif 
+    LOCSTOREFULL(store, 4, 15, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_0.x_3_15 - PCy * pf_1.x_3_15; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 3, 15, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 3, 15, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (pd_0.x_3_5 - pd_1.x_3_5); 
+    LOCSTOREFULL(store, 5, 15, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_0.x_3_15 - PCx * pf_1.x_3_15; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 3, 15, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 3, 15, STOREDIM, STOREDIM, 1); 
+#endif 
+    LOCSTOREFULL(store, 6, 15, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_0.x_1_15 - PCx * pf_1.x_1_15; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 1, 15, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 1, 15, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_0.x_0_15 - sf_1.x_0_15); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 15, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 0, 15, STOREDIM, STOREDIM, 1)); 
+#endif 
+    LOCSTOREFULL(store, 7, 15, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_0.x_2_15 - PCy * pf_1.x_2_15; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 2, 15, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 2, 15, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_0.x_0_15 - sf_1.x_0_15); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 15, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 0, 15, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (pd_0.x_2_5 - pd_1.x_2_5); 
+    LOCSTOREFULL(store, 8, 15, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAz * pf_0.x_3_15 - PCz * pf_1.x_3_15; 
+#else 
+    val = PAz * LOCSTOREFULL(store, 3, 15, STOREDIM, STOREDIM, 0) - PCz * LOCSTOREFULL(store, 3, 15, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_0.x_0_15 - sf_1.x_0_15); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 15, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 0, 15, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_0.x_3_8 - pd_1.x_3_8); 
+    LOCSTOREFULL(store, 9, 15, STOREDIM, STOREDIM, 0) = val; 
+  } 
+
+  { 
+    PFint_0_7 pf_0(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=0 
+    PFint_1_7 pf_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=1 
+
+    QUICKDouble val; 
+
+#ifdef REG_PF 
+    val = PAx * pf_0.x_2_16 - PCx * pf_1.x_2_16; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 2, 16, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 2, 16, STOREDIM, STOREDIM, 1); 
+#endif 
+    LOCSTOREFULL(store, 4, 16, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_0.x_3_16 - PCy * pf_1.x_3_16; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 3, 16, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 3, 16, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_0.x_3_9 - pd_1.x_3_9); 
+    LOCSTOREFULL(store, 5, 16, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_0.x_3_16 - PCx * pf_1.x_3_16; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 3, 16, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 3, 16, STOREDIM, STOREDIM, 1); 
+#endif 
+    LOCSTOREFULL(store, 6, 16, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_0.x_1_16 - PCx * pf_1.x_1_16; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 1, 16, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 1, 16, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_0.x_0_16 - sf_1.x_0_16); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 16, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 0, 16, STOREDIM, STOREDIM, 1)); 
+#endif 
+    LOCSTOREFULL(store, 7, 16, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_0.x_2_16 - PCy * pf_1.x_2_16; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 2, 16, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 2, 16, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_0.x_0_16 - sf_1.x_0_16); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 16, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 0, 16, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_0.x_2_9 - pd_1.x_2_9); 
+    LOCSTOREFULL(store, 8, 16, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAz * pf_0.x_3_16 - PCz * pf_1.x_3_16; 
+#else 
+    val = PAz * LOCSTOREFULL(store, 3, 16, STOREDIM, STOREDIM, 0) - PCz * LOCSTOREFULL(store, 3, 16, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_0.x_0_16 - sf_1.x_0_16); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 16, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 0, 16, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (pd_0.x_3_5 - pd_1.x_3_5); 
+    LOCSTOREFULL(store, 9, 16, STOREDIM, STOREDIM, 0) = val; 
+  } 
+
+  { 
+    PFint_0_8 pf_0(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=0 
+    PFint_1_8 pf_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=1 
+
+    QUICKDouble val; 
+
+#ifdef REG_PF 
+    val = PAx * pf_0.x_2_17 - PCx * pf_1.x_2_17; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 2, 17, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 2, 17, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 3.000000 * (pd_0.x_2_7 - pd_1.x_2_7); 
+    LOCSTOREFULL(store, 4, 17, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_0.x_3_17 - PCy * pf_1.x_3_17; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 3, 17, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 3, 17, STOREDIM, STOREDIM, 1); 
+#endif 
+    LOCSTOREFULL(store, 5, 17, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_0.x_3_17 - PCx * pf_1.x_3_17; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 3, 17, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 3, 17, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 3.000000 * (pd_0.x_3_7 - pd_1.x_3_7); 
+    LOCSTOREFULL(store, 6, 17, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_0.x_1_17 - PCx * pf_1.x_1_17; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 1, 17, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 1, 17, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_0.x_0_17 - sf_1.x_0_17); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 17, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 0, 17, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 3.000000 * (pd_0.x_1_7 - pd_1.x_1_7); 
+    LOCSTOREFULL(store, 7, 17, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_0.x_2_17 - PCy * pf_1.x_2_17; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 2, 17, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 2, 17, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_0.x_0_17 - sf_1.x_0_17); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 17, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 0, 17, STOREDIM, STOREDIM, 1)); 
+#endif 
+    LOCSTOREFULL(store, 8, 17, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAz * pf_0.x_3_17 - PCz * pf_1.x_3_17; 
+#else 
+    val = PAz * LOCSTOREFULL(store, 3, 17, STOREDIM, STOREDIM, 0) - PCz * LOCSTOREFULL(store, 3, 17, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_0.x_0_17 - sf_1.x_0_17); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 17, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 0, 17, STOREDIM, STOREDIM, 1)); 
+#endif 
+    LOCSTOREFULL(store, 9, 17, STOREDIM, STOREDIM, 0) = val; 
+  } 
+
+  { 
+    PFint_0_9 pf_0(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=0 
+    PFint_1_9 pf_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=1 
+
+    QUICKDouble val; 
+
+#ifdef REG_PF 
+    val = PAx * pf_0.x_2_18 - PCx * pf_1.x_2_18; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 2, 18, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 2, 18, STOREDIM, STOREDIM, 1); 
+#endif 
+    LOCSTOREFULL(store, 4, 18, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_0.x_3_18 - PCy * pf_1.x_3_18; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 3, 18, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 3, 18, STOREDIM, STOREDIM, 1); 
+#endif 
+    val += TwoZetaInv * 3.000000 * (pd_0.x_3_8 - pd_1.x_3_8); 
+    LOCSTOREFULL(store, 5, 18, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_0.x_3_18 - PCx * pf_1.x_3_18; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 3, 18, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 3, 18, STOREDIM, STOREDIM, 1); 
+#endif 
+    LOCSTOREFULL(store, 6, 18, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_0.x_1_18 - PCx * pf_1.x_1_18; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 1, 18, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 1, 18, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_0.x_0_18 - sf_1.x_0_18); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 18, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 0, 18, STOREDIM, STOREDIM, 1)); 
+#endif 
+    LOCSTOREFULL(store, 7, 18, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_0.x_2_18 - PCy * pf_1.x_2_18; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 2, 18, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 2, 18, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_0.x_0_18 - sf_1.x_0_18); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 18, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 0, 18, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 3.000000 * (pd_0.x_2_8 - pd_1.x_2_8); 
+    LOCSTOREFULL(store, 8, 18, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAz * pf_0.x_3_18 - PCz * pf_1.x_3_18; 
+#else 
+    val = PAz * LOCSTOREFULL(store, 3, 18, STOREDIM, STOREDIM, 0) - PCz * LOCSTOREFULL(store, 3, 18, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_0.x_0_18 - sf_1.x_0_18); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 18, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 0, 18, STOREDIM, STOREDIM, 1)); 
+#endif 
+    LOCSTOREFULL(store, 9, 18, STOREDIM, STOREDIM, 0) = val; 
+  } 
+
+  { 
+    PFint_0_10 pf_0(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=0 
+    PFint_1_10 pf_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=1 
+
+    QUICKDouble val; 
+
+#ifdef REG_PF 
+    val = PAx * pf_0.x_2_19 - PCx * pf_1.x_2_19; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 2, 19, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 2, 19, STOREDIM, STOREDIM, 1); 
+#endif 
+    LOCSTOREFULL(store, 4, 19, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_0.x_3_19 - PCy * pf_1.x_3_19; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 3, 19, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 3, 19, STOREDIM, STOREDIM, 1); 
+#endif 
+    LOCSTOREFULL(store, 5, 19, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_0.x_3_19 - PCx * pf_1.x_3_19; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 3, 19, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 3, 19, STOREDIM, STOREDIM, 1); 
+#endif 
+    LOCSTOREFULL(store, 6, 19, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_0.x_1_19 - PCx * pf_1.x_1_19; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 1, 19, STOREDIM, STOREDIM, 0) - PCx * LOCSTOREFULL(store, 1, 19, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_0.x_0_19 - sf_1.x_0_19); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 19, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 0, 19, STOREDIM, STOREDIM, 1)); 
+#endif 
+    LOCSTOREFULL(store, 7, 19, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_0.x_2_19 - PCy * pf_1.x_2_19; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 2, 19, STOREDIM, STOREDIM, 0) - PCy * LOCSTOREFULL(store, 2, 19, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_0.x_0_19 - sf_1.x_0_19); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 19, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 0, 19, STOREDIM, STOREDIM, 1)); 
+#endif 
+    LOCSTOREFULL(store, 8, 19, STOREDIM, STOREDIM, 0) = val; 
+#ifdef REG_PF 
+    val = PAz * pf_0.x_3_19 - PCz * pf_1.x_3_19; 
+#else 
+    val = PAz * LOCSTOREFULL(store, 3, 19, STOREDIM, STOREDIM, 0) - PCz * LOCSTOREFULL(store, 3, 19, STOREDIM, STOREDIM, 1); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_0.x_0_19 - sf_1.x_0_19); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 19, STOREDIM, STOREDIM, 0) - LOCSTOREFULL(store, 0, 19, STOREDIM, STOREDIM, 1)); 
+#endif 
+    val += TwoZetaInv * 3.000000 * (pd_0.x_3_9 - pd_1.x_3_9); 
+    LOCSTOREFULL(store, 9, 19, STOREDIM, STOREDIM, 0) = val; 
+  } 
+
 #else 
   QUICKDouble val; 
 #ifdef REG_PF 
@@ -6504,6 +10190,7 @@ __device__ __inline__ DFint_0::DFint_0(QUICKDouble PAx, QUICKDouble PAy, QUICKDo
   val += TwoZetaInv * 3.000000 * (pd_0.x_3_9 - pd_1.x_3_9); 
   LOCSTOREFULL(store, 9, 19, STOREDIM, STOREDIM, 0) = val; 
 #endif 
+#endif 
 
  } 
 
@@ -6514,10 +10201,14 @@ __device__ __inline__ DFint_1::DFint_1(QUICKDouble PAx, QUICKDouble PAy, QUICKDo
 
   PDint_1 pd_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|d] for m=1 
   SFint_1 sf_1(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=1 
+#ifndef USE_PARTIAL_PF 
   PFint_1 pf_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=1 
+#endif 
   PDint_2 pd_2(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|d] for m=2 
   SFint_2 sf_2(PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [s|f] for m=2 
+#ifndef USE_PARTIAL_PF 
   PFint_2 pf_2(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=2 
+#endif 
 
 #ifdef REG_DF 
   x_4_10 = PAx * pf_1.x_2_10 - PCx * pf_2.x_2_10; 
@@ -6646,6 +10337,634 @@ __device__ __inline__ DFint_1::DFint_1(QUICKDouble PAx, QUICKDouble PAy, QUICKDo
   x_9_19 = PAz * pf_1.x_3_19 - PCz * pf_2.x_3_19; 
   x_9_19 += TwoZetaInv * (sf_1.x_0_19 - sf_2.x_0_19); 
   x_9_19 += TwoZetaInv * 3.000000 * (pd_1.x_3_9 - pd_2.x_3_9); 
+#else 
+#ifdef USE_PARTIAL_PF 
+  { 
+    PFint_1_1 pf_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=1 
+    PFint_2_1 pf_2(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=2 
+
+    QUICKDouble val; 
+
+#ifdef REG_PF 
+    val = PAx * pf_1.x_2_10 - PCx * pf_2.x_2_10; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 2, 10, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 2, 10, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_1.x_2_5 - pd_2.x_2_5); 
+    LOCSTOREFULL(store, 4, 10, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_1.x_3_10 - PCy * pf_2.x_3_10; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 3, 10, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 3, 10, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_1.x_3_6 - pd_2.x_3_6); 
+    LOCSTOREFULL(store, 5, 10, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_1.x_3_10 - PCx * pf_2.x_3_10; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 3, 10, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 3, 10, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_1.x_3_5 - pd_2.x_3_5); 
+    LOCSTOREFULL(store, 6, 10, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_1.x_1_10 - PCx * pf_2.x_1_10; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 1, 10, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 1, 10, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_1.x_0_10 - sf_2.x_0_10); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 10, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 0, 10, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_1.x_1_5 - pd_2.x_1_5); 
+    LOCSTOREFULL(store, 7, 10, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_1.x_2_10 - PCy * pf_2.x_2_10; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 2, 10, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 2, 10, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_1.x_0_10 - sf_2.x_0_10); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 10, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 0, 10, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_1.x_2_6 - pd_2.x_2_6); 
+    LOCSTOREFULL(store, 8, 10, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAz * pf_1.x_3_10 - PCz * pf_2.x_3_10; 
+#else 
+    val = PAz * LOCSTOREFULL(store, 3, 10, STOREDIM, STOREDIM, 1) - PCz * LOCSTOREFULL(store, 3, 10, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_1.x_0_10 - sf_2.x_0_10); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 10, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 0, 10, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_1.x_3_4 - pd_2.x_3_4); 
+    LOCSTOREFULL(store, 9, 10, STOREDIM, STOREDIM, 1) = val; 
+  } 
+
+  { 
+    PFint_1_2 pf_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=1 
+    PFint_2_2 pf_2(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=2 
+
+    QUICKDouble val; 
+
+#ifdef REG_PF 
+    val = PAx * pf_1.x_2_11 - PCx * pf_2.x_2_11; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 2, 11, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 2, 11, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (pd_1.x_2_4 - pd_2.x_2_4); 
+    LOCSTOREFULL(store, 4, 11, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_1.x_3_11 - PCy * pf_2.x_3_11; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 3, 11, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 3, 11, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_1.x_3_7 - pd_2.x_3_7); 
+    LOCSTOREFULL(store, 5, 11, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_1.x_3_11 - PCx * pf_2.x_3_11; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 3, 11, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 3, 11, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (pd_1.x_3_4 - pd_2.x_3_4); 
+    LOCSTOREFULL(store, 6, 11, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_1.x_1_11 - PCx * pf_2.x_1_11; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 1, 11, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 1, 11, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_1.x_0_11 - sf_2.x_0_11); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 11, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 0, 11, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (pd_1.x_1_4 - pd_2.x_1_4); 
+    LOCSTOREFULL(store, 7, 11, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_1.x_2_11 - PCy * pf_2.x_2_11; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 2, 11, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 2, 11, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_1.x_0_11 - sf_2.x_0_11); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 11, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 0, 11, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_1.x_2_7 - pd_2.x_2_7); 
+    LOCSTOREFULL(store, 8, 11, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAz * pf_1.x_3_11 - PCz * pf_2.x_3_11; 
+#else 
+    val = PAz * LOCSTOREFULL(store, 3, 11, STOREDIM, STOREDIM, 1) - PCz * LOCSTOREFULL(store, 3, 11, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_1.x_0_11 - sf_2.x_0_11); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 11, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 0, 11, STOREDIM, STOREDIM, 2)); 
+#endif 
+    LOCSTOREFULL(store, 9, 11, STOREDIM, STOREDIM, 1) = val; 
+  } 
+
+  { 
+    PFint_1_3 pf_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=1 
+    PFint_2_3 pf_2(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=2 
+
+    QUICKDouble val; 
+
+#ifdef REG_PF 
+    val = PAx * pf_1.x_2_12 - PCx * pf_2.x_2_12; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 2, 12, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 2, 12, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_1.x_2_8 - pd_2.x_2_8); 
+    LOCSTOREFULL(store, 4, 12, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_1.x_3_12 - PCy * pf_2.x_3_12; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 3, 12, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 3, 12, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (pd_1.x_3_4 - pd_2.x_3_4); 
+    LOCSTOREFULL(store, 5, 12, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_1.x_3_12 - PCx * pf_2.x_3_12; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 3, 12, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 3, 12, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_1.x_3_8 - pd_2.x_3_8); 
+    LOCSTOREFULL(store, 6, 12, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_1.x_1_12 - PCx * pf_2.x_1_12; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 1, 12, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 1, 12, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_1.x_0_12 - sf_2.x_0_12); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 12, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 0, 12, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_1.x_1_8 - pd_2.x_1_8); 
+    LOCSTOREFULL(store, 7, 12, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_1.x_2_12 - PCy * pf_2.x_2_12; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 2, 12, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 2, 12, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_1.x_0_12 - sf_2.x_0_12); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 12, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 0, 12, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (pd_1.x_2_4 - pd_2.x_2_4); 
+    LOCSTOREFULL(store, 8, 12, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAz * pf_1.x_3_12 - PCz * pf_2.x_3_12; 
+#else 
+    val = PAz * LOCSTOREFULL(store, 3, 12, STOREDIM, STOREDIM, 1) - PCz * LOCSTOREFULL(store, 3, 12, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_1.x_0_12 - sf_2.x_0_12); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 12, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 0, 12, STOREDIM, STOREDIM, 2)); 
+#endif 
+    LOCSTOREFULL(store, 9, 12, STOREDIM, STOREDIM, 1) = val; 
+  } 
+
+  { 
+    PFint_1_4 pf_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=1 
+    PFint_2_4 pf_2(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=2 
+
+    QUICKDouble val; 
+
+#ifdef REG_PF 
+    val = PAx * pf_1.x_2_13 - PCx * pf_2.x_2_13; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 2, 13, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 2, 13, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (pd_1.x_2_6 - pd_2.x_2_6); 
+    LOCSTOREFULL(store, 4, 13, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_1.x_3_13 - PCy * pf_2.x_3_13; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 3, 13, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 3, 13, STOREDIM, STOREDIM, 2); 
+#endif 
+    LOCSTOREFULL(store, 5, 13, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_1.x_3_13 - PCx * pf_2.x_3_13; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 3, 13, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 3, 13, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (pd_1.x_3_6 - pd_2.x_3_6); 
+    LOCSTOREFULL(store, 6, 13, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_1.x_1_13 - PCx * pf_2.x_1_13; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 1, 13, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 1, 13, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_1.x_0_13 - sf_2.x_0_13); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 13, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 0, 13, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (pd_1.x_1_6 - pd_2.x_1_6); 
+    LOCSTOREFULL(store, 7, 13, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_1.x_2_13 - PCy * pf_2.x_2_13; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 2, 13, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 2, 13, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_1.x_0_13 - sf_2.x_0_13); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 13, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 0, 13, STOREDIM, STOREDIM, 2)); 
+#endif 
+    LOCSTOREFULL(store, 8, 13, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAz * pf_1.x_3_13 - PCz * pf_2.x_3_13; 
+#else 
+    val = PAz * LOCSTOREFULL(store, 3, 13, STOREDIM, STOREDIM, 1) - PCz * LOCSTOREFULL(store, 3, 13, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_1.x_0_13 - sf_2.x_0_13); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 13, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 0, 13, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_1.x_3_7 - pd_2.x_3_7); 
+    LOCSTOREFULL(store, 9, 13, STOREDIM, STOREDIM, 1) = val; 
+  } 
+
+  { 
+    PFint_1_5 pf_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=1 
+    PFint_2_5 pf_2(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=2 
+
+    QUICKDouble val; 
+
+#ifdef REG_PF 
+    val = PAx * pf_1.x_2_14 - PCx * pf_2.x_2_14; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 2, 14, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 2, 14, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_1.x_2_9 - pd_2.x_2_9); 
+    LOCSTOREFULL(store, 4, 14, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_1.x_3_14 - PCy * pf_2.x_3_14; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 3, 14, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 3, 14, STOREDIM, STOREDIM, 2); 
+#endif 
+    LOCSTOREFULL(store, 5, 14, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_1.x_3_14 - PCx * pf_2.x_3_14; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 3, 14, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 3, 14, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_1.x_3_9 - pd_2.x_3_9); 
+    LOCSTOREFULL(store, 6, 14, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_1.x_1_14 - PCx * pf_2.x_1_14; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 1, 14, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 1, 14, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_1.x_0_14 - sf_2.x_0_14); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 14, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 0, 14, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_1.x_1_9 - pd_2.x_1_9); 
+    LOCSTOREFULL(store, 7, 14, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_1.x_2_14 - PCy * pf_2.x_2_14; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 2, 14, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 2, 14, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_1.x_0_14 - sf_2.x_0_14); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 14, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 0, 14, STOREDIM, STOREDIM, 2)); 
+#endif 
+    LOCSTOREFULL(store, 8, 14, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAz * pf_1.x_3_14 - PCz * pf_2.x_3_14; 
+#else 
+    val = PAz * LOCSTOREFULL(store, 3, 14, STOREDIM, STOREDIM, 1) - PCz * LOCSTOREFULL(store, 3, 14, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_1.x_0_14 - sf_2.x_0_14); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 14, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 0, 14, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (pd_1.x_3_6 - pd_2.x_3_6); 
+    LOCSTOREFULL(store, 9, 14, STOREDIM, STOREDIM, 1) = val; 
+  } 
+
+  { 
+    PFint_1_6 pf_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=1 
+    PFint_2_6 pf_2(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=2 
+
+    QUICKDouble val; 
+
+#ifdef REG_PF 
+    val = PAx * pf_1.x_2_15 - PCx * pf_2.x_2_15; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 2, 15, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 2, 15, STOREDIM, STOREDIM, 2); 
+#endif 
+    LOCSTOREFULL(store, 4, 15, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_1.x_3_15 - PCy * pf_2.x_3_15; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 3, 15, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 3, 15, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (pd_1.x_3_5 - pd_2.x_3_5); 
+    LOCSTOREFULL(store, 5, 15, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_1.x_3_15 - PCx * pf_2.x_3_15; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 3, 15, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 3, 15, STOREDIM, STOREDIM, 2); 
+#endif 
+    LOCSTOREFULL(store, 6, 15, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_1.x_1_15 - PCx * pf_2.x_1_15; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 1, 15, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 1, 15, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_1.x_0_15 - sf_2.x_0_15); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 15, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 0, 15, STOREDIM, STOREDIM, 2)); 
+#endif 
+    LOCSTOREFULL(store, 7, 15, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_1.x_2_15 - PCy * pf_2.x_2_15; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 2, 15, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 2, 15, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_1.x_0_15 - sf_2.x_0_15); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 15, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 0, 15, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (pd_1.x_2_5 - pd_2.x_2_5); 
+    LOCSTOREFULL(store, 8, 15, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAz * pf_1.x_3_15 - PCz * pf_2.x_3_15; 
+#else 
+    val = PAz * LOCSTOREFULL(store, 3, 15, STOREDIM, STOREDIM, 1) - PCz * LOCSTOREFULL(store, 3, 15, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_1.x_0_15 - sf_2.x_0_15); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 15, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 0, 15, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_1.x_3_8 - pd_2.x_3_8); 
+    LOCSTOREFULL(store, 9, 15, STOREDIM, STOREDIM, 1) = val; 
+  } 
+
+  { 
+    PFint_1_7 pf_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=1 
+    PFint_2_7 pf_2(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=2 
+
+    QUICKDouble val; 
+
+#ifdef REG_PF 
+    val = PAx * pf_1.x_2_16 - PCx * pf_2.x_2_16; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 2, 16, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 2, 16, STOREDIM, STOREDIM, 2); 
+#endif 
+    LOCSTOREFULL(store, 4, 16, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_1.x_3_16 - PCy * pf_2.x_3_16; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 3, 16, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 3, 16, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_1.x_3_9 - pd_2.x_3_9); 
+    LOCSTOREFULL(store, 5, 16, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_1.x_3_16 - PCx * pf_2.x_3_16; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 3, 16, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 3, 16, STOREDIM, STOREDIM, 2); 
+#endif 
+    LOCSTOREFULL(store, 6, 16, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_1.x_1_16 - PCx * pf_2.x_1_16; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 1, 16, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 1, 16, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_1.x_0_16 - sf_2.x_0_16); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 16, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 0, 16, STOREDIM, STOREDIM, 2)); 
+#endif 
+    LOCSTOREFULL(store, 7, 16, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_1.x_2_16 - PCy * pf_2.x_2_16; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 2, 16, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 2, 16, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_1.x_0_16 - sf_2.x_0_16); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 16, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 0, 16, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 1.000000 * (pd_1.x_2_9 - pd_2.x_2_9); 
+    LOCSTOREFULL(store, 8, 16, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAz * pf_1.x_3_16 - PCz * pf_2.x_3_16; 
+#else 
+    val = PAz * LOCSTOREFULL(store, 3, 16, STOREDIM, STOREDIM, 1) - PCz * LOCSTOREFULL(store, 3, 16, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_1.x_0_16 - sf_2.x_0_16); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 16, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 0, 16, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 2.000000 * (pd_1.x_3_5 - pd_2.x_3_5); 
+    LOCSTOREFULL(store, 9, 16, STOREDIM, STOREDIM, 1) = val; 
+  } 
+
+  { 
+    PFint_1_8 pf_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=1 
+    PFint_2_8 pf_2(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=2 
+
+    QUICKDouble val; 
+
+#ifdef REG_PF 
+    val = PAx * pf_1.x_2_17 - PCx * pf_2.x_2_17; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 2, 17, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 2, 17, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 3.000000 * (pd_1.x_2_7 - pd_2.x_2_7); 
+    LOCSTOREFULL(store, 4, 17, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_1.x_3_17 - PCy * pf_2.x_3_17; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 3, 17, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 3, 17, STOREDIM, STOREDIM, 2); 
+#endif 
+    LOCSTOREFULL(store, 5, 17, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_1.x_3_17 - PCx * pf_2.x_3_17; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 3, 17, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 3, 17, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 3.000000 * (pd_1.x_3_7 - pd_2.x_3_7); 
+    LOCSTOREFULL(store, 6, 17, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_1.x_1_17 - PCx * pf_2.x_1_17; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 1, 17, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 1, 17, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_1.x_0_17 - sf_2.x_0_17); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 17, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 0, 17, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 3.000000 * (pd_1.x_1_7 - pd_2.x_1_7); 
+    LOCSTOREFULL(store, 7, 17, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_1.x_2_17 - PCy * pf_2.x_2_17; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 2, 17, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 2, 17, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_1.x_0_17 - sf_2.x_0_17); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 17, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 0, 17, STOREDIM, STOREDIM, 2)); 
+#endif 
+    LOCSTOREFULL(store, 8, 17, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAz * pf_1.x_3_17 - PCz * pf_2.x_3_17; 
+#else 
+    val = PAz * LOCSTOREFULL(store, 3, 17, STOREDIM, STOREDIM, 1) - PCz * LOCSTOREFULL(store, 3, 17, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_1.x_0_17 - sf_2.x_0_17); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 17, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 0, 17, STOREDIM, STOREDIM, 2)); 
+#endif 
+    LOCSTOREFULL(store, 9, 17, STOREDIM, STOREDIM, 1) = val; 
+  } 
+
+  { 
+    PFint_1_9 pf_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=1 
+    PFint_2_9 pf_2(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=2 
+
+    QUICKDouble val; 
+
+#ifdef REG_PF 
+    val = PAx * pf_1.x_2_18 - PCx * pf_2.x_2_18; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 2, 18, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 2, 18, STOREDIM, STOREDIM, 2); 
+#endif 
+    LOCSTOREFULL(store, 4, 18, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_1.x_3_18 - PCy * pf_2.x_3_18; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 3, 18, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 3, 18, STOREDIM, STOREDIM, 2); 
+#endif 
+    val += TwoZetaInv * 3.000000 * (pd_1.x_3_8 - pd_2.x_3_8); 
+    LOCSTOREFULL(store, 5, 18, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_1.x_3_18 - PCx * pf_2.x_3_18; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 3, 18, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 3, 18, STOREDIM, STOREDIM, 2); 
+#endif 
+    LOCSTOREFULL(store, 6, 18, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_1.x_1_18 - PCx * pf_2.x_1_18; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 1, 18, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 1, 18, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_1.x_0_18 - sf_2.x_0_18); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 18, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 0, 18, STOREDIM, STOREDIM, 2)); 
+#endif 
+    LOCSTOREFULL(store, 7, 18, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_1.x_2_18 - PCy * pf_2.x_2_18; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 2, 18, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 2, 18, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_1.x_0_18 - sf_2.x_0_18); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 18, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 0, 18, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 3.000000 * (pd_1.x_2_8 - pd_2.x_2_8); 
+    LOCSTOREFULL(store, 8, 18, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAz * pf_1.x_3_18 - PCz * pf_2.x_3_18; 
+#else 
+    val = PAz * LOCSTOREFULL(store, 3, 18, STOREDIM, STOREDIM, 1) - PCz * LOCSTOREFULL(store, 3, 18, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_1.x_0_18 - sf_2.x_0_18); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 18, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 0, 18, STOREDIM, STOREDIM, 2)); 
+#endif 
+    LOCSTOREFULL(store, 9, 18, STOREDIM, STOREDIM, 1) = val; 
+  } 
+
+  { 
+    PFint_1_10 pf_1(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=1 
+    PFint_2_10 pf_2(PAx, PAy, PAz, PBx, PBy, PBz, PCx, PCy, PCz, TwoZetaInv, store, YVerticalTemp); // construct [p|f] for m=2 
+
+    QUICKDouble val; 
+
+#ifdef REG_PF 
+    val = PAx * pf_1.x_2_19 - PCx * pf_2.x_2_19; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 2, 19, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 2, 19, STOREDIM, STOREDIM, 2); 
+#endif 
+    LOCSTOREFULL(store, 4, 19, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_1.x_3_19 - PCy * pf_2.x_3_19; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 3, 19, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 3, 19, STOREDIM, STOREDIM, 2); 
+#endif 
+    LOCSTOREFULL(store, 5, 19, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_1.x_3_19 - PCx * pf_2.x_3_19; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 3, 19, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 3, 19, STOREDIM, STOREDIM, 2); 
+#endif 
+    LOCSTOREFULL(store, 6, 19, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAx * pf_1.x_1_19 - PCx * pf_2.x_1_19; 
+#else 
+    val = PAx * LOCSTOREFULL(store, 1, 19, STOREDIM, STOREDIM, 1) - PCx * LOCSTOREFULL(store, 1, 19, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_1.x_0_19 - sf_2.x_0_19); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 19, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 0, 19, STOREDIM, STOREDIM, 2)); 
+#endif 
+    LOCSTOREFULL(store, 7, 19, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAy * pf_1.x_2_19 - PCy * pf_2.x_2_19; 
+#else 
+    val = PAy * LOCSTOREFULL(store, 2, 19, STOREDIM, STOREDIM, 1) - PCy * LOCSTOREFULL(store, 2, 19, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_1.x_0_19 - sf_2.x_0_19); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 19, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 0, 19, STOREDIM, STOREDIM, 2)); 
+#endif 
+    LOCSTOREFULL(store, 8, 19, STOREDIM, STOREDIM, 1) = val; 
+#ifdef REG_PF 
+    val = PAz * pf_1.x_3_19 - PCz * pf_2.x_3_19; 
+#else 
+    val = PAz * LOCSTOREFULL(store, 3, 19, STOREDIM, STOREDIM, 1) - PCz * LOCSTOREFULL(store, 3, 19, STOREDIM, STOREDIM, 2); 
+#endif 
+#ifdef REG_SF 
+    val += TwoZetaInv * (sf_1.x_0_19 - sf_2.x_0_19); 
+#else 
+    val += TwoZetaInv * (LOCSTOREFULL(store, 0, 19, STOREDIM, STOREDIM, 1) - LOCSTOREFULL(store, 0, 19, STOREDIM, STOREDIM, 2)); 
+#endif 
+    val += TwoZetaInv * 3.000000 * (pd_1.x_3_9 - pd_2.x_3_9); 
+    LOCSTOREFULL(store, 9, 19, STOREDIM, STOREDIM, 1) = val; 
+  } 
+
 #else 
   QUICKDouble val; 
 #ifdef REG_PF 
@@ -7194,6 +11513,7 @@ __device__ __inline__ DFint_1::DFint_1(QUICKDouble PAx, QUICKDouble PAy, QUICKDo
 #endif 
   val += TwoZetaInv * 3.000000 * (pd_1.x_3_9 - pd_2.x_3_9); 
   LOCSTOREFULL(store, 9, 19, STOREDIM, STOREDIM, 1) = val; 
+#endif 
 #endif 
 
  } 
